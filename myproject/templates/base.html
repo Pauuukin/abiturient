@@ -5,43 +5,55 @@
     {% load static %}
     <link rel="stylesheet" href="{% static 'css/bootstrap.min.css'%}" type="text/css">
 
-<!--    <link rel="stylesheet" href="{% static 'css/bootstrap-grid.css'%}" type="text/css">-->
+    <!--    <link rel="stylesheet" href="{% static 'css/bootstrap-grid.css'%}" type="text/css">-->
     <link rel="stylesheet" href="{% static 'css/bootstrap-reboot.css'%}" type="text/css">
     <link rel="stylesheet" href="{% static 'css/bootstrap-grid.min.css'%}" type="text/css">
 
     <title>
         {% block title %}
-        СПбЮА
+        Абитуриенту СПбЮА
         {% endblock %}
 
     </title>
 </head>
 <body>
-<nav class="navbar navbar-expand-md bg-dark navbar-dark ">
-  <!-- Brand -->
-  <a class="navbar-brand" href="#">СПбЮА</a>
+<div class="container-fluid">
+    <nav class="navbar navbar-expand-md navbar-light" style="background-color: #e3f2fd;">
+        <div class="row">
+            <div class="col">
+                <a class="navbar-brand" href="https://jurac.ru/">
+                    {% load static %}
+                    <img src="{% static 'image/logo.png'%} " class="d-inline-block align-top" alt="">
+                </a>
+            </div>
 
-  <!-- Toggler/collapsibe Button -->
-  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#collapsibleNavbar">
-    <span class="navbar-toggler-icon"></span>
-  </button>
+            <!-- Toggler/collapsibe Button -->
+            <div class="col">
+                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#collapsibleNavbar">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+            </div>
+            <!-- Navbar links -->
 
-  <!-- Navbar links -->
-  <div class="collapse navbar-collapse" id="collapsibleNavbar">
-    <ul class="navbar-nav ">
-      <li class="nav-item">
-        <a class="nav-link" href="#">Бакалавриат</a>
-      </li>
-      <li class="nav-item">
-        <a class="nav-link" href="#">Магистратура</a>
-      </li>
-      <li class="nav-item">
-        <a class="nav-link" href="#">Аспирантура</a>
-      </li>
-    </ul>
-  </div>
-</nav>
+                <div class="collapse navbar-collapse" id="collapsibleNavbar">
+                    <div class="col">
+                    <ul class="nav justify-content-center">
+                        <li class="nav-item">
+                            <a class="nav-link" href="#">  <h3 class="text-muted">Бакалавриат</h3></a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="#">  <h3 class="text-muted">Магистратура</h3></a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="#">  <h3 class="text-muted">Аспирантура</h3></a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </nav>
 
+</div>
 <div class="container-fluid">
 
     {% block content %}
@@ -50,4 +62,70 @@
 
 </div>
 </body>
+<!-- Footer -->
+<footer class="page-footer font-small blue pt-4">
+
+  <!-- Footer Links -->
+  <div class="container-fluid text-center text-md-left">
+
+    <!-- Grid row -->
+    <div class="row">
+
+      <!-- Grid column -->
+      <div class="col-md-6 mt-md-0 mt-3">
+
+        <!-- Content -->
+        <h5 class="text-uppercase">Санкт-Петербургская юридическая академия</h5>
+        <p>Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo. Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt. Neque porro quisquam est, qui dolorem ipsum quia dolor sit amet</p>
+
+      </div>
+      <!-- Grid column -->
+
+      <hr class="clearfix w-100 d-md-none pb-3">
+
+      <!-- Grid column -->
+      <div class="col-md-3 mb-md-0 mb-3">
+
+      </div>
+      <!-- Grid column -->
+
+      <!-- Grid column -->
+      <div class="col-md-3 mb-md-0 mb-3">
+
+        <!-- Links -->
+        <h5 class="text-uppercase">Перейти:</h5>
+
+        <ul class="list-unstyled">
+          <li>
+            <a href="#!">Бакалавриат</a>
+          </li>
+          <li>
+            <a href="#!">Магистратура</a>
+          </li>
+          <li>
+            <a href="#!">Аспирантура</a>
+          </li>
+          <li>
+            <a href="#!">Информация поступающим</a>
+          </li>
+        </ul>
+
+      </div>
+      <!-- Grid column -->
+
+    </div>
+    <!-- Grid row -->
+
+  </div>
+  <!-- Footer Links -->
+
+  <!-- Copyright -->
+  <div class="footer-copyright text-center py-3">© 2020 Copyright:
+    <a href="https://jurac.ru"> СПбЮА</a>
+  </div>
+  <!-- Copyright -->
+
+</footer>
+<!-- Footer -->
+
 </html>
