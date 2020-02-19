@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'css/bootstrap.min.css'%}" type="text/css">
+
+<!--    <link rel="stylesheet" href="{% static 'css/bootstrap-grid.css'%}" type="text/css">-->
+    <link rel="stylesheet" href="{% static 'css/bootstrap-reboot.css'%}" type="text/css">
+    <link rel="stylesheet" href="{% static 'css/bootstrap-grid.min.css'%}" type="text/css">
+
+    <title>
+        {% block title %}
+        СПбЮА
+        {% endblock %}
+
+    </title>
+</head>
+<body>
+<nav class="navbar navbar-expand-md bg-dark navbar-dark ">
+  <!-- Brand -->
+  <a class="navbar-brand" href="#">СПбЮА</a>
+
+  <!-- Toggler/collapsibe Button -->
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#collapsibleNavbar">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+
+  <!-- Navbar links -->
+  <div class="collapse navbar-collapse" id="collapsibleNavbar">
+    <ul class="navbar-nav ">
+      <li class="nav-item">
+        <a class="nav-link" href="#">Бакалавриат</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="#">Магистратура</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="#">Аспирантура</a>
+      </li>
+    </ul>
+  </div>
+</nav>
+
+<div class="container-fluid">
+
+    {% block content %}
+    there is no any content
+    {% endblock %}
+
+</div>
+</body>
+</html>
