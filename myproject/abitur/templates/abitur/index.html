@@ -1,1 +1,53 @@
 {% extends 'abitur/base_abitur.html' %}
+
+
+{% block content %}
+<br><br>
+
+<div class="card bg-dark text-white">
+    {% load static %}
+  <img src="{% static 'image/slide-3.jpg'%} "  class="card-img" alt="...">
+  <div class="card-img-overlay">
+    <h3 class="card-title" font>Санкт-Петербургская юридическая академия</h3>
+    <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
+
+  </div>
+</div>
+<br>
+
+<div class="md-5" align="center" style="background-color: #e3f2fd;">
+    <button type="button" class="btn btn-primary btn-lg">Большая кнопка</button>
+    <button type="button" class="btn btn-primary btn-lg">Большая кнопка</button>
+    <button type="button" class="btn btn-primary btn-lg">Большая кнопка</button>
+</div>
+    <br>
+
+        <h1 class="mb-5" align="center">Новости</h1>
+<div class="card-deck">
+  <div class="card">
+    <img src="..." class="card-img-top" alt="...">
+    <div class="card-body">
+      <h5 class="card-title">Название карточки</h5>
+      <p class="card-text">This is a longer card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
+      <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
+    </div>
+  </div>
+  <div class="card">
+    <img src="..." class="card-img-top" alt="...">
+    <div class="card-body">
+      <h5 class="card-title">Название карточки</h5>
+      <p class="card-text">This card has supporting text below as a natural lead-in to additional content.</p>
+      <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
+    </div>
+  </div>
+  <div class="card">
+    <img src="..." class="card-img-top" alt="...">
+    <div class="card-body">
+      <h5 class="card-title">Название карточки</h5>
+      <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This card has even longer content than the first to show that equal height action.</p>
+      <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
+    </div>
+  </div>
+</div>
+<br>
+{% endblock %}
