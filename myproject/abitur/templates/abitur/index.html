@@ -9,7 +9,7 @@
   <img src="{% static 'image/slide-3.jpg'%} "  class="card-img" alt="...">
   <div class="card-img-overlay">
     <h3 class="card-title" font>Санкт-Петербургская юридическая академия</h3>
-    <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
+    <p class="lead">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
 
   </div>
 </div>
@@ -43,7 +43,7 @@
       {%for n in news %}
       <div class="col-md-4">
         <div class="card" >
-          <img src=" {{n.img.url}} "  class=" rounded-circle" height="200" width="200" hspace="6" vspace="6">
+          <img src=" {{n.img.url}} " height="200" width="200" hspace="6" vspace="6">
           <div class="card-body">
             <h5 class="card-title">{{n.title}}</h5>
             <p class="card-text"><small class="text-muted">Дата: {{n.date_pub}}</small></p>
@@ -57,6 +57,56 @@
   <div class="col-md"></div>
 </div>
 
-
 <br>
+<div class="container">
+
+  <div class="row">
+    <!--    первая строка -->
+    <div class="col-md-9" align="center">
+      <p class="lead">Sed ut perspiciatis unde omnis iste natus error sit
+        voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque
+        ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta
+        sunt explicabo. Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed
+        quia consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt. Neque porro quisquam
+        est, qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit, sed quia non numquam eius
+        modi tempora incidunt ut labore et dolore magnam aliquam quaerat voluptatem. Ut enim ad minima veniam,
+        quis nostrum exercitationem ullam corporis suscipit laboriosam, nisi ut aliquid ex ea commodi consequatur?
+        Quis autem vel eum iure reprehenderit qui in ea voluptate velit esse quam nihil molestiae consequatur,
+        vel illum qui dolorem eum fugiat quo voluptas nulla pariatur?</p>
+    </div>
+    <!--    место для фото   -->
+    <div class="col-md-3">
+      <figure class="figure">
+        <img src="/media/pictures/2020/02/or.jpg" class="figure-img img-fluid rounded" alt="...">
+        <figcaption class="figure-caption">Орехова Мария Андреевна</figcaption>
+      </figure>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-md-7">
+      <!--      вторая строка   -->
+      <div class="row" >
+        <blockquote class="blockquoteMyOrange">
+          <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer posuere erat a ante. Lorem
+            ipsum dolor sit amet, consectetur adipiscing elit. Integer posuere erat a ante.
+            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer posuere erat a ante.</p>
+        </blockquote>
+      </div>
+      <!--      третья строка   -->
+      <div class="row">
+        <blockquote class="blockquoteMyGreen">
+          <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer posuere erat a ante.</p>
+        </blockquote>
+      </div>
+    </div>
+    <!--    место для адреса    -->
+    <div class="col-md-5">
+      <p>asdasd</p>
+    </div>
+
+
+
+  </div>
+</div>
+
 {% endblock %}
