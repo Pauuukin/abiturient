@@ -9,4 +9,4 @@ def abiturPage(request):
     return render(request, 'abitur/index.html', context={'news': news})
 
 def bakPage(request):
-    return HttpResponse('<h1>Bak page</h1>')
+    return render(request, 'abitur/bak.html')
