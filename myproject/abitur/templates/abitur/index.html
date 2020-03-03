@@ -2,7 +2,7 @@
 
 
 {% block content %}
-<br><br>
+
 
 <div class="card bg-dark text-white">
   {% load static %}
@@ -17,17 +17,17 @@
 
 <div class = "row" >
   <div class="col-2" ></div>
-  <div class="col-2" style="background-color: #e3f2fd;">
-    <button type="button" class="btn btn-primary btn-lg btn-block">Информация поступающим</button>
+  <div class="col-2">
+    <button type="button" class="btn btn-primary btn-lg">Информация поступающим</button>
   </div>
-  <div class="col-1" style="background-color: #e3f2fd;"></div>
-  <div class="col-2" style="background-color: #e3f2fd;">
-    <button type="button" class="btn btn-primary btn-lg btn-block">Иностранным гражданам</button>
+  <div class="col-1" ></div>
+  <div class="col-2" >
+    <button type="button" class="btn btn-primary btn-lg">Иностранным гражданам</button>
   </div>
-  <div class="col-1" style="background-color: #e3f2fd;"></div>
-  <div class="col-2"style="background-color: #e3f2fd;">
+  <div class="col-1" ></div>
+  <div class="col-2">
 
-    <button type="button" class="btn btn-primary btn-lg btn-block">Календарь приема</button>
+    <button type="button" class="btn btn-primary btn-lg">Календарь приема</button>
   </div>
   <div class="col-2"></div>
 
@@ -35,7 +35,7 @@
 </div>
 <br>
 
-<div class="row">
+<div class="row" >
   <div class="col-md"></div>
   <div class="col-md-9" align="center">
     <h1 class="mb-5" align="center">Новости</h1>
@@ -85,6 +85,7 @@
   <div class="row">
     <div class="col-md-7">
       <!--      вторая строка   -->
+      <br><br>
       <div class="row" >
         <blockquote class="blockquoteMyOrange">
           <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer posuere erat a ante. Lorem
@@ -93,6 +94,7 @@
         </blockquote>
       </div>
       <!--      третья строка   -->
+      <br>
       <div class="row">
         <blockquote class="blockquoteMyGreen">
           <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer posuere erat a ante.</p>
@@ -100,11 +102,36 @@
       </div>
     </div>
     <!--    место для адреса    -->
+
     <div class="col-md-5">
-      <p>asdasd</p>
+      <h3 align="center" > Часы работы: </h3>
+      <table class="table table-striped" style="background-color: #e3f2fd;" >
+
+        <tr>
+          <td scope="col" >Понедельник - четверг</td>
+          <td scope="col" >Пятница </td>
+          <td scope="col" >Обеденный перерыв</td>
+        </tr>
+
+        <tbody>
+        <tr></tr>
+        <tr>
+          <td>c 10 до 18 часов</td>
+          <td>c 10 до 17 часов</td>
+          <td>c 12 до 13 часов</td>
+        </tr>
+        <tr>
+          <td><b>Электронный адрес:</b></td>
+          <td colspan="2">JURAC.SPB@MAIL.RU <br> PRIEM@JURAC.RU  </td>
+        </tr>
+        <tr></tr>
+        <tr>
+          <td><b>Телефоны приемной комиссии:</b></td>
+          <td colspan="2"> +7 (812) 677-00-07 <br> +7 (921) 951-34-33 </td>
+        </tr>
+        </tbody>
+      </table>
     </div>
-
-
 
   </div>
 </div>
