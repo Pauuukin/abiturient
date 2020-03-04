@@ -1,3 +1,5 @@
+font-family: 'Roboto', sans-serif;
+
 .blockquoteMyGreen {
   padding: 10px 20px;
   margin: 0 0 20px;
@@ -27,19 +29,9 @@
   /* изменит цвет текста */
 
  }
- a.boton1{
-  background:#eee;
-  color:#088;
-  text-decoration:none;
-  display:block;
-  width:90px;
-  text-align:center;
-  margin:20px auto;
-  padding:10px 10px;
-  transition:all 0.3s;
-  }
- a.boton1:hover{
-  box-shadow:0px -5px 0 #088 inset;
-}
 
-font-family: 'Roboto', sans-serif;
+
+.back {
+background: rgb(220,236,241);
+background: linear-gradient(90deg, rgba(220,236,241,1) 0%, rgba(0,164,255,1) 100%);
+}
