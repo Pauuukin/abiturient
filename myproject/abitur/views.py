@@ -13,3 +13,6 @@ def bakPage(request):
 
 def interPage(request):
     return render(request, 'abitur/inter.html')
+
+def infoPage(request):
+    return render(request, 'abitur/info.html')
