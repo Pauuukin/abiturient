@@ -10,3 +10,6 @@ def abiturPage(request):
 
 def bakPage(request):
     return render(request, 'abitur/bak.html')
+
+def interPage(request):
+    return render(request, 'abitur/inter.html')
