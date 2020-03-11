@@ -19,55 +19,76 @@
     </title>
 </head>
 <body>
-<div class="container-fluid">
-     {% load static %}
-    <nav class="navbar navbar-expand-md navbar-light" style="background-image: url({% static 'image/image.png'%})">
-        <div class="row">
-            <div class="col">
-                <a class="navbar-brand" href="https://jurac.ru/">
-                    {% load static %}
-                    <img src="{% static 'image/logo.png'%} " class="d-inline-block align-top" alt="">
-                </a>
+
+<!--    header      -->
+
+<!--    Лого, телефоны-->
+<div class="row">
+    <div class="col-md-4">
+        <a class="navbar-brand" href="https://jurac.ru/">
+            {% load static %}
+            <img src="{% static 'image/logo.png'%} " class="d-inline-block align-top" alt="">
+        </a>
+    </div>
+    <div class="col-md-4">
+        <br>
+        <h2 class="text-monospace text-center">Приемная комиссия</h2>
+    </div>
+    <div class="col-md-4">
+
+        <h3 class="text-monospace text-center">+7 (812) 677-00-07<br>
+            +7 (921) 951-34-33</h3>
+    </div>
+</div>
+
+<!--    Меню        -->
+{% load static %}
+<nav class="navbar navbar-expand-md navbar-light sticky-top" style="background-image: url({% static 'image/grad-menu.jpg'%}">
+    <div class="row">
+        <!-- Toggler/collapsibe Button -->
+        <div class="col">
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#collapsibleNavbar">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+        </div>
+        <!-- Navbar links -->
+    </div>
+    <div class="collapse navbar-collapse" id="collapsibleNavbar">
+        <div class="container" style="text-align : center">
+            <div class="col-md-3">
+                <a  href="/abitur/">  <h4 class="text-monospace text-body">Главная</h4></a>
             </div>
 
-            <!-- Toggler/collapsibe Button -->
-            <div class="col">
-                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#collapsibleNavbar">
-                    <span class="navbar-toggler-icon"></span>
-                </button>
+            <div class="col-md-3">
+                <a href="/abitur/bak">  <h4 class="text-monospace text-body">Бакалавриат</h4></a>
             </div>
-            <!-- Navbar links -->
 
-            <div class="collapse navbar-collapse" id="collapsibleNavbar">
-                <div class="col">
-                    <ul class="nav justify-content-center">
-                        <li class="nav-item">
-                            <a class="nav-link" href="/abitur/bak">  <h3 class="text-muted">Бакалавриат</h3></a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="#">  <h3 class="text-muted">Магистратура</h3></a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="#">  <h3 class="text-muted">Аспирантура</h3></a>
-                        </li>
+            <div class="col-md-3">
+                <a  href="#">  <h4 class="text-monospace text-body">Магистратура</h4></a>
+            </div>
 
-                    </ul>
-                </div>
+            <div class="col-md-3">
+                <a  href="#">  <h4 class="text-monospace text-body">Аспирантура</h4></a>
             </div>
         </div>
-    </nav>
 
-</div>
+    </div>
+</nav>
+
+
+<!--    Сюда идет контент для страниц, которые наследуются  -->
 <div class="container-fluid" >
-
     {% block content %}
     there is no any content
     {% endblock %}
-
 </div>
+<script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
 </body>
 <!-- Footer -->
-<footer class="page-footer font-small blue pt-4" style="background-color: #e3f2fd;">
+
+<footer class="page-footer font-small blue pt-3" style="background-color: #e3f2fd;">
 
     <!-- Footer Links -->
     <div class="container-fluid text-center text-md-left">
