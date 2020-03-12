@@ -1,0 +1,14 @@
+{% extends 'abitur/base_abitur.html' %}
+
+{% block title %}
+    {{ news.title }} - {{ block.super }}
+{% endblock %}
+
+{% block content %}
+    <h1 class="mt-5">
+        {{ news.title }}
+    </h1>
+    <p>
+         {{ news.body }}
+    </p>
+{% endblock %}

@@ -60,7 +60,7 @@
             </div>
 
             <div class="col-md-3">
-                <a href="/abitur/bak">  <h4 class=" text-body">Бакалавриат</h4></a>
+                <a href="{% url 'bakPage_url' %}">  <h4 class=" text-body">Бакалавриат</h4></a>
             </div>
 
             <div class="col-md-3">
@@ -122,7 +122,7 @@
 
                 <ul class="list-unstyled">
                     <li>
-                        <a href="/abitur/bak">Бакалавриат</a>
+                        <a href="{% url 'bakPage_url' %}">Бакалавриат</a>
                     </li>
                     <li>
                         <a href="#!">Магистратура</a>
@@ -131,7 +131,7 @@
                         <a href="#!">Аспирантура</a>
                     </li>
                     <li>
-                        <a href="#!">Информация поступающим</a>
+                        <a href="{% url 'infoPage_url' %}">Информация поступающим</a>
                     </li>
                     <li>
                         <a href="/admin">Админпанель</a>

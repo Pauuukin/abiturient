@@ -8,6 +8,12 @@ def abiturPage(request):
     news = News.objects.all()
     return render(request, 'abitur/index.html', context={'news': news})
 
+def news_detail(request, slug):
+     news = News.objects.get(slug__iexact=slug)
+     return render(request, 'abitur/news_detail.html', context={'news' : news})
+
+
+
 def bakPage(request):
     return render(request, 'abitur/bak.html')
 

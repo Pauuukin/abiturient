@@ -7,7 +7,7 @@
 <div class="card">
   <div class="card-body">
     <h5 class="card-title">Санкт-Петербургская Юридическая академия</h5>
-    <p class="card-text" align="center">Акту</p>
+    <p class="card-text" align="center"></p>
 
   </div>
   {% load static %}
@@ -18,11 +18,11 @@
 <div class = "row" >
   <div class="col-lg-2" ></div>
   <div class="col-lg-2">
-    <a href="/abitur/info" class="btn btn-primary btn-lg">Информация поступающим</a>
+    <a href="{% url 'infoPage_url' %}" class="btn btn-primary btn-lg">Информация поступающим</a>
   </div>
   <div class="col-lg-1" ></div>
   <div class="col-lg-2" >
-    <a href="/abitur/inter" class="btn btn-primary btn-lg">Иностранным гражданам</a>
+    <a href="{% url 'interPage_url' %}" class="btn btn-primary btn-lg">Иностранным гражданам</a>
   </div>
   <div class="col-lg-1" ></div>
   <div class="col-lg-2">
@@ -46,6 +46,12 @@
           <div class="card-body">
             <h5 class="card-title">{{n.title}}</h5>
             <p class="card-text"><small class="text-muted">Дата: {{n.date_pub}}</small></p>
+<!--
+
+<a href="{% url 'news_detail_url' slug=n.slug%}" class="stretched-link"></a>
+
+-->
+            <a href="{{ n.get_absolute_url }}" class="stretched-link"></a>
           </div>
         </div>
       </div>
