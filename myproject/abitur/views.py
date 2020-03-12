@@ -18,4 +18,4 @@ def infoPage(request):
     return render(request, 'abitur/info.html')
 
 def spec_bak_1(request):
-    return render(request, 'abitur/spec_bak_1.html')
+    return render(request, 'abitur/bak/spec_bak_1.html')
