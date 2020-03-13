@@ -20,3 +20,8 @@ class News (models.Model):
         """Переопределяем метод String"""
         return '{}'.format(self.title)
 
+
+class NewsFile(models.Model):
+    file = models.FileField(upload_to='files')
+    news = models.ForeignKey('News', on_delete=models.CASCADE)
+

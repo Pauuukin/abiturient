@@ -1,0 +1,13 @@
+<div class="card" >
+    <img src=" {{n.img.url}} " height="200" width="200" hspace="6" vspace="6">
+    <div class="card-body">
+        <h5 class="card-title">{{n.title}}</h5>
+        <p class="card-text"><small class="text-muted">Дата: {{n.date_pub}}</small></p>
+        <!--
+
+        <a href="{% url 'news_detail_url' slug=n.slug%}" class="stretched-link"></a>
+
+        -->
+        <a href="{{ n.get_absolute_url }}" class="stretched-link"></a>
+    </div>
+</div>
