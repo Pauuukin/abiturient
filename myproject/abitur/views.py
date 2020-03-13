@@ -25,3 +25,7 @@ def infoPage(request):
 
 def spec_bak_1(request):
     return render(request, 'abitur/bak/spec_bak_1.html')
+
+def news_list(request):
+    news = News.objects.all()
+    return render(request, 'abitur/all_news.html', context={'news': news})

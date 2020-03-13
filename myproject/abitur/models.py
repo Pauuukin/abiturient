@@ -21,7 +21,14 @@ class News (models.Model):
         return '{}'.format(self.title)
 
 
+
+
 class NewsFile(models.Model):
     file = models.FileField(upload_to='files')
     news = models.ForeignKey('News', on_delete=models.CASCADE)
+
+    def __str__(self):
+        return '{}'.format(self.file)
+
+
 
