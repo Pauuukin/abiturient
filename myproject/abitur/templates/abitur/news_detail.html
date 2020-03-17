@@ -17,7 +17,7 @@
             </p>
             <br>
             {% for file in news.linked_file.all %}
-            <div class="alert alert-primary" role="alert" >
+            <div class="alert alert-primary" role="alert" style="text-align: center;" >
                 <p> {{file.name_file}} : <a href=" {{file.file.url}} " rel="noopener" target="_blank">Открыть</a>
                 </p>
             </div>
