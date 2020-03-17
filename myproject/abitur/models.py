@@ -18,17 +18,18 @@ class News (models.Model):
 
     def __str__(self):
         """Переопределяем метод String"""
-        return '{}'.format(self.title)
+        return self.title
 
 
 
 
 class NewsFile(models.Model):
+    name_file = models.CharField(max_length=100, default="Открыть")
     file = models.FileField(upload_to='files')
-    news = models.ForeignKey('News', on_delete=models.CASCADE)
+    news = models.ForeignKey('News', on_delete=models.CASCADE, related_name='linked_file')
 
-    def __str__(self):
-        return '{}'.format(self.file)
+    # def __str__(self):
+    #     return self.file
 
 
 

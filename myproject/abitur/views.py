@@ -7,7 +7,8 @@ from .models import *
 # Create your views here.
 
 def abiturPage(request):
-    news = News.objects.all()
+    """возвращаем страницу index и последние 3 новости из базы данных"""
+    news = News.objects.all().order_by('-id')[:3]
     return render(request, 'abitur/index.html', context={'news': news})
 
 # def news_detail(request, slug):
