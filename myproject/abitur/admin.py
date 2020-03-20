@@ -5,3 +5,5 @@ from .models import *
 admin.site.register(News)
 admin.site.register(NewsFile)
 admin.site.register(Orders)
+admin.site.register(RecommendedList)
+admin.site.register(SubmitDoc)

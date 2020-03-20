@@ -36,8 +36,8 @@
             </div>
             <div class="col-md-6">
                 <a href="#" class="btn btn-primary btn-block">Необходимые документы</a>
-                <a href="#" class="btn btn-primary btn-block">Списки подавших документы</a>
-                <a href="#" class="btn btn-primary btn-block">Списки рекомендованных к зачислению</a>
+                <a href="{% url 'submit_doc_bak_url' %}" class="btn btn-primary btn-block">Списки подавших документы</a>
+                <a href="{% url 'rec_list_bak_url' %}" class="btn btn-primary btn-block">Списки рекомендованных к зачислению</a>
                 <a href="{% url 'order_bak_url' %}" class="btn btn-primary btn-block">Приказы о зачислении</a>
             </div>
         </div>

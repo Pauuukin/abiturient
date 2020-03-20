@@ -4,7 +4,7 @@
 {% block content %}
 <div class="container">
     <br>
-    <h1 align="center">Приказы о зачислении (бакалавриат)</h1>
+    <h1 align="center">Список рекомендованных к зачислению (бакалавриат)</h1>
     <hr style="border-width: 3px;">
     <br>
     <div class="table-response">
@@ -12,20 +12,18 @@
             <thead class="thead-dark">
             <tr>
                 <th>Название</th>
-                <th>Номер приказа</th>
                 <th>Форма обучения</th>
                 <th>Дата приказа</th>
                 <th>Документ</th>
             </tr>
             </thead>
             {%for educational_form in educational_form %}
-            {%for orders in educational_form.linked_orders.all %}
+            {%for list in educational_form.linked_rec_list.all %}
             <tr>
-                <td>{{ orders.name_order }}</td>
-                <td>{{ orders.number_order }}</td>
-                <td>{{ orders.educational_form }}</td>
-                <td>{{ orders.date_order }}</td>
-                <td><a href=" {{orders.file.url}} " rel="noopener" target="_blank">Открыть</a></td>
+                <td>{{ list.name_rec_list }}</td>
+                <td>{{ list.educational_form }}</td>
+                <td>{{ list.date_order }}</td>
+                <td><a href=" {{list.file.url}} " rel="noopener" target="_blank">Открыть</a></td>
             </tr>
             {% endfor %}
             {% endfor %}

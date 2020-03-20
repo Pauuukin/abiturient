@@ -48,11 +48,18 @@ def news_list(request):
 
 
 def order_bak(request):
-    educational_form = EducationalForm.objects.get(name_educational_form="ОФО")
+    educational_form = EducationalForm.objects.all()
     return render(request, 'abitur/bak/order_bak.html', context={'educational_form': educational_form})
 
 
+def rec_list_bak(request):
+    educational_form = EducationalForm.objects.all()
+    return render(request, 'abitur/bak/rec_list_bak.html', context={'educational_form': educational_form})
 
+
+def submit_doc_bak(request):
+    educational_form = EducationalForm.objects.all()
+    return render(request, 'abitur/bak/submit_doc_bak.html', context={'educational_form': educational_form})
 
 
 

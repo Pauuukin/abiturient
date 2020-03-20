@@ -44,7 +44,7 @@ class EducationalForm(models.Model):
 
 
 class Orders(models.Model):
-    """ модель для сущности 'Приказы' """
+    """ модель для сущности 'Приказы БАКАЛАВРИАТ' """
     name_order = models.CharField(max_length=256)
     number_order = models.CharField(max_length=64)
     educational_form = models.ForeignKey('EducationalForm', on_delete=models.PROTECT, related_name='linked_orders')
@@ -55,3 +55,29 @@ class Orders(models.Model):
     def __str__(self):
         """переопределяем метод String"""
         return self.name_order
+
+
+class RecommendedList(models.Model):
+    """ модель для сущности 'Рекомендованные к зачислению БАКАЛАВРИАТ' """
+    name_rec_list = models.CharField(max_length=256)
+    educational_form = models.ForeignKey('EducationalForm', on_delete=models.PROTECT, related_name='linked_rec_list')
+    date_pub = models.DateTimeField(auto_now_add=True)
+    date_order = models.DateField()
+    file = models.FileField(upload_to='files')
+
+    def __str__(self):
+        """переопределяем метод String"""
+        return self.name_rec_list
+
+
+class SubmitDoc(models.Model):
+    """ модель для сущности 'Подавшие документы БАКАЛАВРИАТ' """
+    name_submit_doc = models.CharField(max_length=256)
+    educational_form = models.ForeignKey('EducationalForm', on_delete=models.PROTECT, related_name='linked_submit_doc')
+    date_pub = models.DateTimeField(auto_now_add=True)
+    date_order = models.DateField()
+    file = models.FileField(upload_to='files')
+
+    def __str__(self):
+        """переопределяем метод String"""
+        return self.name_submit_doc
