@@ -48,5 +48,21 @@ def news_list(request):
 
 
 def order_bak(request):
-    orders = Orders.objects.all()
-    return render(request, 'abitur/bak/order_bak.html', context={'orders': orders})
+    educational_form = EducationalForm.objects.get(name_educational_form="ОФО")
+    return render(request, 'abitur/bak/order_bak.html', context={'educational_form': educational_form})
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

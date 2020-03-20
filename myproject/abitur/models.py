@@ -32,11 +32,22 @@ class NewsFile(models.Model):
         return self.name_file
 
 
+
+class EducationalForm(models.Model):
+    """модель для сущности 'Форма обучения' """
+    name_educational_form = models.CharField(max_length=64)
+
+    def __str__(self):
+        """переопределяем метод String"""
+        return self.name_educational_form
+
+
+
 class Orders(models.Model):
     """ модель для сущности 'Приказы' """
     name_order = models.CharField(max_length=256)
     number_order = models.CharField(max_length=64)
-    educational_form = models.CharField(max_length=16)
+    educational_form = models.ForeignKey('EducationalForm', on_delete=models.PROTECT, related_name='linked_orders')
     date_pub = models.DateTimeField(auto_now_add=True)
     date_order = models.DateField()
     file = models.FileField(upload_to='files')
@@ -44,5 +55,3 @@ class Orders(models.Model):
     def __str__(self):
         """переопределяем метод String"""
         return self.name_order
-
-

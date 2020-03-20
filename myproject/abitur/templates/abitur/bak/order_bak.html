@@ -18,7 +18,7 @@
                 <th>Документ</th>
             </tr>
             </thead>
-            {%for orders in orders %}
+            {%for orders in educational_form.linked_orders.all %}
             <tr>
                 <td>{{ orders.name_order }}</td>
                 <td>{{ orders.number_order }}</td>
