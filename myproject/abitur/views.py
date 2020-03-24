@@ -77,6 +77,20 @@ def submit_doc_mag(request):
     return render(request, 'abitur/mag/submit_doc_mag.html', context={'educational_form': educational_form})
 
 
+def order_asp(request):
+    educational_form = EducationalFormAsp.objects.all()
+    return render(request, 'abitur/asp/order_asp.html', context={'educational_form': educational_form})
+
+
+def rec_list_asp(request):
+    educational_form = EducationalFormAsp.objects.all()
+    return render(request, 'abitur/asp/rec_list_asp.html', context={'educational_form': educational_form})
+
+
+def submit_doc_asp(request):
+    educational_form = EducationalFormAsp.objects.all()
+    return render(request, 'abitur/asp/submit_doc_asp.html', context={'educational_form': educational_form})
+
 
 
 

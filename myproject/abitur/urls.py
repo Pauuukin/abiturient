@@ -16,5 +16,8 @@ urlpatterns = [
     path('bak/submit_doc_bak/', submit_doc_bak, name='submit_doc_bak_url'),
     path('mag/order_mag/', order_mag, name='order_mag_url'),
     path('mag/rec_list_mag/', rec_list_mag, name='rec_list_mag_url'),
-    path('mag/submit_doc_mag/', submit_doc_mag, name='submit_doc_mag_url')
+    path('mag/submit_doc_mag/', submit_doc_mag, name='submit_doc_mag_url'),
+    path('asp/order_asp/', order_asp, name='order_asp_url'),
+    path('asp/rec_list_asp/', rec_list_asp, name='rec_list_asp_url'),
+    path('asp/submit_doc_asp/', submit_doc_asp, name='submit_doc_asp_url')
 ]
