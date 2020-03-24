@@ -20,6 +20,10 @@ class News (models.Model):
         """Переопределяем метод String"""
         return self.title
 
+    class Meta:
+        """перевод для админпанели"""
+        verbose_name = 'Новость'
+        verbose_name_plural = 'Добавить новости'
 
 class NewsFile(models.Model):
     """ модель для сущности 'файлы для новости' """
@@ -30,6 +34,11 @@ class NewsFile(models.Model):
     def __str__(self):
         """переопределяем метод String"""
         return self.name_file
+
+    class Meta:
+        """перевод для админпанели"""
+        verbose_name = 'Файл для новости'
+        verbose_name_plural = 'Добавить файлы для новости'
 
 # Для бакалавриата -->
 
@@ -56,6 +65,11 @@ class Orders(models.Model):
         """переопределяем метод String"""
         return self.name_order
 
+    class Meta:
+        """перевод для админпанели"""
+        verbose_name = 'Приказ о зачислении(бакалавриат)'
+        verbose_name_plural = 'Приказы о зачислении - БАКАЛАВРИАТ'
+
 
 class RecommendedList(models.Model):
     """ модель для сущности 'Рекомендованные к зачислению БАКАЛАВРИАТ' """
@@ -69,6 +83,11 @@ class RecommendedList(models.Model):
         """переопределяем метод String"""
         return self.name_rec_list
 
+    class Meta:
+        """перевод для админпанели"""
+        verbose_name = 'Списки рекомендованных к зачислению(бакалавриат)'
+        verbose_name_plural = 'Списки рекомендованных к зачислению - БАКАЛАВРИАТ'
+
 
 class SubmitDoc(models.Model):
     """ модель для сущности 'Подавшие документы БАКАЛАВРИАТ' """
@@ -81,6 +100,11 @@ class SubmitDoc(models.Model):
     def __str__(self):
         """переопределяем метод String"""
         return self.name_submit_doc
+
+    class Meta:
+        """перевод для админпанели"""
+        verbose_name = 'Списки подавших документы(бакалавриат)'
+        verbose_name_plural = 'Списки подавших документы - БАКАЛАВРИАТ'
 
 #<--
 
@@ -109,6 +133,11 @@ class OrdersMag(models.Model):
         """переопределяем метод String"""
         return self.name_order
 
+    class Meta:
+        """перевод для админпанели"""
+        verbose_name = 'Приказ о зачислении(магистратура)'
+        verbose_name_plural = 'Приказы о зачислении - МАГИСТРАТУРА'
+
 
 class RecommendedListMag(models.Model):
     """ модель для сущности 'Рекомендованные к зачислению Магистратура' """
@@ -122,11 +151,17 @@ class RecommendedListMag(models.Model):
         """переопределяем метод String"""
         return self.name_rec_list
 
+    class Meta:
+        """перевод для админпанели"""
+        verbose_name = 'Списки рекомендованных к зачислению(магистратура)'
+        verbose_name_plural = 'Списки рекомендованных к зачислению - МАГИСТРАТУРА'
+
 
 class SubmitDocMag(models.Model):
     """ модель для сущности 'Подавшие документы Магистратура' """
     name_submit_doc = models.CharField(max_length=256)
-    educational_form = models.ForeignKey('EducationalFormMag', on_delete=models.PROTECT, related_name='linked_submit_doc')
+    educational_form = models.ForeignKey('EducationalFormMag', on_delete=models.PROTECT,
+                                         related_name='linked_submit_doc')
     date_pub = models.DateTimeField(auto_now_add=True)
     date_order = models.DateField()
     file = models.FileField(upload_to='files')
@@ -135,6 +170,10 @@ class SubmitDocMag(models.Model):
         """переопределяем метод String"""
         return self.name_submit_doc
 
+    class Meta:
+        """перевод для админпанели"""
+        verbose_name = 'Списки подавших документы(магистратура)'
+        verbose_name_plural = 'Списки подавших документы - МАГИСТРАТУРА'
 
 #<--
 #Для Аспирантуры -->
@@ -162,6 +201,11 @@ class OrdersAsp(models.Model):
         """переопределяем метод String"""
         return self.name_order
 
+    class Meta:
+        """перевод для админпанели"""
+        verbose_name = 'Приказ о зачислении(аспирантура)'
+        verbose_name_plural = 'Приказы о зачислении - АСПИРАНТУРА'
+
 
 class RecommendedListAsp(models.Model):
     """ модель для сущности 'Рекомендованные к зачислению Магистратура' """
@@ -175,11 +219,17 @@ class RecommendedListAsp(models.Model):
         """переопределяем метод String"""
         return self.name_rec_list
 
+    class Meta:
+        """перевод для админпанели"""
+        verbose_name = 'Списки рекомендованных к зачислению(аспирантура)'
+        verbose_name_plural = 'Списки рекомендованных к зачислению - АСПИРАНТУРА'
+
 
 class SubmitDocAsp(models.Model):
     """ модель для сущности 'Подавшие документы Магистратура' """
     name_submit_doc = models.CharField(max_length=256)
-    educational_form = models.ForeignKey('EducationalFormAsp', on_delete=models.PROTECT, related_name='linked_submit_doc')
+    educational_form = models.ForeignKey('EducationalFormAsp', on_delete=models.PROTECT,
+                                         related_name='linked_submit_doc')
     date_pub = models.DateTimeField(auto_now_add=True)
     date_order = models.DateField()
     file = models.FileField(upload_to='files')
@@ -188,4 +238,8 @@ class SubmitDocAsp(models.Model):
         """переопределяем метод String"""
         return self.name_submit_doc
 
+    class Meta:
+        """перевод для админпанели"""
+        verbose_name = 'Списки подавших документы(аспирантура)'
+        verbose_name_plural = 'Списки подавших документы - АСПИРАНТУРА'
 #<--
