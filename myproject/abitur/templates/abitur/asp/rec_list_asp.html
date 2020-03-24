@@ -1,5 +1,8 @@
 {% extends 'abitur/base_abitur.html' %}
 
+{% block title %}
+Аспирантура - Списки рекомендованных к зачислению
+{% endblock %}
 
 {% block content %}
 <div class="container">
@@ -29,5 +32,9 @@
             {% endfor %}
         </table>
     </div>
+    <div align="center">
+        <button type="button" onclick="history.back();" class="btn btn-lg btn-block btn-outline-primary">Вернуться назад </button>
+    </div>
+    <br>
 </div>
 {% endblock %}
