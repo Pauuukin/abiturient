@@ -62,7 +62,19 @@ def submit_doc_bak(request):
     return render(request, 'abitur/bak/submit_doc_bak.html', context={'educational_form': educational_form})
 
 
+def order_mag(request):
+    educational_form = EducationalFormMag.objects.all()
+    return render(request, 'abitur/mag/order_mag.html', context={'educational_form': educational_form})
 
+
+def rec_list_mag(request):
+    educational_form = EducationalFormMag.objects.all()
+    return render(request, 'abitur/mag/rec_list_mag.html', context={'educational_form': educational_form})
+
+
+def submit_doc_mag(request):
+    educational_form = EducationalFormMag.objects.all()
+    return render(request, 'abitur/mag/submit_doc_mag.html', context={'educational_form': educational_form})
 
 
 

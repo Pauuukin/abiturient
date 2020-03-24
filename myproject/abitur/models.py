@@ -31,6 +31,7 @@ class NewsFile(models.Model):
         """переопределяем метод String"""
         return self.name_file
 
+# Для бакалавриата -->
 
 
 class EducationalForm(models.Model):
@@ -40,7 +41,6 @@ class EducationalForm(models.Model):
     def __str__(self):
         """переопределяем метод String"""
         return self.name_educational_form
-
 
 
 class Orders(models.Model):
@@ -81,3 +81,111 @@ class SubmitDoc(models.Model):
     def __str__(self):
         """переопределяем метод String"""
         return self.name_submit_doc
+
+#<--
+
+#Для Магистратуры -->
+
+
+class EducationalFormMag(models.Model):
+    """модель для сущности 'Форма обучения ' """
+    name_educational_form = models.CharField(max_length=64)
+
+    def __str__(self):
+        """переопределяем метод String"""
+        return self.name_educational_form
+
+
+class OrdersMag(models.Model):
+    """ модель для сущности 'Приказы Магистратура' """
+    name_order = models.CharField(max_length=256)
+    number_order = models.CharField(max_length=64)
+    educational_form = models.ForeignKey('EducationalFormMag', on_delete=models.PROTECT, related_name='linked_orders')
+    date_pub = models.DateTimeField(auto_now_add=True)
+    date_order = models.DateField()
+    file = models.FileField(upload_to='files')
+
+    def __str__(self):
+        """переопределяем метод String"""
+        return self.name_order
+
+
+class RecommendedListMag(models.Model):
+    """ модель для сущности 'Рекомендованные к зачислению Магистратура' """
+    name_rec_list = models.CharField(max_length=256)
+    educational_form = models.ForeignKey('EducationalFormMag', on_delete=models.PROTECT, related_name='linked_rec_list')
+    date_pub = models.DateTimeField(auto_now_add=True)
+    date_order = models.DateField()
+    file = models.FileField(upload_to='files')
+
+    def __str__(self):
+        """переопределяем метод String"""
+        return self.name_rec_list
+
+
+class SubmitDocMag(models.Model):
+    """ модель для сущности 'Подавшие документы Магистратура' """
+    name_submit_doc = models.CharField(max_length=256)
+    educational_form = models.ForeignKey('EducationalFormMag', on_delete=models.PROTECT, related_name='linked_submit_doc')
+    date_pub = models.DateTimeField(auto_now_add=True)
+    date_order = models.DateField()
+    file = models.FileField(upload_to='files')
+
+    def __str__(self):
+        """переопределяем метод String"""
+        return self.name_submit_doc
+
+
+#<--
+#Для Аспирантуры -->
+
+
+class EducationalFormAsp(models.Model):
+    """модель для сущности 'Форма обучения ' """
+    name_educational_form = models.CharField(max_length=64)
+
+    def __str__(self):
+        """переопределяем метод String"""
+        return self.name_educational_form
+
+
+class OrdersAsp(models.Model):
+    """ модель для сущности 'Приказы Магистратура' """
+    name_order = models.CharField(max_length=256)
+    number_order = models.CharField(max_length=64)
+    educational_form = models.ForeignKey('EducationalFormAsp', on_delete=models.PROTECT, related_name='linked_orders')
+    date_pub = models.DateTimeField(auto_now_add=True)
+    date_order = models.DateField()
+    file = models.FileField(upload_to='files')
+
+    def __str__(self):
+        """переопределяем метод String"""
+        return self.name_order
+
+
+class RecommendedListAsp(models.Model):
+    """ модель для сущности 'Рекомендованные к зачислению Магистратура' """
+    name_rec_list = models.CharField(max_length=256)
+    educational_form = models.ForeignKey('EducationalFormAsp', on_delete=models.PROTECT, related_name='linked_rec_list')
+    date_pub = models.DateTimeField(auto_now_add=True)
+    date_order = models.DateField()
+    file = models.FileField(upload_to='files')
+
+    def __str__(self):
+        """переопределяем метод String"""
+        return self.name_rec_list
+
+
+class SubmitDocAsp(models.Model):
+    """ модель для сущности 'Подавшие документы Магистратура' """
+    name_submit_doc = models.CharField(max_length=256)
+    educational_form = models.ForeignKey('EducationalFormAsp', on_delete=models.PROTECT, related_name='linked_submit_doc')
+    date_pub = models.DateTimeField(auto_now_add=True)
+    date_order = models.DateField()
+    file = models.FileField(upload_to='files')
+
+    def __str__(self):
+        """переопределяем метод String"""
+        return self.name_submit_doc
+
+#<--
