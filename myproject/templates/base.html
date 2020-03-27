@@ -64,11 +64,11 @@
             </div>
 
             <div class="col-md-3">
-                <a  href="#">  <h4 class="text-body">Магистратура</h4></a>
+                <a  href="{% url 'mag_page_url' %}">  <h4 class="text-body">Магистратура</h4></a>
             </div>
 
             <div class="col-md-3">
-                <a  href="#">  <h4 class="text-body">Аспирантура</h4></a>
+                <a  href="{% url 'asp_page_url' %}">  <h4 class="text-body">Аспирантура</h4></a>
             </div>
         </div>
 
@@ -125,10 +125,10 @@
                         <a href="{% url 'bakPage_url' %}">Бакалавриат</a>
                     </li>
                     <li>
-                        <a href="#!">Магистратура</a>
+                        <a href="{% url 'mag_page_url' %}">Магистратура</a>
                     </li>
                     <li>
-                        <a href="#!">Аспирантура</a>
+                        <a href="{% url 'asp_page_url' %}">Аспирантура</a>
                     </li>
                     <li>
                         <a href="{% url 'infoPage_url' %}">Информация поступающим</a>

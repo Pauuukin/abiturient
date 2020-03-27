@@ -30,6 +30,14 @@ def bakPage(request):
     return render(request, 'abitur/bak.html')
 
 
+def mag_page(request):
+    return render(request, 'abitur/mag.html')
+
+
+def asp_page(request):
+    return render(request, 'abitur/asp.html')
+
+
 def interPage(request):
     return render(request, 'abitur/inter.html')
 
