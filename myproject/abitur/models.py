@@ -7,6 +7,7 @@ from time import time
 
 
 def gen_slug(s):
+    """автогенерация слагов"""
     str1 = translit(s, "ru", reversed=True)
     new_slug = slugify(str1, allow_unicode=True)
     return new_slug + '-' + str(int(time()))
@@ -21,6 +22,7 @@ class News (models.Model):
     date = models.DateField()
 
     def save(self, *args, **kwargs):
+        """переопределяем метод save"""
         if not self.id:
             self.slug = gen_slug(self.title)
         super().save(*args, **kwargs)
