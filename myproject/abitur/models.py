@@ -1,16 +1,29 @@
 from django.db import models
 from django.shortcuts import reverse
+from django.utils.text import slugify
+from transliterate import translit
+from time import time
 
 
+
+def gen_slug(s):
+    str1 = translit(s, "ru", reversed=True)
+    new_slug = slugify(str1, allow_unicode=True)
+    return new_slug + '-' + str(int(time()))
 
 class News (models.Model):
     """ модель для сущности 'новость' """
     title = models.CharField(max_length=200, db_index=True)
     body = models.TextField()
     img = models.ImageField(upload_to='pictures', max_length=255, blank=True)
-    slug = models.SlugField(max_length=150, unique=True)
+    slug = models.SlugField(max_length=150, unique=True, blank=True)
     date_pub = models.DateTimeField(auto_now_add=True)
     date = models.DateField()
+
+    def save(self, *args, **kwargs):
+        if not self.id:
+            self.slug = gen_slug(self.title)
+        super().save(*args, **kwargs)
 
     def get_absolute_url(self):
         """возвращает ссылку на конкретный экземпляр класса"""
