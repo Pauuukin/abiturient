@@ -3,32 +3,68 @@
 
 {% block content %}
 
-<div class="card">
-  <div class="card-body">
-    <h5 class="card-title">Санкт-Петербургская Юридическая академия</h5>
-    <p class="card-text" align="center"></p>
+<!--<div class="card">-->
+<!--  <div class="card-body">-->
+<!--    <h5 class="card-title">Санкт-Петербургская Юридическая академия</h5>-->
+<!--    <p class="card-text" align="center"></p>-->
 
+<!--  </div>-->
+<!--  {% load static %}-->
+<!--  <img src="{% static 'image/3main.jpg'%} "  class="card-img" alt="...">-->
+<!--</div>-->
+<style>
+  .bg {
+  background-image: url("{%static 'image/4main.jpg' %}");
+  width: 100%;
+  height: 300px;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+  .bl {
+  height: 100%;
+  width: 100%;
+  background-image: url({% static 'image/grad-menu.jpg'%})
+  }
+</style>
+
+
+<div class="bg">
+
+  <div class="row justify-content-center no-gutters h-100">
+    <div class ="col-md-4"></div>
+    <div class="col-md-5"></div>
+    <div class="col col-auto">
+      <div class="row  justify-content-center no-gutters h-100 align-items-center">
+        <div class="col">
+          <a href="{% url 'bakPage_url' %}" class="btn btn-lg btn-block btn-info mb-1">Бакалавриат</a> <br>
+          <a href="{% url 'mag_page_url' %}" class="btn btn-lg btn-block btn-info mb-1">Магистратура</a> <br>
+          <a href="{% url 'asp_page_url' %}" class="btn btn-lg btn-block btn-info mb-1">Аспирантура</a> <br>
+        </div>
+      </div>
+    </div>
   </div>
-  {% load static %}
-  <img src="{% static 'image/slide-3.jpg'%} "  class="card-img" alt="...">
 </div>
+
 <br>
 
 <div class = "row" >
   <div class="col-lg-2" ></div>
   <div class="col-lg-2">
-    <a href="{% url 'infoPage_url' %}" class="btn btn-primary btn-lg">Информация поступающим</a>
+    <a href="{% url 'infoPage_url' %}" class="btn btn-lg btn-outline-dark bl">Информация поступающим</a>
   </div>
   <div class="col-lg-1" ></div>
   <div class="col-lg-2" >
-    <a href="{% url 'interPage_url' %}" class="btn btn-primary btn-lg">Иностранным гражданам</a>
+    <a href="{% url 'interPage_url' %}" class="btn btn-lg btn-outline-dark bl">Иностранным гражданам</a>
   </div>
   <div class="col-lg-1" ></div>
   <div class="col-lg-2">
-    <a href="#" class="btn btn-primary btn-lg">Календарь приема</a>
+    <a href="#" class="btn btn-lg btn-outline-dark bl">Календарь <br>приема</a>
   </div>
   <div class="col-2-lg"></div>
 
+  <!--height: 78px; text-align: center;-->
 </div>
 </div>
 <br>
