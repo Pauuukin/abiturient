@@ -21,5 +21,6 @@ urlpatterns = [
     path('asp/rec_list_asp/', rec_list_asp, name='rec_list_asp_url'),
     path('asp/submit_doc_asp/', submit_doc_asp, name='submit_doc_asp_url'),
     path('mag/', mag_page, name='mag_page_url'),
-    path('asp/', asp_page, name='asp_page_url')
+    path('asp/', asp_page, name='asp_page_url'),
+    path('bak/calendar/', bak_calendar, name='bak_calendar_url')
 ]

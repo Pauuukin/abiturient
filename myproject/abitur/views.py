@@ -29,6 +29,8 @@ class NewsDetail(View):
 def bakPage(request):
     return render(request, 'abitur/bak.html')
 
+def bak_calendar(request):
+    return render(request, 'abitur/bak/calendar_bak.html')
 
 def mag_page(request):
     return render(request, 'abitur/mag.html')

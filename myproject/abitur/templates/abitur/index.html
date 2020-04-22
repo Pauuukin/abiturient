@@ -3,15 +3,6 @@
 
 {% block content %}
 
-<!--<div class="card">-->
-<!--  <div class="card-body">-->
-<!--    <h5 class="card-title">Санкт-Петербургская Юридическая академия</h5>-->
-<!--    <p class="card-text" align="center"></p>-->
-
-<!--  </div>-->
-<!--  {% load static %}-->
-<!--  <img src="{% static 'image/3main.jpg'%} "  class="card-img" alt="...">-->
-<!--</div>-->
 <style>
   .bg {
   background-image: url("{%static 'image/4main.jpg' %}");
@@ -59,8 +50,13 @@
     <a href="{% url 'interPage_url' %}" class="btn btn-lg btn-outline-dark bl">Иностранным гражданам</a>
   </div>
   <div class="col-lg-1" ></div>
-  <div class="col-lg-2">
-    <a href="#" class="btn btn-lg btn-outline-dark bl">Календарь <br>приема</a>
+  <div class="col-lg-2 dropdown">
+    <a href="#" class="btn btn-lg btn-outline-dark bl" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Календарь <br>приема</a>
+    <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
+      <a class="dropdown-item" href="{% url 'bak_calendar_url' %}">Бакалавриат</a>
+      <a class="dropdown-item" href="#">Магистратура</a>
+      <a class="dropdown-item" href="#">Аспирантура</a>
+    </div>
   </div>
   <div class="col-2-lg"></div>
   <hr style="border-width: 3px;">
