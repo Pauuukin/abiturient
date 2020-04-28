@@ -6,8 +6,9 @@
 <style>
   .bg {
   background-image: url("{%static 'image/4main.jpg' %}");
-  width: 100%;
-  height: 300px;
+
+  height: 350px;
+  background-size: contain
   background-position: center;
   background-repeat: no-repeat;
   background-size: cover;
@@ -46,18 +47,27 @@
   <div class="col-lg-2 dropright">
     <a href="#" class="btn btn-lg btn-outline-dark bl" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Нормативные <br>документы</a>
     <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
-      <a class="dropdown-item" target="_blank" href="{% static 'docPriem2020/prikazPravBM.pdf' %}">ПРИКАЗ ОБ УТВЕРЖДЕНИИ ПРАВИЛ ПРИЕМА ПО ОБРАЗОВАТЕЛЬНЫМ <br>
-        ПРОГРАММАМ ВЫСШЕГО ОБРАЗОВАНИЯ – <br>ПРОГРАММАМ БАКАЛАВРИАТА, ПРОГРАММАМ МАГИСТРАТУРЫ<br><hr></a>
-      <a class="dropdown-item" target="_blank" href="{% static 'docPriem2020/prikazPravAsp.pdf' %}">ПРИКАЗ ОБ УТВЕРЖДЕНИИ ПРАВИЛ
-        ПРИЕМА ПО ОБРАЗОВАТЕЛЬНЫМ<br> ПРОГРАММАМ ВЫСШЕГО ОБРАЗОВАНИЯ – ПРОГРАММАМ ПОДГОТОВКИ
-        НАУЧНО-ПЕДАГОГИЧЕСКИХ <br>КАДРОВ В АСПИРАНТУРЕ<br><hr></a>
-      <a class="dropdown-item" target="_blank" href="{% static 'docPriem2020/prikazVstupit.pdf' %}">
-        ПРИКАЗ ОБ  УТВЕРЖДЕНИИ ПЕРЕЧНЯ ВСТУПИТЕЛЬНЫХ ИСПЫТАНИЙ, ПРОВОДИМЫХ АКАДЕМИЕЙ САМОСТОЯТЕЛЬНО<br><hr></a>
-      <a class="dropdown-item" target="_blank" href="{% static 'docPriem2020/asp/11pravilaAsp.pdf' %}">ПРАВИЛА ПРИЕМА НА ОБУЧЕНИЕ ПО ОБРАЗОВАТЕЛЬНЫМ ПРОГРАММАМ ВЫСШЕГО ОБРАЗОВАНИЯ <br>
-        – ПРОГРАММАМ ПОДГОТОВКИ НАУЧНО-ПЕДАГОГИЧЕСКИХ КАДРОВ В АСПИРАНТУРЕ<br><hr></a>
-      <a class="dropdown-item" target="_blank" href="{% static 'docPriem2020/11pravilaBM.pdf' %}">ПРАВИЛА ПРИЕМА НА ОБУЧЕНИЕ ППО ОБРАЗОВАТЕЛЬНЫМ ПРОГРАММАМ ВЫСШЕГО ОБРАЗОВАНИЯ - <br> ПРОГРАММАМ БАКАЛАВРИАТА, ПРОГРАММАМ МАГИСТРАТУРЫ<br><hr></a>
+      <a class="dropdown-item" target="_blank" href="{% static 'docPriem2020/prikazPravBM.pdf' %}"><p class="small">
+        ПРИКАЗ ОБ УТВЕРЖДЕНИИ ПРАВИЛ ПРИЕМА ПО ОБРАЗОВАТЕЛЬНЫМ
+        ПРОГРАММАМ ВЫСШЕГО ОБРАЗОВАНИЯ – <br>ПРОГРАММАМ БАКАЛАВРИАТА, ПРОГРАММАМ МАГИСТРАТУРЫ</p><hr></a>
 
-      <a class="dropdown-item" target="_blank" href="{% static 'docPriem2020/dogovorBM.pdf' %}">Типовой договор об образовании на обучение по образовательным программам высшего образования<br><hr></a>
+      <a class="dropdown-item" target="_blank" href="{% static 'docPriem2020/prikazPravAsp.pdf' %}"><p class="small">
+        ПРИКАЗ ОБ УТВЕРЖДЕНИИ ПРАВИЛ
+        ПРИЕМА ПО ОБРАЗОВАТЕЛЬНЫМ ПРОГРАММАМ ВЫСШЕГО ОБРАЗОВАНИЯ – <br>ПРОГРАММАМ ПОДГОТОВКИ
+        НАУЧНО-ПЕДАГОГИЧЕСКИХ КАДРОВ В АСПИРАНТУРЕ</p><hr></a>
+
+      <a class="dropdown-item" target="_blank" href="{% static 'docPriem2020/prikazVstupit.pdf' %}"><p class="small">
+        ПРИКАЗ ОБ  УТВЕРЖДЕНИИ ПЕРЕЧНЯ ВСТУПИТЕЛЬНЫХ ИСПЫТАНИЙ, ПРОВОДИМЫХ АКАДЕМИЕЙ САМОСТОЯТЕЛЬНО</p><hr></a>
+
+      <a class="dropdown-item" target="_blank" href="{% static 'docPriem2020/asp/11pravilaAsp.pdf' %}"><p class="small">
+        ПРАВИЛА ПРИЕМА НА ОБУЧЕНИЕ ПО ОБРАЗОВАТЕЛЬНЫМ ПРОГРАММАМ ВЫСШЕГО ОБРАЗОВАНИЯ
+        – <br>ПРОГРАММАМ ПОДГОТОВКИ НАУЧНО-ПЕДАГОГИЧЕСКИХ КАДРОВ В АСПИРАНТУРЕ</p><hr></a>
+      <a class="dropdown-item" target="_blank" href="{% static 'docPriem2020/11pravilaBM.pdf' %}"> <p class="small">
+        ПРАВИЛА ПРИЕМА НА ОБУЧЕНИЕ ППО ОБРАЗОВАТЕЛЬНЫМ ПРОГРАММАМ ВЫСШЕГО ОБРАЗОВАНИЯ -
+        <br> ПРОГРАММАМ БАКАЛАВРИАТА, ПРОГРАММАМ МАГИСТРАТУРЫ</p><hr></a>
+
+      <a class="dropdown-item" target="_blank" href="{% static 'docPriem2020/dogovorBM.pdf' %}"><p class="small">
+        Типовой договор об образовании на обучение по образовательным программам высшего образования</p><hr></a>
 
     </div>
   </div>

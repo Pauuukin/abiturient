@@ -24,13 +24,37 @@
     </div>
     <hr style="border-width: 3px;">
     <!--    Блок c ссылками на документы     -->
-    <div class="row">
+    <div class="row ">
         <div class="col-md-1"></div>
-        <div class="col-md"><a href="{% static 'docPriem2020/6prava-i-preimuschestva.pdf'%}" class="btn btn-block btn-primary">Информация об обособых правах при поступлении</a></div>
+        <div class="col-md dropdown">
+            <a href="#" class="btn btn-block btn-primary" role="button" id="dropdownMenuLink"
+               data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                Информация об обособых правах при поступлении</a>
+            <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
+                <a class="dropdown-item" target="_blank" href="{% static 'docPriem2020/6prava-i-preimuschestva.pdf'%}">Бакалавриат/магистратура<hr></a>
+                <a class="dropdown-item" target="_blank" href="#">Аспирантура</a>
+            </div>
+        </div>
         <div class="col-md-1"></div>
-        <div class="col-md"><a href="{% static 'docPriem2020/7vs_isp-OV-zdorovja.pdf'%}" class="btn btn-block btn-primary">Для лиц с ограниченными возможностями</a></div>
+        <div class="col-md dropdown">
+            <a href="#" class="btn btn-block btn-primary" role="button" id="dropdownMenuLink2"
+               data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                Для лиц с ограниченными возможностями</a>
+            <div class="dropdown-menu" aria-labelledby="dropdownMenuLink2">
+                <a class="dropdown-item" target="_blank" href="{% static 'docPriem2020/7vs_isp-OV-zdorovja.pdf'%}">Бакалавриат/магистратура<hr></a>
+                <a class="dropdown-item" target="_blank" href="{% static 'docPriem2020/asp/6OVZAsp.pdf'%}">Аспирантура</a>
+            </div>
+        </div>
         <div class="col-md-1"></div>
-        <div class="col-md"><a href="{% static 'docPriem2020/10apelyaciya.pdf'%}" class="btn btn-block btn-primary">Общие правила подачи апелляции</a></div>
+        <div class="col-md dropdown">
+            <a href="#" class="btn btn-block btn-primary" role="button" id="dropdownMenuLink3"
+               data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                Общие правила подачи апелляции</a>
+            <div class="dropdown-menu" aria-labelledby="dropdownMenuLink3">
+                <a class="dropdown-item" target="_blank" href="{% static 'docPriem2020/10apelyaciya.pdf'%}">Бакалавриат/магистратура<hr></a>
+                <a class="dropdown-item" target="_blank" href="{% static 'docPriem2020/asp/8apelyaciaAsp.pdf'%}">Аспирантура</a>
+            </div>
+        </div>
         <div class="col-md-1"></div>
     </div>
 
@@ -76,7 +100,7 @@
             </div>
         </div>
         <hr style="border-width: 3px;">
-<!--        Извлечение из правил    -->
+        <!--        Извлечение из правил    -->
         <a class="text-center" href="{% static 'docPriem2020/8izvlechenie.pdf'%}"> <h4> <u> Извлечение из правил приема </u> </h4></a>
         <div class="row">
 
