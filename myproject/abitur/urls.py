@@ -22,5 +22,6 @@ urlpatterns = [
     path('asp/submit_doc_asp/', submit_doc_asp, name='submit_doc_asp_url'),
     path('mag/', mag_page, name='mag_page_url'),
     path('asp/', asp_page, name='asp_page_url'),
+    path('infoOVZ/', infoOVZ_page, name='infoOVZ_page_url'),
     path('bak/calendar/', bak_calendar, name='bak_calendar_url')
 ]

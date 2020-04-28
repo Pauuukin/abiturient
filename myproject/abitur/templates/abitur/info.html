@@ -9,11 +9,12 @@
 <div class="container">
     <div class = "row">
         <!--    Название страницы и блок срочной информации     -->
-        <div class = 'col-4'>
+        <div class = 'col-4-md'>
             <br>
             <h1 align="center"><u> Информация поступающим </u></h1>
         </div>
-        <div class="col-8">
+        <div class="col-md-4"></div>
+        <div class="col-4-md">
             <br>
             <blockquote class="blockquoteMyOrange">
                 <p> Важная информация </p>
@@ -33,103 +34,81 @@
         <div class="col-md-1"></div>
     </div>
 
-    <hr style="border-width: 3px;">
+    <br><br>
 
     <!--        основной блок       -->
     <div class="container">
         <!--        Бюджетное контрктное обучение       -->
-        <br>
-        <h3 align="center"><u>Бюджетное/контрактное обучение</u></h3>
-        <br>
+        <blockquote class="blockquoteMyOrange" style="text-align: center;">
+            <h5 class=" text-monospace" >По окончании Санкт-Петербургской юридической академии выпускникам выдаётся диплом государственного образца о высшем образовании</h5>
+        </blockquote>
         <div class="row">
 
-            <div class="col-md-6">
-                <p> Contrary to popular belief, Lorem Ipsum is not simply random text. It has roots in a piece of
-                    classical Latin literature from 45 BC, making it over 2000 years old. Richard McClintock, a Latin
-                    professor at Hampden-Sydney College in Virginia, looked up one of the more obscure Latin words,
-                    consectetur, from a Lorem Ipsum passage, and going through the cites of the word in classical literature,
-                    discovered the undoubtable source. Lorem Ipsum comes from sections 1.10.32 and 1.10.33 of "de Finibus
-                    Bonorum et Malorum" (The Extremes of Good and Evil) by Cicero, written in 45 BC. This book is a treatise
-                    on the theory of ethics, very popular during the Renaissance. The first line of Lorem Ipsum, "Lorem ipsum dolor
-                    sit amet..", comes from a line in section 1.10.32.
-                    The standard chunk of Lorem Ipsum used since the 1500s is reproduced below for those interested.
-                    Sections 1.10.32 and .10.33 from "de Finibus Bonorum et Malorum" by Cicero are also reproduced in their
-                    exact original form, accompanied by English versions from the 1914 translation by H. Rackham. </p>
-
-            </div>
-
-            <div class="col-md-6">
-                <blockquote class="blockquoteMyBlue">
-                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer posuere erat a ante.
-                        Lorem Ipsum comes from sections 1.10.32 and 1.10.33 of "de Finibus
-                        Bonorum et Malorum" (The Extremes of Good and Evil) by Cicero, written in 45 BC. This book is a treatise
-                        on the theory of ethics, very popular during the Renaissance. The first line of Lorem Ipsum, "Lorem ipsum dolor
-                        sit amet..", comes from a line in section 1.10.32.</p>
-                </blockquote>
-
-            </div>
-
         </div>
-        <hr style="border-width: 3px;">
+        <br><br>
         <!--    Информация об общажитии и отсрочка от армии -->
         <div class="row">
             <!--        Общежитие       -->
-            <div class="col-md-8">
-                <h4 align="center"> <u> Информация об общежитии</u> </h4>
+            <div class="col-md-5 m-3" style="background-color : #E0F4FF; text-align: center;">
+                <h4> <u> Информация об общежитии</u> </h4>
                 <p>Общежития не предоставляются, но в соответствии с соглашением , заключенным между Санкт-Петербургским
                     государственным технологическим институтом (техническим университетом) и Санкт-Петербургской
                     юридической академией, студентам Академии предоставляются места в
                     общежитии по адресу: г. Санкт-Петербург, Яковлевский переулок, д.8. Телефон: 388-08-71</p>
             </div>
-            <!--        Отсрочка от армии       -->
-            <div class="col-md-4" style="background-color : #E0F4FF">
+
+            <div class="col-md-5 m-3" style="background-color : #E0F4FF; text-align: center;">
+                <h4 align="center"> <u> Скидка за отличное обучение </u> </h4>
+                <p> За сессию, закрытую на отлично, студенту  <p style="color : red"> предоставляется скидка на оплату следующего семестра обучения</p> </p>
+            </div>
+        </div>
+
+        <div class="row">
+            <!--        Общежитие       -->
+            <div class="col-md-5 m-3" style="background-color : #E0F4FF; text-align: center;">
                 <h4 align="center"> <u> Отсрочка</u> </h4>
                 <p> На время обучения на бакалавриате и магистратуре (очная форма) <p style="color : red"> предоставляется отстрочка от армии.</p> </p>
+            </div>
 
+            <div class="col-md-5 m-3" style="background-color : #E0F4FF; text-align: center;">
+                <a href="{% url 'interPage_url' %}" class="btn btn-lg btn-info bl m-3">Информация для иностранных граждан</a>
+                <a href="{% url 'infoOVZ_page_url' %}" class="btn btn-lg btn-info bl m-3">Иформация для слабовидящих и слабослышащих </a>
             </div>
         </div>
         <hr style="border-width: 3px;">
-        <!--    Правила и сидка за обучение -->
+<!--        Извлечение из правил    -->
+        <a class="text-center" href="{% static 'docPriem2020/8izvlechenie.pdf'%}"> <h4> <u> Извлечение из правил приема </u> </h4></a>
         <div class="row">
-            <!--        Правила      -->
-            <div class="col-md-8">
-                <a href="{% static 'docPriem2020/8izvlechenie.pdf'%}"> <h4 align="center"> <u> Извлечение из правил приема </u> </h4></a>
-                <ul class="list-unstyled">
-                    <li>Отдельные категории поступающих на базе среднего общего
-                        образования могут сдавать общеобразовательные вступительные испытания,
-                        проводимые Академией самостоятельно (далее - общеобразовательные
-                        вступительные испытания для отдельных категорий поступающих):</li>
+
+            <ul class="list-unstyled">
+                <li>Отдельные категории поступающих на базе среднего общего
+                    образования могут сдавать общеобразовательные вступительные испытания,
+                    проводимые Академией самостоятельно (далее - общеобразовательные
+                    вступительные испытания для отдельных категорий поступающих):</li>
+                <ul>
+                    <li>1) по любым общеобразовательным предметам:</li>
                     <ul>
-                        <li>1) по любым общеобразовательным предметам:</li>
-                        <ul>
-                            <li>а) дети-инвалиды, инвалиды;</li>
-                            <li>б) иностранные граждане;</li>
-                            <li>в) лица, которые получили документ о среднем общем образовании в
-                                течение одного года до дня завершения приема документов и вступительных
-                                испытаний включительно, если все пройденные ими в указанный период
-                                аттестационные испытания государственной итоговой аттестации по
-                                образовательным программам среднего общего образования сданы не в
-                                форме ЕГЭ (либо они прошли итоговые аттестационные процедуры в
-                                иностранных образовательных организациях и не сдавали ЕГЭ в указанный
-                                период);</li>
-                        </ul>
-                        <li>2) по отдельным общеобразовательным предметам - лица, которые
-                            прошли государственную итоговую аттестацию по этим
-                            общеобразовательным предметам в форме государственного выпускного
-                            экзамена, при условии, что они получили документ о среднем общем
-                            образовании в течение одного года до дня завершения приема документов и
-                            вступительных испытаний включительно и в этот период не сдавали ЕГЭ по
-                            соответствующим общеобразовательным предметам.</li>
+                        <li>а) дети-инвалиды, инвалиды;</li>
+                        <li>б) иностранные граждане;</li>
+                        <li>в) лица, которые получили документ о среднем общем образовании в
+                            течение одного года до дня завершения приема документов и вступительных
+                            испытаний включительно, если все пройденные ими в указанный период
+                            аттестационные испытания государственной итоговой аттестации по
+                            образовательным программам среднего общего образования сданы не в
+                            форме ЕГЭ (либо они прошли итоговые аттестационные процедуры в
+                            иностранных образовательных организациях и не сдавали ЕГЭ в указанный
+                            период);</li>
                     </ul>
+                    <li>2) по отдельным общеобразовательным предметам - лица, которые
+                        прошли государственную итоговую аттестацию по этим
+                        общеобразовательным предметам в форме государственного выпускного
+                        экзамена, при условии, что они получили документ о среднем общем
+                        образовании в течение одного года до дня завершения приема документов и
+                        вступительных испытаний включительно и в этот период не сдавали ЕГЭ по
+                        соответствующим общеобразовательным предметам.</li>
                 </ul>
+            </ul>
 
-            </div>
-            <!--        Отсрочка от армии       -->
-            <div class="col-md-4" style="background-color : #E0F4FF">
-                <h4 align="center"> <u> Скидка за отличное обучение </u> </h4>
-                <p> За сессию, закрытую на отлично, студенту  <p style="color : red"> предоставляется скидка на оплату следующего семестра обучения</p> </p>
-
-            </div>
         </div>
         <br>
 
