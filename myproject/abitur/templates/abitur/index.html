@@ -41,23 +41,41 @@
 <br>
 
 <div class = "row" >
+  <div class="col-lg-3" ></div>
+
+  <div class="col-lg-2 dropright">
+    <a href="#" class="btn btn-lg btn-outline-dark bl" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Нормативные <br>документы</a>
+    <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
+      <a class="dropdown-item" target="_blank" href="{% static 'docPriem2020/prikazPravBM.pdf' %}">ПРИКАЗ ОБ УТВЕРЖДЕНИИ ПРАВИЛ ПРИЕМА ПО ОБРАЗОВАТЕЛЬНЫМ <br>
+        ПРОГРАММАМ ВЫСШЕГО ОБРАЗОВАНИЯ – <br>ПРОГРАММАМ БАКАЛАВРИАТА, ПРОГРАММАМ МАГИСТРАТУРЫ<br><hr></a>
+      <a class="dropdown-item" target="_blank" href="{% static 'docPriem2020/prikazPravAsp.pdf' %}">ПРИКАЗ ОБ УТВЕРЖДЕНИИ ПРАВИЛ
+        ПРИЕМА ПО ОБРАЗОВАТЕЛЬНЫМ<br> ПРОГРАММАМ ВЫСШЕГО ОБРАЗОВАНИЯ – ПРОГРАММАМ ПОДГОТОВКИ
+        НАУЧНО-ПЕДАГОГИЧЕСКИХ <br>КАДРОВ В АСПИРАНТУРЕ<br><hr></a>
+      <a class="dropdown-item" target="_blank" href="{% static 'docPriem2020/prikazVstupit.pdf' %}">
+        ПРИКАЗ ОБ  УТВЕРЖДЕНИИ ПЕРЕЧНЯ ВСТУПИТЕЛЬНЫХ ИСПЫТАНИЙ, ПРОВОДИМЫХ АКАДЕМИЕЙ САМОСТОЯТЕЛЬНО<br><hr></a>
+      <a class="dropdown-item" target="_blank" href="{% static 'docPriem2020/asp/11pravilaAsp.pdf' %}">ПРАВИЛА ПРИЕМА НА ОБУЧЕНИЕ ПО ОБРАЗОВАТЕЛЬНЫМ ПРОГРАММАМ ВЫСШЕГО ОБРАЗОВАНИЯ <br>
+        – ПРОГРАММАМ ПОДГОТОВКИ НАУЧНО-ПЕДАГОГИЧЕСКИХ КАДРОВ В АСПИРАНТУРЕ<br><hr></a>
+      <a class="dropdown-item" target="_blank" href="{% static 'docPriem2020/11pravilaBM.pdf' %}">ПРАВИЛА ПРИЕМА НА ОБУЧЕНИЕ ППО ОБРАЗОВАТЕЛЬНЫМ ПРОГРАММАМ ВЫСШЕГО ОБРАЗОВАНИЯ - <br> ПРОГРАММАМ БАКАЛАВРИАТА, ПРОГРАММАМ МАГИСТРАТУРЫ<br><hr></a>
+    </div>
+  </div>
   <div class="col-lg-2" ></div>
   <div class="col-lg-2">
     <a href="{% url 'infoPage_url' %}" class="btn btn-lg btn-outline-dark bl">Информация поступающим</a>
   </div>
-  <div class="col-lg-1" ></div>
-  <div class="col-lg-2" >
-    <a href="{% url 'interPage_url' %}" class="btn btn-lg btn-outline-dark bl">Иностранным гражданам</a>
-  </div>
-  <div class="col-lg-1" ></div>
-  <div class="col-lg-2 dropdown">
-    <a href="#" class="btn btn-lg btn-outline-dark bl" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Календарь <br>приема</a>
-    <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
-      <a class="dropdown-item" href="{% url 'bak_calendar_url' %}">Бакалавриат</a>
-      <a class="dropdown-item" href="#">Магистратура</a>
-      <a class="dropdown-item" href="#">Аспирантура</a>
-    </div>
-  </div>
+  <div class="col-lg-3"></div>
+
+  <!--  <div class="col-lg-2" >-->
+  <!--    <a href="{% url 'interPage_url' %}" class="btn btn-lg btn-outline-dark bl">Иностранным гражданам</a>-->
+  <!--  </div>-->
+  <!--  <div class="col-lg-1" ></div>-->
+  <!--  <div class="col-lg-2 dropdown">-->
+  <!--    <a href="#" class="btn btn-lg btn-outline-dark bl" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Календарь <br>приема</a>-->
+  <!--    <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">-->
+  <!--      <a class="dropdown-item" href="{% url 'bak_calendar_url' %}">Бакалавриат</a>-->
+  <!--      <a class="dropdown-item" href="#">Магистратура</a>-->
+  <!--      <a class="dropdown-item" href="#">Аспирантура</a>-->
+  <!--    </div>-->
+  <!--  </div>-->
   <div class="col-2-lg"></div>
   <hr style="border-width: 3px;">
 </div>
@@ -84,31 +102,39 @@
 <div class="container">
   <div class="row">
     <!--    первая строка -->
-    <div class="col-md-9" align="center">
-      <p class="lead">Sed ut perspiciatis unde omnis iste natus error sit
-        voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque
-        ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta
-        sunt explicabo. Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed
-        quia consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt. Neque porro quisquam
-        est, qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit, sed quia non numquam eius
-        modi tempora incidunt ut labore et dolore magnam aliquam quaerat voluptatem. Ut enim ad minima veniam,
-        quis nostrum exercitationem ullam corporis suscipit laboriosam, nisi ut aliquid ex ea commodi consequatur?
-        Quis autem vel eum iure reprehenderit qui in ea voluptate velit esse quam nihil molestiae consequatur,
-        vel illum qui dolorem eum fugiat quo voluptas nulla pariatur?</p>
+    <div class="col-md-9">
+      <p >Для организации и осуществления приема поступающих в Академию созданы приемная, экзаменационная и
+        апелляционная комиссии, действующие в соответствии с требованиями законодательства Российской Федерации в
+        области высшего образования и Положением о приемной, экзаменационной и апелляционной комиссиях
+        Санкт-Петербургской юридической академии. <br><br>
+        В состав данных комиссий включены высококвалифицированные научно-педагогические работники академии.
+        Председателем Приемной комиссии является ректор академии.
+        Работу Приемной комиссии и делопроизводство, а также личный прием поступающих и их родителей (законных
+        представителей), переписку по электронной почте, функционирование выделенных отдельных телефонных линий
+        организует ответственный секретарь приемной комиссии, который назначается ректором академии. Под руководством
+        ответственного секретаря Приемной комиссии работает
+        технический секретарь.<br><br>
+        Приемная комиссия академии организует и проводит профориентационные мероприятия, а также осуществляет
+        необходимую рекламную деятельность в средствах массовой информации (реклама в печатных СМИ, печатная реклама,
+        сувенирная реклама, реклама на телевидение, реклама на Веб-сайтах).
+        График Приемной комиссии утверждается Председателем Приемной комиссии академии.</p>
     </div>
     <!--    место для фото   -->
     <div class="col-md-3">
       <figure class="figure">
 
         <img src="{% static 'image/or.jpg'%} " class="figure-img img-fluid rounded" alt="...">
-        <figcaption class="figure-caption">Орехова Мария Андреевна</figcaption>
+        <figcaption class="figure-caption">
+          Ответственным секретарем Приемной комиссии Санкт-Петербургской юридической академии назначен старший
+          преподаватель кафедры гражданского права академии –<b> Орехова Мария Андреевна.</b></figcaption>
       </figure>
     </div>
   </div>
   <hr style="border-width: 3px;">
   <div class="row">
     <div class="col-md-7">
-      <a href="{% static 'docPriem2020/9mestoAndEmail.pdf' %}" target="_blank"><h5 class="text-center">Информация о местах приема документов, о почтовых и электронных адресах для
+      <a href="{% static 'docPriem2020/9mestoAndEmail.pdf' %}" target="_blank"><h5 class="text-center">Информация о
+        местах приема документов, о почтовых и электронных адресах для
         направления документов, необходимых для поступления</h5></a>
       <!--      вторая строка   -->
       <br><br>
@@ -148,18 +174,17 @@
     <!--    место для адреса    -->
 
     <div class="col-md-5">
-      <h3 align="center" > Часы работы: </h3>
+      <h3 align="center" > Расписание работы приемной комиссии: </h3>
       <table class="table table-striped" style="background-color: #e3f2fd;" >
 
-        <tr>
+        <tr class="table-info">
           <td scope="col" >Понедельник - четверг</td>
           <td scope="col" >Пятница </td>
           <td scope="col" >Обеденный перерыв</td>
         </tr>
-
         <tbody>
         <tr></tr>
-        <tr>
+        <tr class="table-info">
           <td>c 10 до 18 часов</td>
           <td>c 10 до 17 часов</td>
           <td>c 12 до 13 часов</td>
@@ -171,10 +196,20 @@
         <tr></tr>
         <tr>
           <td><b>Телефоны приемной комиссии:</b></td>
-          <td colspan="2"> +7 (812) 677-00-07 <br> +7 (921) 951-34-33 </td>
+          <td colspan="2"> +7 (812) 677-00-07 <br> +7 (921) 951-34-33 <br> +7 (921) 564-31-01 </td>
+        </tr>
+        <tr>
+          <td><b>Адрес: </b></td>
+          <td colspan="2">  Россия,192012, Санкт-Петербург, <br>пр. Обуховской Обороны, д. 114, лит. А, <br> 50 метров от станции метро "Пролетарская" </td>
         </tr>
         </tbody>
       </table>
+      <figure class="figure">
+
+        <img src="{% static 'image/map.png' %} " class="figure-img img-fluid rounded" alt="...">
+        <figcaption class="figure-caption">
+          Маршрут от станции метро "Пролетарская"</figcaption>
+      </figure>
     </div>
 
   </div>
