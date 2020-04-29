@@ -68,6 +68,11 @@ def order_bak(request):
     return render(request, 'abitur/bak/order_bak.html', context={'educational_form': educational_form})
 
 
+def result_bak(request):
+    educational_form = EducationalForm.objects.all()
+    return render(request, 'abitur/bak/result_bak.html', context={'educational_form': educational_form})
+
+
 def rec_list_bak(request):
     educational_form = EducationalForm.objects.all()
     return render(request, 'abitur/bak/rec_list_bak.html', context={'educational_form': educational_form})

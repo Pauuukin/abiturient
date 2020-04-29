@@ -6,18 +6,13 @@ from time import time
 
 
 
-def gen_slug(s):
-    """автогенерация слагов"""
-    str1 = translit(s, "ru", reversed=True)
-    new_slug = slugify(str1, allow_unicode=True)
-    return new_slug + '-' + str(int(time()))
 
 class News (models.Model):
     """ модель для сущности 'новость' """
     title = models.CharField(max_length=200, db_index=True)
     body = models.TextField()
     img = models.ImageField(upload_to='pictures', max_length=255, blank=True)
-    slug = models.SlugField(max_length=150, unique=True, blank=True)
+    slug = models.SlugField(max_length=150, default="", unique=True, blank=True)
     date_pub = models.DateTimeField(auto_now_add=True)
     date = models.DateField()
 
@@ -39,6 +34,15 @@ class News (models.Model):
         """перевод для админпанели"""
         verbose_name = 'Новость'
         verbose_name_plural = 'Добавить новости'
+
+
+def gen_slug(s):
+    """автогенерация слагов"""
+    str1 = translit(s, "ru", reversed=True)
+    new_slug = slugify(str1, allow_unicode=True)
+    return new_slug + '-' + str(int(time()))
+
+
 
 class NewsFile(models.Model):
     """ модель для сущности 'файлы для новости' """
@@ -84,6 +88,25 @@ class Orders(models.Model):
         """перевод для админпанели"""
         verbose_name = 'Приказ о зачислении(бакалавриат)'
         verbose_name_plural = 'Приказы о зачислении - БАКАЛАВРИАТ'
+
+
+class Result(models.Model):
+    """ модель для сущности 'Результаты вступительных БАКАЛАВРИАТ' """
+    name_result = models.CharField(max_length=256)
+    number_result = models.CharField(max_length=64)
+    educational_form = models.ForeignKey('EducationalForm', on_delete=models.PROTECT, related_name='linked_results')
+    date_pub = models.DateTimeField(auto_now_add=True)
+    date_result = models.DateField()
+    file = models.FileField(upload_to='files')
+
+    def __str__(self):
+        """переопределяем метод String"""
+        return self.name_result
+
+    class Meta:
+        """перевод для админпанели"""
+        verbose_name = 'Результаты вступительных испытаний (бакалавриат)'
+        verbose_name_plural = 'Результаты вступительных испытаний - БАКАЛАВРИАТ'
 
 
 class RecommendedList(models.Model):
@@ -154,6 +177,26 @@ class OrdersMag(models.Model):
         verbose_name_plural = 'Приказы о зачислении - МАГИСТРАТУРА'
 
 
+class ResultMag(models.Model):
+    """ модель для сущности 'Результаты вступительных МАГИСТРАТУРА' """
+    name_result = models.CharField(max_length=256)
+    number_result = models.CharField(max_length=64)
+    educational_form = models.ForeignKey('EducationalFormMag', on_delete=models.PROTECT, related_name='linked_results')
+    date_pub = models.DateTimeField(auto_now_add=True)
+    date_result = models.DateField()
+    file = models.FileField(upload_to='files')
+
+    def __str__(self):
+        """переопределяем метод String"""
+        return self.name_result
+
+    class Meta:
+        """перевод для админпанели"""
+        verbose_name = 'Результаты вступительных испытаний (Магистратура)'
+        verbose_name_plural = 'Результаты вступительных испытаний - МАГИСТРАТУРА'
+
+
+
 class RecommendedListMag(models.Model):
     """ модель для сущности 'Рекомендованные к зачислению Магистратура' """
     name_rec_list = models.CharField(max_length=256)
@@ -220,6 +263,25 @@ class OrdersAsp(models.Model):
         """перевод для админпанели"""
         verbose_name = 'Приказ о зачислении(аспирантура)'
         verbose_name_plural = 'Приказы о зачислении - АСПИРАНТУРА'
+
+
+class ResultAsp(models.Model):
+    """ модель для сущности 'Результаты вступительных АСПИРАНТУРА' """
+    name_result = models.CharField(max_length=256)
+    number_result = models.CharField(max_length=64)
+    educational_form = models.ForeignKey('EducationalFormAsp', on_delete=models.PROTECT, related_name='linked_results')
+    date_pub = models.DateTimeField(auto_now_add=True)
+    date_result = models.DateField()
+    file = models.FileField(upload_to='files')
+
+    def __str__(self):
+        """переопределяем метод String"""
+        return self.name_result
+
+    class Meta:
+        """перевод для админпанели"""
+        verbose_name = 'Результаты вступительных испытаний (Аспирантура)'
+        verbose_name_plural = 'Результаты вступительных испытаний - АСПИРАНТУРА'
 
 
 class RecommendedListAsp(models.Model):
