@@ -47,6 +47,8 @@
   <div class="col-lg-2 dropright">
     <a href="#" class="btn btn-lg btn-outline-dark bl" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Нормативные <br>документы</a>
     <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
+      <a class="dropdown-item" target="_blank" href="{% static 'docPriem2020/osob20_21.pdf' %}"><p class="small text-danger">
+        ОСОБЕННОСТИ ПРИЕМА НА ОБУЧЕНИЕ В АВТОНОМНУЮ НЕКОММЕРЧЕСКУЮ ОРГАНИЗАЦИЮ ВЫСШЕГО ОБРАЗОВАНИЯ <br>"САНКТ-ПЕТЕРБУРГСКАЯ ЮРИДИЧЕСКАЯ АКАДЕМИЯ" НА 2020/2021 УЧЕБНЫЙ ГОД.</p><hr></a>
       <a class="dropdown-item" target="_blank" href="{% static 'docPriem2020/prikazPravBM.pdf' %}"><p class="small">
         ПРИКАЗ ОБ УТВЕРЖДЕНИИ ПРАВИЛ ПРИЕМА ПО ОБРАЗОВАТЕЛЬНЫМ
         ПРОГРАММАМ ВЫСШЕГО ОБРАЗОВАНИЯ – <br>ПРОГРАММАМ БАКАЛАВРИАТА, ПРОГРАММАМ МАГИСТРАТУРЫ</p><hr></a>
@@ -77,22 +79,25 @@
   </div>
   <div class="col-lg-3"></div>
 
-
-  <!--  <div class="col-lg-2 dropdown">-->
-  <!--    <a href="#" class="btn btn-lg btn-outline-dark bl" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Календарь <br>приема</a>-->
-  <!--    <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">-->
-  <!--      <a class="dropdown-item" href="{% url 'bak_calendar_url' %}">Бакалавриат</a>-->
-  <!--      <a class="dropdown-item" href="#">Магистратура</a>-->
-  <!--      <a class="dropdown-item" href="#">Аспирантура</a>-->
-  <!--    </div>-->
-  <!--  </div>-->
   <div class="col-2-lg"></div>
   <hr style="border-width: 3px;">
 </div>
 </div>
-<br>
+<br><br>
+<div class="container">
+<!--  для важных объявлений -->
+  <blockquote class="blockquoteMyDanger">
+  <p>
+    В СВЯЗИ С РАСПРОСТРАНЕНИЕМ НОВОЙ КОРОНАВИРУСНОЙ ИНФЕКЦИИ (COVID-19)» С 03 АПРЕЛЯ 2020 ГОДА ДО ОСОБОГО РАСПОРЯЖЕНИЯ:
+    – <b>КОНСУЛЬТИРОВАНИЕ ПО ВОПРОСАМ ПОСТУПЛЕНИЯ И ПОДАЧИ ДОКУМЕНТОВ ОСУЩЕСТВЛЯЕТСЯ ЧЕРЕЗ ЭЛЕКТРОННУЮ ПОЧТУ : <u>JURAC.SPB@MAIL.RU</u>
+    ИЛИ ЧЕРЕЗ КОНТАКТНЫЙ ТЕЛЕФОН (ПРИЕМНАЯ КОМИССИЯ) : <u>+7 (921) 951-34-33</u></b>
+  </p>
+</blockquote>
+</div>
+
 <!-- Новости  -->
 <div class="row" >
+
   <div class="col-md"></div>
   <div class="col-md-9" align="center">
     <a href="{% url 'news_list_url' %}"> <h1 class="mb-5" align="center"> Новости</h1> </a>

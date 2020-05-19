@@ -59,7 +59,7 @@ def spec_bak_1(request):
 
 
 def news_list(request):
-    news = News.objects.all()
+    news = News.objects.all().order_by('-id')
     return render(request, 'abitur/all_news.html', context={'news': news})
 
 
