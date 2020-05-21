@@ -1,4 +1,5 @@
 <!DOCTYPE html>
+{% load static %}
 <html lang="en">
 <head>
     <meta charset="UTF-8">
@@ -10,7 +11,7 @@
     <link rel="stylesheet" href="{% static 'css/bootstrap-reboot.css'%}" type="text/css">
     <link rel="stylesheet" href="{% static 'css/bootstrap-grid.min.css'%}" type="text/css">
     <link rel="stylesheet" href="{% static 'css/mycss.css'%}" type="text/css">
-
+    <link rel="shortcut icon" href="{% static 'image/favicon.ico'%}">
     <title>
         {% block title %}
         Абитуриенту СПбЮА
@@ -26,7 +27,7 @@
 <div class="row">
     <div class="col-md-4">
         <a class="navbar-brand" href="https://jurac.ru/">
-            {% load static %}
+
             <img src="{% static 'image/logo.png'%} " class="d-inline-block align-top" alt="">
         </a>
     </div>
