@@ -14,19 +14,31 @@ Including another URLconf
     2. Add a URL to urlpatterns:  path('blog/', include('blog.urls'))
 """
 from django.contrib import admin
+from django.http import HttpResponse
 from django.urls import path
+from django.conf.urls import url
 from django.urls import include
 from django.conf.urls.static import static
 from django.conf import settings
+from abitur.sitemaps import NewsSitemap, StaticSitemap
+from django.contrib.sitemaps.views import sitemap
 
 
 from .views import mainPage
+
+sitemaps = {
+    'news': NewsSitemap,
+    'static': StaticSitemap,
+}
 
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('abitur/', include('abitur.urls')),
     path('accounts/', include('regabitur.urls')),
     path('', mainPage),
+    url(r'^robots.txt', lambda x: HttpResponse("User-Agent: *\nDisallow: /admin/", content_type="text/plain"), name="robots_file"),
+    url(r'^sitemap\.xml$', sitemap, {'sitemaps': sitemaps}, name='django.contrib.sitemaps.views.sitemap'),
+
     path('regabitur/', include('regabitur.urls')),
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT) \
               + static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
