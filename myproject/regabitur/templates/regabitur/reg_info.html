@@ -1,0 +1,84 @@
+{% extends 'regabitur/base_reg.html' %}
+{% block title %}
+Электронная подача документов СПбЮА
+{% endblock %}
+
+
+{% block content %}
+<div class="row">
+{{request.user}}
+    <div class="jumbotron">
+        <h1 class="display-4"> Уважаемые абитуриенты!</h1>
+        <p class="lead">But I must explain to you how all this mistaken idea of denouncing pleasure and praising pain
+            was born and I will give you a complete account of the system, and expound the actual teachings of the
+            great explorer of the truth, the master-builder of human happiness. No one rejects, dislikes, or avoids
+            pleasure itself, because it is pleasure, but because those who do not know how to pursue pleasure rationally
+            encounter consequences that are extremely painful.</p>
+        <hr class="my-4">
+        <p>Использются служебные классы для типографики и расстояния содержимого в контейнере большего размера.</p>
+        <!--        <p class="lead">-->
+        <!--            <a class="btn btn-primary btn-lg" href="#" role="button">Learn more</a>-->
+        <!--        </p>-->
+    </div>
+
+    <div class="col-md-5">
+        <div class="card border-info mb-3">
+            <div class="card-header bg-primary"><h3>Хотите подать документы?</h3></div>
+            <div class="card-body">
+                <h5 class="card-title">Light card title</h5>
+
+                <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+                <ul class="list-group list-group-flush">
+                    <li class="list-group-item mt-2"><a href="">Инструкция для подачи документов </a></li>
+                    <li class="list-group-item mt-2"><a href="#">Уже зарегистрированы? Войти  </a></li></li>
+                    <li class="list-group-item mt-2">Vestibulum at eros</li>
+                </ul>
+                <br>
+                <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+                <a href="#" class="btn btn-primary btn-block mt-3"> Зарегистрироваться </a>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-7">
+        <div class="card">
+            <div class="card-header">
+                <h3>Шаг 1</h3>
+            </div>
+            <div class="card-body">
+                <h5 class="card-title">Регистрация/авторизация в системе электронной подачи документов</h5>
+                <p class="card-text">Позволит вам перейти в личный кабинет, ознакомиться со списком обязательных для поступления
+                    документов, ознакомиться с инструкциями работы с ситсемой, понять, как будет проходить работа приемной
+                    комисси и подать документы в электронной форме. </p>
+                <a href="#" class="btn btn-primary"> Зарегистрироваться </a>
+            </div>
+        </div>
+        <div class="card text-right">
+            <div class="card-header">
+                <h3>Шаг 2</h3>
+            </div>
+            <div class="card-body">
+                <h5 class="card-title">Отправка дополнительной информации в личном кабинете</h5>
+                <p class="card-text">Это позволит сотрудникам приемной комиссии лучше идентифицировать вас.</p>
+                <span class="badge badge-pill badge-warning">Важно для приемной комисси</span>
+            </div>
+
+        </div>
+        <div class="card">
+            <div class="card-header">
+                <h3>Шаг 3</h3>
+            </div>
+            <div class="card-body">
+                <h5 class="card-title">Подача документов в электронной форме</h5>
+                <p class="card-text">Отправка всех необходимых для поступления документов.</p>
+                <span class="badge badge-pill badge-success">Готово!</span>
+            </div>
+            <div class="card-footer text-muted">
+                2 days ago
+            </div>
+        </div>
+    </div>
+
+</div>
+
+
+{% endblock %}

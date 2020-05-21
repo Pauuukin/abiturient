@@ -25,6 +25,7 @@ from .views import mainPage
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('abitur/', include('abitur.urls')),
-    path('', mainPage)
+    path('', mainPage),
+    path('regabitur/', include('regabitur.urls')),
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT) \
               + static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
