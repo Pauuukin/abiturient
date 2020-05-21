@@ -110,6 +110,16 @@ AUTH_PASSWORD_VALIDATORS = [
     },
 ]
 
+DEFAULT_FROM_EMAIL = 'host@jurac.ru'
+
+EMAIL_HOST = 'smtp.yandex.ru'
+EMAIL_HOST_USER = 'host@jurac.ru'
+EMAIL_HOST_PASSWORD = 'p0post000'
+# если используется защищенное соединение
+EMAIL_PORT = 587
+EMAIL_USE_TLS = True
+
+
 
 # Internationalization
 # https://docs.djangoproject.com/en/3.0/topics/i18n/
