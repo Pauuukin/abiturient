@@ -55,7 +55,7 @@
                     <a class="nav-link btn btn-info" href="{% url 'login_abitur_url' %}">Авторизация</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link btn btn-info" href="#">Личный кабинет</a>
+                    <a class="nav-link btn btn-info" href="{% url 'user_room_url' %}">Личный кабинет</a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link btn btn-info" href="{% url 'register_abitur_url' %}">Регистрация</a>
@@ -76,7 +76,98 @@
     {% endblock %}
 </div>
 
+<footer class="page-footer font-small blue pt-3 " style="background-color: #e3f2fd;">
 
+    <!-- Footer Links -->
+    <div class="container-fluid text-center text-md-left">
+
+        <!-- Grid row -->
+        <div class="row">
+
+            <!-- Grid column -->
+            <div class="col-md-5 mt-md-0 mt-3">
+
+                <!-- Content -->
+                <h5 class="text-uppercase">Санкт-Петербургская юридическая академия</h5><br>
+                <p><b>Адрес:</b><br>
+                    Россия,192012, Санкт-Петербург, <br>пр. Обуховской Обороны, д. 114, лит. А, <br> 50 метров от станции метро "Пролетарская"  </p>
+
+            </div>
+            <!-- Grid column -->
+
+            <hr class="clearfix w-100 d-md-none pb-3">
+
+            <!-- Grid column -->
+            <div class="col-md-3 mb-md-0 mb-3">
+                <p><b>Телефоны приемной комиссии:</b><br>
+                    +7 (812) 677-00-07 <br> +7 (921) 951-34-33 <br> +7 (921) 564-31-01 </p>
+                <p><b>Электронный адрес:</b><br>
+                    JURAC.SPB@MAIL.RU <br> PRIEM@JURAC.RU</p>
+            </div>
+            <!-- Grid column -->
+            <div class="col-md-2 mb-md-0 mb-3">
+
+                <!-- Links -->
+                <h5 class="text-uppercase">Перейти:</h5>
+
+                <ul class="list-unstyled">
+                    <li>
+                        <a href="{% url 'bakPage_url' %}">Бакалавриат</a>
+                    </li>
+                    <li>
+                        <a href="{% url 'mag_page_url' %}">Магистратура</a>
+                    </li>
+                    <li>
+                        <a href="{% url 'asp_page_url' %}">Аспирантура</a>
+                    </li>
+                    <li>
+                        <a href="{% url 'infoPage_url' %}">Информация поступающим</a>
+                    </li>
+                    <li>
+                        <a href="/admin">Админпанель</a>
+                    </li>
+                </ul>
+            </div>
+            <!-- Grid column -->
+            <div class="col-md-2 mb-md-0 mb-3">
+
+                <!-- Links -->
+                <h5 class="text-uppercase">Подать документы:</h5>
+
+                <ul class="list-unstyled">
+                    <li>
+                        <a href="{% url 'reg_info_url' %}">Подать документы </a>
+                    </li>
+                    <li>
+                        <a href="{% url 'register_abitur_url' %}">Регистрация</a>
+                    </li>
+                    <li>
+                        <a href="{% url 'login_abitur_url' %}">Авторизация </a>
+                    </li>
+                    <li>
+                        <a href="#">Личный кабинет</a>
+                    </li>
+<!--                    <li>-->
+<!--                        <a href="/admin">Админпанель</a>-->
+<!--                    </li>-->
+                </ul>
+
+            </div>
+            <!-- Grid column -->
+
+        </div>
+        <!-- Grid row -->
+
+    </div>
+    <!-- Footer Links -->
+
+    <!-- Copyright -->
+    <div class="footer-copyright text-center py-3">© 2020 Copyright:
+        <a href="https://jurac.ru"> СПбЮА</a>
+    </div>
+    <!-- Copyright -->
+
+</footer>
 <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
 <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
 <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>

@@ -11,7 +11,7 @@ class News (models.Model):
     """ модель для сущности 'новость' """
     title = models.CharField(max_length=200, db_index=True, verbose_name='Заголовок')
     body = models.TextField(verbose_name='Основной текст')
-    img = models.ImageField(upload_to='pictures', verbose_name='Изображение', max_length=255, blank=True, default='static/image/logo.png')
+    img = models.ImageField(upload_to='pictures', verbose_name='Изображение', max_length=255, blank=True, default='pictures/base.jpg')
     slug = models.SlugField(max_length=150, default="", unique=True, blank=True)
     date_pub = models.DateTimeField(auto_now_add=True, verbose_name='Дата публикации')
     date = models.DateField()

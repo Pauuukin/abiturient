@@ -22,8 +22,7 @@ from django.conf.urls.static import static
 from django.conf import settings
 from abitur.sitemaps import NewsSitemap, StaticSitemap
 from django.contrib.sitemaps.views import sitemap
-from django.views.generic import TemplateView
-
+from django.views.generic import TemplateView, RedirectView
 
 from .views import mainPage
 
@@ -36,6 +35,7 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     path('abitur/', include('abitur.urls')),
     path('accounts/', include('regabitur.urls')),
+    url(r'^favicon\.ico$', RedirectView.as_view(url='/static/image/favicon.ico'), name='favicon'),
     path('', mainPage),
     # url(r'^robots.txt', lambda x: HttpResponse("User-Agent: *\nDisallow: /admin/", content_type="text/plain"), name="robots_file"),
     url(r'^robots.txt$', TemplateView.as_view(template_name="robots.txt", content_type="text/plain"), name="robots_file"),
