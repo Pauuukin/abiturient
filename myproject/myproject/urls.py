@@ -22,6 +22,7 @@ from django.conf.urls.static import static
 from django.conf import settings
 from abitur.sitemaps import NewsSitemap, StaticSitemap
 from django.contrib.sitemaps.views import sitemap
+from django.views.generic import TemplateView
 
 
 from .views import mainPage
@@ -36,7 +37,8 @@ urlpatterns = [
     path('abitur/', include('abitur.urls')),
     path('accounts/', include('regabitur.urls')),
     path('', mainPage),
-    url(r'^robots.txt', lambda x: HttpResponse("User-Agent: *\nDisallow: /admin/", content_type="text/plain"), name="robots_file"),
+    # url(r'^robots.txt', lambda x: HttpResponse("User-Agent: *\nDisallow: /admin/", content_type="text/plain"), name="robots_file"),
+    url(r'^robots.txt$', TemplateView.as_view(template_name="robots.txt", content_type="text/plain"), name="robots_file"),
     url(r'^sitemap\.xml$', sitemap, {'sitemaps': sitemaps}, name='django.contrib.sitemaps.views.sitemap'),
 
     path('regabitur/', include('regabitur.urls')),

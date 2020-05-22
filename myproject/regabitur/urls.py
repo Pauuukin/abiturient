@@ -13,5 +13,11 @@ urlpatterns = [
     url(r'^password-reset/done/$', views.PasswordResetDoneView.as_view(), name='password_reset_done'),
     url(r'^password-reset/confirm/(?P<uidb64>[-\w]+)/(?P<token>[-\w]+)/$',  views.PasswordResetConfirmView.as_view(), name='password_reset_confirm'),
     url(r'^password-reset/complete/$', views.PasswordResetCompleteView.as_view(), name='password_reset_complete'),
-
+    path('add_dok', DocumentsAddView.as_view(), name='add_doc_url'),
+    path('add_info', InfoCreateView.as_view(), name='add_info_url'),
+    path('user-room/', UserRoom.as_view(), name='user_room_url'),
+    path('update_info/<int:pk>', InfoUpdateView.as_view(), name='update_info_url'),
+    path('complete_send/<int:pk>', complete_send, name='complete_send_url'),
+    path('agreement_flag/<int:pk>', agreement_flag, name='agreement_flag_url'),
+    path('delete-page/<int:pk>', DocumentDeleteView.as_view(), name='delete_page_url'),
 ]

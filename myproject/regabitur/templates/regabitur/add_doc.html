@@ -1,0 +1,89 @@
+{% extends 'base_regabitur.html' %}
+
+{% block title %}
+Добавить архив
+{% endblock %}
+
+{% block content %}
+
+{{request.user}} ----- {{request.user.id}}
+
+<h1 class="mt-4">Добавить документы</h1>
+<h1 class="mt-4">{{request.user}} ----- {{request.user.id}}</h1>
+<div class="row">
+    <div class="col-md-4  card border-primary">
+        <form id="doc_add" method="post"  enctype="multipart/form-data">
+            {% csrf_token%}
+            {{form}}
+        </form>
+        <button form="doc_add" type="submit" class="btn btn-primary mt-5">Отправить</button>
+    </div>
+    <div class="col-md-4">
+        <h3> Документы, которые вы добавили:</h3>
+        <table class="table table-striped border mt-3 table-small">
+            <thead>
+            <tr>
+                <th scope="col">id</th>
+                <th scope="col">Имя документа</th>
+                <th scope="col">Файл</th>
+                <th scope="col">Удалить</th>
+            </tr>
+            </thead>
+            <tbody>
+            {% for i in documents  %}
+            {% if request.user == i.user %}
+            <tr>
+                <th> {{ i.id }}</th>
+                <td>{{ i.name_dok }}</td>
+                <td>{{ i.doc }}</td>
+                <td>
+                    <form id="delete_form{{i.id}}" action="{% url 'delete_page_url' i.id %}" method="post">
+                        {% csrf_token %}
+                    </form>
+                    <a href="javascript:void()" onclick="delete_question{{i.id}}()">Удалить</a>
+                    <script>
+                         function delete_question{{i.id}}() {
+                             if(confirm("Вы уверены?"))
+                                 {
+                                     document.getElementById('delete_form{{i.id}}').submit();
+                                 }
+                             }
+                     </script>
+                </td>
+            </tr>
+            {% endif %}
+            {% endfor %}
+            </tbody>
+        </table>
+    </div>
+<!--    <div class="col-md-4">-->
+<!--        <p> asddddddddddddddddd asdasd asdfasdsgkjhyguihas</p>-->
+<!--    </div>-->
+</div>
+<div class="row justify-content-md-center">
+    <button type="button" class="btn btn-info" data-toggle="modal" data-target="#completeModal">
+        Закончить подачу документов
+    </button>
+</div>
+
+<!-- Modal -->
+<div class="modal fade" id="completeModal" tabindex="-1" role="dialog" aria-labelledby="completeModal" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">Подтверждение действий</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <p>completeModal completeModal v vcompleteModalv completeModal</p>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Закрыть</button>
+                <a href="{% url 'complete_send_url' request.user.id %}" class="btn btn-primary">Завершить подачу документов</a>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

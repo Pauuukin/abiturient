@@ -47,3 +47,33 @@ class MyRegisterForm(forms.ModelForm):
             user.save()
         return user
 
+
+class AddDocForm(forms.ModelForm):
+    """Форма для добавления документов"""
+    class Meta:
+        model = DocumentUser
+        fields = ('name_doc', 'doc')
+
+    def __init__(self, *args, **kwargs):
+        """Переопределяем метод init для формы, чтобы задать нужные классы"""
+        super().__init__(*args, **kwargs)
+        for field in self.fields:
+            self.fields[field].widget.attrs['class'] = 'form-control mt-2 mb-3'
+
+
+class AddInfoForm(forms.ModelForm):
+    """форма для добавления и обнавления информации"""
+    class Meta:
+        model = CustomUser
+        fields = ('date_of_birth', 'patronymic', 'phone_number')
+
+    def __init__(self, *args, **kwargs):
+        """Переопределяем метод init для формы, чтобы задать нужные классы"""
+        super().__init__(*args, **kwargs)
+        for field in self.fields:
+            self.fields[field].widget.attrs['class'] = 'form-control'
+            self.fields['date_of_birth'].widget = SelectDateWidget(
+                empty_label=("Выберите год", "Выберите месяц", "Выберите день"),
+                years=range(1950, 2010))
+            self.fields['date_of_birth'].widget.attrs['class'] = 'form-control mt-1'
+

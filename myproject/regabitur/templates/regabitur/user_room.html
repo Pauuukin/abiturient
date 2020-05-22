@@ -1,0 +1,210 @@
+{% extends 'base_regabitur.html' %}
+{% block title %}
+Личный кабинет  - {{request.user }}
+{% endblock %}
+
+
+{% block content %}
+
+
+<style>
+input + a.btn {
+  display: none;
+}
+input:checked + a {
+  display: inline;
+}
+</style>
+
+
+{{request.user}} ----- {{request.user.id}}
+<h1>Личный кабинет </h1>
+<hr >
+<!--    <h2 class="text-center">Добро пожаловать в личный кабинет!</h2><br>-->
+<div class="row">
+    <div class="col-md-6">
+        <h4 class="mt-3">Имя пользователя - <u>{{request.user }}</u></h4>
+    </div>
+    <div class="col-md-3 offset-md-3">
+
+        <h4>Статус вашей заявки: <span class="badge badge-dark">{{status}}</span></h4>
+
+    </div>
+</div>
+
+{% if is_complete %}
+<div class="row">
+    <div class="col-md-7">
+        <h3> Вы успешно подали документы! </h3>
+    </div>
+
+    <div class="col-md-5">
+        <h4>Ваши данные: </h4>
+        <div class="card border-primary">
+
+            <table class="table table-sm">
+                <thead>
+                <tr>
+                    <td colspan="2" class="text-center table-info"> <h5> Данные пользователя </h5></td>
+                </tr>
+                </thead>
+                <tbody>
+                <tr>
+                    <td>Индивидуальный номер:</td>
+                    <td>{{request.user.id}}</td>
+                </tr>
+                <tr>
+                    <td>Логин для входа:</td>
+                    <td>{{request.user}}</td>
+                </tr>
+                <tr>
+                    <td>Имя/Фамилия</td>
+                    <td>{{request.user.get_full_name}}</td>
+                </tr>
+                <tr>
+                    <td>Почта </td>
+                    <td>{{request.user.email}}</td>
+                </tr>
+                </tbody>
+            </table>
+        </div>
+        <br>
+        {% if is_exist %}
+
+        <div class="card border-info">
+            <table class="table table-sm">
+                <thead>
+                <tr>
+                    <td colspan="2" class="text-center table-info"> <h5> Дополнительные данные </h5></td>
+                </tr>
+                </thead>
+                <tbody>
+                {% for i in dop_info  %}
+                {% if request.user == i.user %}
+                <tr>
+                    <td> Отчество: </td>
+                    <td>{{i.patronymic}}</td>
+                </tr>
+                <tr>
+                    <td> Дата рождения: </td>
+                    <td>{{i.date_of_birth}}</td>
+                </tr>
+                <tr>
+                    <td> Номер телефона: </td>
+                    <td>{{i.phone_number}}</td>
+                </tr>
+
+                {%endif%}
+                {% endfor %}
+                </tbody>
+            </table>
+        </div>
+        {%endif%}
+
+    </div>
+</div>
+
+{% else %}
+<hr>
+<div class="row">
+
+    <div class="col-md-7">
+        <p> Инструкция по второму шагу / список документов для заполнения и примеры. Блок должен меняться в зависимости
+            от того, поданы ли документы в приемную комиссию. Если да, то отображается текст о том, что док-ты в
+            обработке и сотрудники Академии свяжутся с вами по телефону. Сделать акцент на статусе заявке
+            (реализовать ее).</p>
+    </div>
+
+    <div class="col-md-5 ">
+        <h4>Ваши данные: </h4>
+        <div class="card border-primary">
+
+            <table class="table table-sm">
+                <thead>
+                <tr>
+                    <td colspan="2" class="text-center table-info"> <h5> Данные пользователя </h5></td>
+                </tr>
+                </thead>
+                <tbody>
+                <tr>
+                    <td>Индивидуальный номер:</td>
+                    <td>{{request.user.id}}</td>
+                </tr>
+                <tr>
+                    <td>Логин для входа:</td>
+                    <td>{{request.user}}</td>
+                </tr>
+                <tr>
+                    <td>Имя/Фамилия</td>
+                    <td>{{request.user.get_full_name}}</td>
+                </tr>
+                <tr>
+                    <td>Почта </td>
+                    <td>{{request.user.email}}</td>
+                </tr>
+                </tbody>
+            </table>
+        </div>
+        <br>
+
+        {% if is_exist %}
+
+        <div class="card border-info">
+            <table class="table table-sm">
+                <thead>
+                <tr>
+                    <td colspan="2" class="text-center table-info"> <h5> Дополнительные данные </h5></td>
+                </tr>
+                </thead>
+                <tbody>
+                {% for i in dop_info  %}
+                {% if request.user == i.user %}
+                <tr>
+                    <td> Отчество: </td>
+                    <td>{{i.patronymic}}</td>
+                </tr>
+                <tr>
+                    <td> Дата рождения: </td>
+                    <td>{{i.date_of_birth}}</td>
+                </tr>
+                <tr>
+                    <td> Номер телефона: </td>
+                    <td>{{i.phone_number}}</td>
+                </tr>
+
+                <tr>
+                    <td colspan="2">
+                        <a class="btn btn-block btn-primary mb-1 mt-3" href="{% url 'update_info_url' i.id %}">Обновить данные </a>
+                    </td>
+                </tr>
+
+                {%endif%}
+                {% endfor %}
+                </tbody>
+            </table>
+        </div>
+        <br>
+        <div class="alert alert-success" role="alert"> <h4><span class="badge badge-danger">Отлично!</span> </h4>
+            Вы добавили дополнительные данные и теперь можете перейти к следующему, завершающему шагу - <b><u>к
+                загрузке необходимых для поступления документов</u></b>  <br>
+            <hr>
+            {% if agreement %}
+
+            <a href="{% url 'add_doc_url'%}" class="btn btn-block btn-primary">Загрузить документы (шаг 3)</a>
+            {% else %}
+            <p>Прежде чем перейти к заключительному шагу, пожалуйста, <a href="#"> ознакомьтесь с соглашением о персональных данных и нажмите кнопку:</a> </p>
+
+            <a href="{%url 'agreement_flag_url' request.user.id %}" class="btn btn-block btn-primary">Принимаю</a>
+            {% endif %}
+        </div>
+        {% else %}
+        <a class="btn btn-block btn-primary mb-4 mt-2" href="{% url 'add_info_url' %}">Добавить данные (шаг 2) </a>
+        {% endif%}
+    </div>
+
+
+</div>
+{% endif %}
+
+
+{% endblock %}

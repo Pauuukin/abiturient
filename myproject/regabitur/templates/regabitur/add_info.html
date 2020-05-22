@@ -1,0 +1,30 @@
+{% extends 'base_regabitur.html' %}
+
+{% block title %}
+Добавить дополнительные данные
+{% endblock %}
+
+{% block content %}
+{% if update %}
+<h1 class="mt-4">Обновить данные для пользователя - {{request.user}}</h1>
+
+<form id="update_form" method="post">
+    {% csrf_token %}
+    {{form }}
+</form>
+<button form="update_form" type="submit" class="btn btn-primary">Обновить</button>
+{% else %}
+<h1 class="mt-4">Добавить данные для пользователя - {{request.user}}</h1>
+
+<div class="row">
+    <div class="col-md-4">
+        <form id="doc_add" method="post"  enctype="multipart/form-data">
+            {% csrf_token%}
+            {{form}}
+        </form>
+        <button form="doc_add" type="submit" class="btn btn-primary">Отправить</button>
+    </div>
+
+</div>
+{% endif %}
+{% endblock %}

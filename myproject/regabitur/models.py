@@ -32,6 +32,11 @@ class CustomUser(models.Model):
     # статус принятия соглашения о персональных данных
     agreement_flag = models.BooleanField(default=False, verbose_name="Соглашение:")
 
+    class Meta:
+        """перевод для админпанели"""
+        verbose_name = 'Абитуриент'
+        verbose_name_plural = 'Абитуриента'
+
 
 class DocumentUser(models.Model):
     """модель БД для подачи документов"""
@@ -68,6 +73,11 @@ class DocumentUser(models.Model):
 
     name_doc = models.CharField(max_length=256, verbose_name="Название документа", choices=document_list)
     doc = models.FileField(upload_to=user_directory_path, verbose_name="Загрузить документ")
+
+    class Meta:
+        """перевод для админпанели"""
+        verbose_name = 'Документы абитуриентов'
+        verbose_name_plural = 'Документы абитуриентов'
 
     def delete(self, *args, **kwargs):
         """Функция удаления файла с сервера при удалении записи файла из БД"""

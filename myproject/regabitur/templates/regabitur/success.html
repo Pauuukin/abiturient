@@ -1,0 +1,16 @@
+{% extends 'base_regabitur.html' %}
+
+{% block title %}
+Авторизация Абитуриентов
+{% endblock %}
+
+{% block content %}
+
+{{request.user}} ----- {{request.user.id}}
+
+<h2 class="text-center">Поздравляем! Вы завершили подачу документов!</h2><br><br>
+<div class="row">
+    <p> some text some text some text some text some text some text some text some text</p><br>
+    <a href="{% url 'user_room_url' %}" class="btn btn-block btn-info">Вернуться в личный кабинет </a>
+</div>
+{% endblock %}
