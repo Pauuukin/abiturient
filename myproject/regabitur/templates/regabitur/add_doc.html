@@ -8,22 +8,68 @@
 
 {{request.user}} ----- {{request.user.id}}
 
-<h1 class="mt-4">Добавить документы</h1>
-<h1 class="mt-4">{{request.user}} ----- {{request.user.id}}</h1>
+<h2 class="mt-4">Добавить документы для пользователя - {{request.user}}</h2>
 <div class="row">
-    <div class="col-md-4  card border-primary">
-        <form id="doc_add" method="post"  enctype="multipart/form-data">
-            {% csrf_token%}
-            {{form}}
-        </form>
-        <button form="doc_add" type="submit" class="btn btn-primary mt-5">Отправить</button>
+    <div class="col-md-6">
+        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et
+            dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex
+            ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore
+            eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt
+            mollit anim id est laborum.</p>
     </div>
-    <div class="col-md-4">
-        <h3> Документы, которые вы добавили:</h3>
-        <table class="table table-striped border mt-3 table-small">
+    <div class="col-md-6">
+        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et
+            dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex
+            ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore
+            eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt
+            mollit anim id est laborum.</p>
+    </div>
+</div>
+
+<hr style="border-width: 5px;">
+
+<div class="row">
+
+    <div class="col-md-4 mt-3">
+        <h4>Форма для загрузки документов:</h4>
+        <div class="card bg-light mb-3" >
+            <form id="doc_add" method="post"  enctype="multipart/form-data">
+                {% csrf_token%}
+                {{form}}
+            </form>
+            <button form="doc_add" type="submit" class="btn btn-primary mt-3 mb-2">Отправить</button>
+        </div>
+    </div>
+    <div class="col-md-4 mt-3">
+        <h4>Перечень документов, необходимых для загрузки:</h4>
+        <blockquote class="blockquoteMyOrange">
+            <p class="small">
+            <ul>
+                <li data-toggle="tooltip" data-placement="bottom" title="Завление "><u>Заявление</u></li>
+                <li data-toggle="tooltip" data-placement="bottom" title="Пример текста "><u>Учетная карточка</u></li>
+                <li data-toggle="tooltip" data-placement="bottom" title="Пример текста "><u>Согласие на зачисление</u></li>
+                <li data-toggle="tooltip" data-placement="bottom" title="Пример текста "><u>Обработка персональных данных</u></li>
+                <li data-toggle="tooltip" data-placement="bottom" title="Пример текста "><u>Фото (3х4)</u></li>
+                <li data-toggle="tooltip" data-placement="bottom" title="Пример текста "><u>Документ, удостоверяющий личность</u></li>
+                <li data-toggle="tooltip" data-placement="bottom" title="Пример текста "><u>Временная регистрация(при наличии в СПб)</u></li>
+                <li data-toggle="tooltip" data-placement="bottom" title="Пример текста "><u>Документ об образовании</u></li>
+                <li data-toggle="tooltip" data-placement="bottom" title="Пример текста "><u>Медицинская справка по форме 086-У</u></li>
+                <li data-toggle="tooltip" data-placement="bottom" title="Пример текста "><u>Прививочный сертификат</u></li>
+                <li data-toggle="tooltip" data-placement="bottom" title="Пример текста "><u>Военный билет или приписное удостоверение</u></li>
+                <li data-toggle="tooltip" data-placement="bottom" title="Пример текста "><u>Снилс</u></li>
+                <li data-toggle="tooltip" data-placement="bottom" title="Пример текста "><u>Индивидуальные достижения</u></li>
+            </ul>
+
+
+            </p>
+        </blockquote>
+    </div>
+    <div class="col-md-4 mt-3">
+        <h4> Документы, которые вы добавили:</h4>
+        <table class="table table-striped border mt-3 table-small" style="font-size: .8em">
             <thead>
             <tr>
-                <th scope="col">id</th>
+
                 <th scope="col">Имя документа</th>
                 <th scope="col">Файл</th>
                 <th scope="col">Удалить</th>
@@ -33,8 +79,8 @@
             {% for i in documents  %}
             {% if request.user == i.user %}
             <tr>
-                <th> {{ i.id }}</th>
-                <td>{{ i.name_dok }}</td>
+
+                <td>{{ i.name_doc }}</td>
                 <td>{{ i.doc }}</td>
                 <td>
                     <form id="delete_form{{i.id}}" action="{% url 'delete_page_url' i.id %}" method="post">
@@ -56,12 +102,14 @@
             </tbody>
         </table>
     </div>
-<!--    <div class="col-md-4">-->
-<!--        <p> asddddddddddddddddd asdasd asdfasdsgkjhyguihas</p>-->
-<!--    </div>-->
+
+
 </div>
+<hr style="border-width: 5px;">
+
 <div class="row justify-content-md-center">
-    <button type="button" class="btn btn-info" data-toggle="modal" data-target="#completeModal">
+
+    <button type="button" class="btn btn-info btn-lg m-5" data-toggle="modal" data-target="#completeModal">
         Закончить подачу документов
     </button>
 </div>
@@ -77,10 +125,11 @@
                 </button>
             </div>
             <div class="modal-body">
-                <p>completeModal completeModal v vcompleteModalv completeModal</p>
+                <p>Вы загрузили все необходимые для приемной комисси документы? После Нажатия кнопки <b class="text-primary">"Завершить подачу
+                    документов"</b> вы <u class="text-danger">не сможете добавить или удалить отправленные в приемную комиссию документы.</u></p>
             </div>
             <div class="modal-footer">
-                <button type="button" class="btn btn-secondary" data-dismiss="modal">Закрыть</button>
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Вернуться к загрузке документов</button>
                 <a href="{% url 'complete_send_url' request.user.id %}" class="btn btn-primary">Завершить подачу документов</a>
             </div>
         </div>

@@ -5,8 +5,6 @@ from transliterate import translit
 from time import time
 
 
-
-
 class News (models.Model):
     """ модель для сущности 'новость' """
     title = models.CharField(max_length=200, db_index=True, verbose_name='Заголовок')

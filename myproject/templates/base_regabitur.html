@@ -51,18 +51,21 @@
         </button>
         <div class="collapse navbar-collapse" id="navbarNav">
             <ul class="navbar-nav">
-                <li class="nav-item active">
-                    <a class="nav-link btn btn-info" href="{% url 'login_abitur_url' %}">Авторизация</a>
+                {% if request.user.is_authenticated %}
+                <li class="nav-item ml-2">
+                    <a class="nav-link btn btn-outline-dark" href="{% url 'user_room_url' %}">Личный кабинет</a>
                 </li>
-                <li class="nav-item">
-                    <a class="nav-link btn btn-info" href="{% url 'user_room_url' %}">Личный кабинет</a>
+                <li class="nav-item ml-2">
+                    <a class="nav-link btn btn-warning" href="{% url 'logout_abitur_url' %}">Выйти</a>
                 </li>
-                <li class="nav-item">
-                    <a class="nav-link btn btn-info" href="{% url 'register_abitur_url' %}">Регистрация</a>
+                {% else %}
+                <li class="nav-item ml-2">
+                    <a class="nav-link btn btn-outline-dark" href="{% url 'login_abitur_url' %}">Авторизация</a>
                 </li>
-                <li class="nav-item">
-                    <a class="nav-link btn btn-info" href="{% url 'logout_abitur_url' %}">Выйти</a>
+                <li class="nav-item ml-2">
+                    <a class="nav-link btn btn-outline-dark" href="{% url 'register_abitur_url' %}">Регистрация</a>
                 </li>
+                {% endif %}
             </ul>
         </div>
     </div>
@@ -147,9 +150,9 @@
                     <li>
                         <a href="#">Личный кабинет</a>
                     </li>
-<!--                    <li>-->
-<!--                        <a href="/admin">Админпанель</a>-->
-<!--                    </li>-->
+                    <!--                    <li>-->
+                    <!--                        <a href="/admin">Админпанель</a>-->
+                    <!--                    </li>-->
                 </ul>
 
             </div>

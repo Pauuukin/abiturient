@@ -68,10 +68,11 @@ class UserRoom(LoginRequiredMixin, ListView):
         if is_exist:
             temp = CustomUser.objects.get(user=self.request.user)
             context['status'] = temp.get_sending_status_display()
-            context['agreement'] = temp.agreement_flag==True
-            context['is_complete'] = temp.complete_flag==True
+            context['success'] = temp.sending_status == 'success'
+            context['error'] = temp.sending_status == 'error'
+            context['agreement'] = temp.agreement_flag == True
+            context['is_complete'] = temp.complete_flag == True
         context['is_exist'] = is_exist
-
         return context
 
 
