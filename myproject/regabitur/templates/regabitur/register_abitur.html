@@ -8,13 +8,6 @@
 
 <h1 class="text-center mt-4">Регистрация (шаг 1)</h1><br><br>
 <div class="row">
-    <div class="col-md-5 card border-primary">
-        <form id="register_form" method="post"><br>
-            {% csrf_token %}
-            {{form }}
-        </form>
-        <button form="register_form" type="submit" class="btn btn-primary mt-4">Зарегистрироваться</button>
-    </div>
 
     <div class="col-md-7">
         <div class="card border-info ml-8">
@@ -32,6 +25,15 @@
             </div>
         </div>
     </div>
+    <div class="col-md-5 card border-primary">
+        <form id="register_form" method="post"><br>
+            {% csrf_token %}
+            {{form }}
+        </form>
+        <button form="register_form" type="submit" class="btn btn-primary mt-4">Зарегистрироваться</button>
+    </div>
+
+
 </div>
 
 {% endblock %}
