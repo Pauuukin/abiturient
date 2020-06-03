@@ -53,6 +53,9 @@ class AddDocForm(forms.ModelForm):
     class Meta:
         model = DocumentUser
         fields = ('name_doc', 'doc')
+        labels = {
+            'name_doc': ('Тип документа'),
+        }
 
     def __init__(self, *args, **kwargs):
         """Переопределяем метод init для формы, чтобы задать нужные классы"""

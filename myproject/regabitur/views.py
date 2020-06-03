@@ -81,7 +81,7 @@ class DocumentsAddView(LoginRequiredMixin, CreateView):
     template_name = 'regabitur/add_doc.html'
     form_class = AddDocForm
     success_url = reverse_lazy('add_doc_url')
-    success_msg = 'Архив успешно добавлен!'
+    success_msg = 'Документ успешно добавлен!'
 
     def get_context_data(self, **kwargs):
         """Переопределяем базовый метод, чтобы передать свой контекст"""
@@ -167,7 +167,7 @@ class MyLoginView(LoginView):
     template_name = 'regabitur/login_abitur.html'
     form_class = MyLoginForm
     # success_url = reverse_lazy('user_room_url')
-    success_url = reverse_lazy('reg_info_url')
+    success_url = reverse_lazy('user_room_url')
 
     def get_success_url(self):
         return self.success_url
@@ -178,7 +178,7 @@ class MyRegisterView(CreateView):
     template_name = 'regabitur/register_abitur.html'
     form_class = MyRegisterForm
     # success_url = reverse_lazy('user_room_url')
-    success_url = reverse_lazy('reg_info_url')
+    success_url = reverse_lazy('user_room_url')
 
     def form_valid(self, form):
         """если пользователь зарегистрировался, сразу входим в систему"""
