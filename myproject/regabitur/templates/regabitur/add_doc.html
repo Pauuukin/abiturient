@@ -4,8 +4,45 @@
 Добавить архив
 {% endblock %}
 
+
+
 {% block content %}
 {%load static%}
+
+<script type='text/javascript'>
+                function showFileSize() {
+                    var input, file;
+                    if (!window.FileReader) {
+                        bodyAppend("p", "The file API isn't supported on this browser yet.");
+                        return;
+                    }
+                    input = document.getElementById('id_doc');
+                    if (!input) {
+                        bodyAppend("p", "Um, couldn't find the id_doc element.");
+                    }
+                    else if (!input.files) {
+                        bodyAppend("p", "This browser doesn't seem to support the `files` property of file inputs.");
+                    }
+                    else if (!input.files[0]) {
+                        bodyAppend("p", "Please select a file before clicking 'Load'");
+                    }
+                    else {
+                        file = input.files[0];
+                        if (file.size>2621440){
+                            alert("Файл должен быть не более 2,5 мегабайт");
+                            return false;
+                            }
+                        bodyAppend("p", "File " + file.name + " is " + file.size + " bytes in size");
+                    }
+                }
+
+                function bodyAppend(tagName, innerHTML) {
+                    var elm;
+                    elm = document.createElement(tagName);
+                    elm.innerHTML = innerHTML;
+                    document.body.appendChild(elm);
+                }
+            </script>
 
 <h2 class="mt-4 text-center">Добавить документы для пользователя - {{request.user}}</h2>
 
@@ -139,11 +176,14 @@
     <div class="col-md-4 ">
         <h4>Форма для загрузки документов:</h4>
         <div class="card bg-light mb-3 p-4" >
-            <form id="doc_add" method="post"  enctype="multipart/form-data">
+            <form id="doc_add" method="post"  enctype="multipart/form-data" onsubmit="return showFileSize()">
                 {% csrf_token%}
                 {{form}}
+<!--                <input type='submit' id='myAnchor' form="doc_add" value='Load' onclick='showFileSize();'>-->
+
             </form>
-            <button form="doc_add" type="submit" class="btn btn-primary mt-3 mb-2">Отправить</button>
+            <button form="doc_add" id='myAnchor' type="submit" class="btn btn-primary mt-3 mb-2" onclick='showFileSize();'>Отправить</button>-->
+
         </div>
     </div>
 

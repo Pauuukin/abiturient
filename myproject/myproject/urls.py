@@ -32,6 +32,7 @@ sitemaps = {
 }
 
 urlpatterns = [
+    path('grappelli/', include('grappelli.urls')), # grappelli URLS
     path('admin/', admin.site.urls),
     path('abitur/', include('abitur.urls')),
     path('accounts/', include('regabitur.urls')),
