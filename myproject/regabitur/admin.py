@@ -21,7 +21,7 @@ class UserInlineDoc(admin.TabularInline):
 
 class UserAdmin(UserAdmin):
     inlines = (UserInline, UserInlineDoc)
-    list_display = ('username', 'first_name', 'last_name', 'email')
+    list_display = ('username', 'first_name', 'last_name', 'date_joined', 'email')
     readonly_fields = [
         'date_joined',
         'user_permissions',
@@ -33,7 +33,6 @@ class UserAdmin(UserAdmin):
         'is_superuser',
         'is_staff',
         'username',
-
     ]
 
 
