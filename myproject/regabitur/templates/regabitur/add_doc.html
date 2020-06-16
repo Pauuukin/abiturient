@@ -1,7 +1,7 @@
 {% extends 'base_regabitur.html' %}
 
 {% block title %}
-Добавить архив
+Добавить документы
 {% endblock %}
 
 
@@ -51,6 +51,14 @@
         Что нужно знать при загрузке документов:
     </div>
 </h4>
+    {% if messages %}
+    <div class="alert alert-success mt-4 text-center" style="wight:200px">
+        {% for m in messages %}
+        {{m}}
+        {% endfor %}
+    </div>
+    {% endif%}
+
 <div class="row">
 
     <div class="col-md-6">
@@ -74,7 +82,7 @@
                 </tr>
                 <tr>
                     <td class="text-center"><span class="badge badge-danger">Важно!</span></td>
-                    <td class="ml-3 text-danger">Размер прикрепляемого файла не должен привышать 2,5 МБ!</td>
+                    <td class="ml-3 text-danger">Размер прикрепляемого файла не должен превышать 2,5 МБ!</td>
                 </tr>
 
             </table>
@@ -179,11 +187,10 @@
             <form id="doc_add" method="post"  enctype="multipart/form-data" onsubmit="return showFileSize()">
                 {% csrf_token%}
                 {{form}}
-<!--                <input type='submit' id='myAnchor' form="doc_add" value='Load' onclick='showFileSize();'>-->
+                <!--                <input type='submit' id='myAnchor' form="doc_add" value='Load' onclick='showFileSize();'>-->
 
             </form>
-            <button form="doc_add" id='myAnchor' type="submit" class="btn btn-primary mt-3 mb-2" onclick='showFileSize();'>Отправить</button>-->
-
+            <button form="doc_add" id='myAnchor' type="submit" class="btn btn-primary mt-3 mb-2" onclick='showFileSize();'>Отправить</button>
         </div>
     </div>
 
@@ -194,7 +201,7 @@
             </tr>
             <tr>
                 <td class="text-center"><span class="badge badge-danger">1 </span></td>
-                <td class="ml-3 text-danger">Размер прикрепляемого файла <b><u>не должен привышать 2,5 МБ!</u></b></td>
+                <td class="ml-3 text-danger">Размер прикрепляемого файла <b><u>не должен превышать 2,5 МБ!</u></b></td>
             </tr>
             <tr>
                 <td class="text-center"><span class="badge badge-danger">2 </span></td>

@@ -54,6 +54,19 @@ def complete_send(request, pk):
     return render(request, template)
 
 
+class CustomSuccessMessageMixin:
+    @property
+    def success_msg(self):
+        return False
+
+    def form_valid(self, form):
+        """если форма валидна добавляем значение текущего запроса и текущее сообщение (success_msg)"""
+        messages.success(self.request, self.success_msg)
+        return super().form_valid(form)
+
+    def get_success_url(self):
+        return '%s?id=%s' % (self.success_url, self.object.id)
+
 
 class UserRoom(LoginRequiredMixin, ListView):
     model = CustomUser
@@ -76,7 +89,7 @@ class UserRoom(LoginRequiredMixin, ListView):
         return context
 
 
-class DocumentsAddView(LoginRequiredMixin, CreateView):
+class DocumentsAddView(LoginRequiredMixin, CustomSuccessMessageMixin, CreateView):
     model = DocumentUser
     template_name = 'regabitur/add_doc.html'
     form_class = AddDocForm
