@@ -1,5 +1,5 @@
 {% extends 'abitur/base_abitur.html' %}
-
+{% load static %}
 {% block title %}
 Аспирантура
 {% endblock %}
@@ -8,21 +8,20 @@
 {% block content %}
 <div class="container">
     <div class = "row">
-    <!--    Название страницы и блок срочной информации     -->
-    <div class = 'col-4-md align-self-start'>
-        <br>
-        <h1 class="display-4"><u> Аспирантура </u></h1>
-    </div>
-    <div class="col-md align-self-center"></div>
-    <div class="col-8-md align-self-end">
-        <br>
-        <blockquote class="blockquoteMyOrange">
-            <p> Важная информация</p>
-        </blockquote>
+        <!--    Название страницы и блок срочной информации     -->
+        <div class = 'col-4-md align-self-start'>
+            <br>
+            <h1 class="display-4"><u> Аспирантура </u></h1>
+        </div>
+        <div class="col-md align-self-center"></div>
+        <div class="col-8-md align-self-end">
+            <br>
+            <!--        <blockquote class="blockquoteMyOrange">-->
+            <!--            <p> Важная информация</p>-->
+            <!--        </blockquote>-->
 
+        </div>
     </div>
-</div>
-
     <br>
     <!--   Блок кнопки\фото     -->
     <div class="row" >
@@ -30,14 +29,14 @@
             <!--        блок с кнопками     -->
             <div class="row">
                 <div class="col-md-6">
-                    <a href="#" class="btn btn-primary btn-block">Направления подготовки</a>
-                    <a href="#" class="btn btn-primary btn-block">Правила приема</a>
-                    <a href="#" class="btn btn-primary btn-block">Условия поступления</a>
-                    <a href="#" class="btn btn-primary btn-block">Порядок учета индивидуальных достижений</a>
+                    <a href="{% static 'docPriem2020/asp/11pravilaAsp.pdf' %}" class="btn btn-primary btn-block">Правила приема</a>
+                    <a href="{% static 'docPriem2020/asp/2usloviyaAsp.pdf' %}" class="btn btn-primary btn-block">Условия поступления</a>
+                    <a href="{% static 'docPriem2020/asp/5individAsp.pdf' %}" class="btn btn-primary btn-block">Порядок учета индивидуальных достижений</a>
+                    <a href="{% static 'docPriem2020/asp/4srokiAsp.pdf' %}" class="btn btn-primary btn-block">Календарь приема</a>
                 </div>
                 <div class="col-md-6">
-                    <a href="#" class="btn btn-primary btn-block">Необходимые документы</a>
                     <a href="{% url 'submit_doc_asp_url' %}" class="btn btn-primary btn-block">Списки подавших документы</a>
+                    <a href="{% url 'result_asp_url' %}" class="btn btn-primary btn-block">Результаты вступительных испытаний </a>
                     <a href="{% url 'rec_list_asp_url' %}" class="btn btn-primary btn-block">Списки рекомендованных к зачислению</a>
                     <a href="{% url 'order_asp_url' %}" class="btn btn-primary btn-block">Приказы о зачислении</a>
                 </div>
@@ -47,475 +46,316 @@
         <div class="col-md-4">
             <!--        Фото  -->
             <figure class="figure">
-                <img src="/media/pictures/2020/02/or.jpg" class="figure-img img-fluid rounded" style="height : 160px">
+                <img src="{% static 'image/asp.jpeg'%}" class="figure-img img-fluid rounded" style="height : 230px">
             </figure>
         </div>
     </div>
+
+
+    <br>
     <hr style="border-width: 3px;">
+    <!--    -->
+    <!--            Общая информация + План приема + Список документов -->
+    <!--    -->
+    <h3 align="center"> Общая информация </h3><br>
+    <div class="row">
+        <div class="col-md-9">
+            <div class="table-responsive">
+                <!--        План приема         -->
+                <table class="table table-sm table-bordered" style="font-size: .9em; text-align: center; font-size: .9em" >
+                    <tbody>
+
+                    <tr>
+                        <td colspan="5"> <h4>План приема</h4> </td>
+                    </tr>
+                    <tr>
+                        <td rowspan="2"> Наименование направления подготовки</td>
+                        <td rowspan="2">Код направлеения подготовки</td>
+                        <td colspan="3">План приема Академии по направлениям подготовки для обучения по образовательным программам
+                            высшего образования – программам подготовки научно-педагогических кадров в аспирантуре на места по договорам
+                            об оказании платных образовательных услуг</td>
+                    </tr>
+                    <tr>
+                        <td>Всего</td>
+                        <td>из них по оченой форме обучения</td>
+                        <td>из них по заочной форме обучения</td>
+                    </tr>
+                    <tr>
+                        <td>Юриспруденция</td>
+                        <td>40.06.01</td>
+                        <td>14</td>
+                        <td>6</td>
+                        <td>8</td>
+                    </tr>
+                    <tr>
+                        <td>Образование и педагогические науки</td>
+                        <td>44.06.01</td>
+                        <td>4</td>
+                        <td>2</td>
+                        <td>2</td>
+                    </tr>
+
+                    <tr>
+                        <td colspan="5"><a href="{% static 'docPriem2020/asp/1planAsp.pdf' %}" class="btn btn-primary btn-block">Посмотреть документ </a></td>
+                    </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+        <!--    Необходимые документы    -->
+        <div class="col-md-3" style=" background-color: #e3f2fd;">
+            <h5> <u>Необходимые документы</u></h5>
+            <br>
+            <ul>
+                <li>Документ, удостоверяющий личность заявителя и его гражданство (паспорт);</li>
+                <li>Документ государственного образца об образовании с приложением;</li>
+                <li>2 фотографии 3*4;</li>
+                <li>Медицинская справка по форме 086-У, для поступающих на очную и очно-заочную формы обучения.</li>
+            </ul>
+            <a target="_blank" href="{% static 'docPriem2020/dogovorBM.pdf' %}" class="btn btn-primary "><p class="small">
+                Типовой договор об образовании на обучение по образовательным программам высшего образования</p></a>
+
+
+        </div>
+    </div>
+    <br><br>
+
+
+    <hr style="border-width: 3px;">
+
     <!--    Блок навигации по формам образования    -->
-    <div class="row">
-        <div class="col-md-1"></div>
-        <div class="col-md"><a href="#ofo" class="btn btn-block btn-primary">Очная форма</a></div>
-        <div class="col-md-1"></div>
-        <div class="col-md"><a href="#zfo" class="btn btn-block btn-primary">Заочная форма</a></div>
-        <div class="col-md-1"></div>
-    </div>
-    <!--
+    <div id="spoiler">
+        <h4 class="text-center text-monospace">Выберете форму образования, чтобы узнать больше: </h4><br><br>
+        <div class="row">
 
-                        Очная форма
-
-    -->
-    <a id="ofo"></a>
-    <hr style="border-width: 3px;">
-    <div>
-        <h2 align="center"> Очная форма обучения </h2>
-    </div>
-    <hr style="border-width: 3px;">
-    <!--    Направления подготовки и документы  -->
-
-    <div class="row">
-        <!--    Направления подготовки      -->
-        <div class="col-md-8" >
-            <table class="table table-striped table-sm table-response" style=" background-color: #e3f2fd; text-align: center; font-size: .9em" >
-
-                <h3 style="text-align: center">Направления подготовки</h3>
-
-                <tr>
-                    <td>Название направления</td>
-                    <td>Срок обучения</td>
-                    <td> Направление подготовки</td>
-                </tr>
-                <tr>
-                    <td rowspan="4">Юриспруденция</td>
-                    <td rowspan="4">4 года</td>
-                    <td><a href="{% url 'spec_bak_1_url' %}"> Направление 1</a></td>
-                </tr>
-                <tr>
-                    <td>Направление 2</td>
-                </tr>
-                <tr>
-                    <td>Направление 3</td>
-                </tr>
-                <tr >
-                    <td>Направление 4</td>
-                </tr>
-            </table>
-        </div>
-        <div class="col-md-1"></div>
-        <!--    Необходимые документы    -->
-        <div class="col-md-3" style=" text-align : center ; background-color: #e3f2fd;">
-            <h5> Необходимые документы</h5>
-            <br>
-            <p> <a href="" >Документ 1</a> <br>
-                <a href="" >Документ 2</a> <br>
-                <a href="" >Документ 3</a> <br>
-                <a href="" >Документ 4</a> <br>
-            </p>
-        </div>
-    </div>
-    <hr style="border-width: 3px;">
-    <div class="row">
-        <div class="col-md-8">
-            <!--        План приема         -->
-            <table class="table table-sm table-bordered table-response" style="font-size: .9em; text-align: center; font-size: .9em" >
-                <tbody>
-                <tr>
-                    <td colspan="7"> <h4>План приема</h4> </td>
-                </tr>
-                <tr>
-                    <td>План приема по направлению подгоaspки для обучения по образовательным программам
-                        аспирантуры на места по договорам об оказании платных услуг</td>
-                    <td>Наименование направления подготовки</td>
-                    <td>Код направления подготовки</td>
-                    <td>Всего</td>
-                    <td>Из них по очной форме обучения</td>
-                    <td>Из них по очно-заочной форме обучения</td>
-                    <td>Из них по заочной форме обучения</td>
-                </tr>
-                <tr>
-                    <td>на места по договорам об оказании платных образовательных услуг</td>
-                    <td>Юриспруденция </td>
-                    <td>40.03.01</td>
-                    <td>495</td>
-                    <td>135</td>
-                    <td>270</td>
-                    <td>90</td>
-                </tr>
-                <tr></tr>
-                <tr>
-                    <td>на места по договорам об оказании платных образовательных услуг для лиц, имеющих
-                        право на прием в пределах квоты, лиц, имеющих особые права</td>
-                    <td>Юриспруденция </td>
-                    <td>40.03.01</td>
-                    <td>55</td>
-                    <td>15</td>
-                    <td>30</td>
-                    <td>10</td>
-                </tr>
-                </tbody>
-            </table>
-            <hr style="border-width: 3px;">
-            <!--   Вступительные испытания     -->
-            <div style="text-align : center;">
-                <h3>Вступительные испытания</h3>
+            <div class="col-md align-self-start">
+                <button class="btn btn-lg btn-outline-dark btn-info mr-5" type="button" data-toggle="collapse" data-target="#OFO" aria-expanded="false" aria-controls="#OFO">
+                    Очная форма обучения
+                </button>
             </div>
-            <!--   Вступительные испытания таблица    -->
-            <table class="table table-sm table-bordered table-response" style="font-size: .9em">
-                <tr class="table-success">
-                    <td>Уровень образования</td>
-                    <td>Перечень вступительных испытаний</td>
-                    <td>Минимальное количество баллов</td>
-                </tr>
-                <tr>
-                    <td>Среднее общее образование</td>
-                    <td>Результаты ЕГЭ по предметам обществознание, русский язык, история
-                    </td>
-                    <td>
-                        Обществознание - 42 балла <br>
-                        Русский язык - 36 баллов <br>
-                        История - 32 балла <br>
-                    </td>
-                </tr>
-                <tr>
-                    <td>Высшее образования</td>
-                    <td>Необходимо пройти собеседование (тестирование) по общеобразовательным предметам</td>
-                    <td>
-                        Обществознание - 42 балла <br>
-                        Русский язык - 36 баллов <br>
-                        Основы конституционного права - 40 баллов <br>
-                    </td>
-                </tr>
-                <tr>
-                    <td>Среднее профессиональное(юридическое) образование</td>
-                    <td>Необходимо пройти собеседование (тестирование) по общеобразовательным предметам</td>
-                    <td>
-                        Обществознание - 42 балла <br>
-                        Русский язык - 36 баллов <br>
-                        Теория государства и права - 40 баллов <br>
-                    </td>
-                </tr>
-                <tr>
-                    <td>Начальное профессиональное или среднее профессиональное (не профильное)</td>
-                    <td>Необходимо пройти собеседование (тестирование) по общеобразовательным предметам</td>
-                    <td>
-                        Обществознание - 42 балла <br>
-                        Русский язык - 36 баллов <br>
-                        История - 32 балла <br>
-                    </td>
-                </tr>
-            </table>
-            <!--        текст под таблицей      -->
-            <div class="row">
-                <div class="col-md-7">
-                    <blockquote class="blockquoteMyOrange">
-                        <p class="small">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer posuere erat a ante. Lorem
-                            ipsum dolor sit amet, consectetur adipiscing elit. Integer posuere erat a ante.
-                            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer posuere erat a ante.</p>
-                    </blockquote>
+            <div class="col-md align-self-end">
+                <button class="btn btn-lg btn-outline-dark btn-info ml-5" type="button" data-toggle="collapse" data-target="#ZFO" aria-expanded="false" aria-controls="#ZFO">
+                    Заочная форма обучения
+                </button>
+            </div>
+        </div>
+        <br><br><br><br>
+        <!--
+
+                            Очная форма
+
+        -->
+        <div class="collapse" id="OFO" data-parent="#spoiler">
+            <div class="card card-body">
+
+                <div>
+                    <h2 align="center"> Очная форма обучения </h2>
                 </div>
-                <!--            Документы       -->
-                <div class="col-md-5">
-                    <table class="table table-striped table-sm table-response" style=" background-color: #e3f2fd; text-align: center; font-size: .9em">
-                        <tr>
-                            <td colspan="2"> <h5>Документы</h5></td>
-                        </tr>
-                        <tr>
-                            <td>Название</td>
-                            <td><a href="#">Открыть</a> </td>
-                        </tr>
-                        <tr>
-                            <td>Название</td>
-                            <td><a href="#">Открыть</a> </td>
-                        </tr>
-                    </table>
+                <hr style="border-width: 3px;">
+                <!--    Направления подготовки и документы  -->
+                <div class="row">
+                    <!--    Направления подготовки      -->
+                    <div class="col-md">
+                        <div class="row">
+
+                            <div class="table-responsive">
+                                <table class="table table-striped table-response table-bordered" style=" background-color: #e3f2fd; text-align: center; " >
+                                    <tr>
+                                        <td class="table-info" colspan="3"><h4>Направления подготовки</h4></td>
+                                    </tr>
+                                    <tr>
+                                        <td>Название направления</td>
+                                        <td>Срок обучения</td>
+                                        <td>Профиль подготовки</td>
+                                    </tr>
+                                    <tr>
+                                        <td rowspan="3">Юриспруденция (40.06.01</td>
+                                        <td rowspan="3">3 года</td>
+                                        <td>Теория и история права и государства, история учений о праве и государстве</td>
+                                    </tr>
+                                    <tr>
+                                        <td>Уголовный процесс</td>
+                                    </tr>
+                                    <tr>
+                                        <td>Криминалистика; судебно-экспертная деятельность; оперативно-розыскная деятельность</td>
+
+                                    </tr>
+
+                                    <tr>
+                                        <td>Образование и педагогические науки (44.06.01)</td>
+                                        <td>3 года</td>
+                                        <td>Теория и методика профессионального образования</td>
+                                    </tr>
+                                </table>
+                            </div>
+                        </div>
+                        <hr style="border-width: 3px;">
+                        <div class="row">
+
+
+                            <!--   Вступительные испытания таблица    -->
+                            <div class="table-responsive">
+                                <table class="table table-bordered" style="font-size: .9em">
+                                    <tr class="table-info" style="text-align: center;">
+                                        <td colspan="3"><h4>Вступительные испытания</h4> </td>
+                                    </tr>
+                                    <tr class="table-success">
+                                        <td>Уровень образования</td>
+                                        <td>Перечень вступительных испытаний</td>
+                                        <td>Минимальное количество баллов</td>
+                                    </tr>
+                                    <tr>
+                                        <td>Высшее образование</td>
+                                        <td>Необходимо пройти собеседование (тестирование) по общеобразовательным предметам</td>
+                                        <td>
+                                            Специальная дисциплина - 60 баллов<br>
+                                            Английский язык - 50 баллов<br>
+                                        </td>
+                                    </tr>
+                                </table>
+                                <br><br>
+                            </div>
+                            <!--        текст под таблицей      -->
+                            <div class="row">
+
+                                <div class="col-md-7">
+                                    <blockquote class="blockquoteMyOrange">
+                                        <p class="small">Вступительные испытания в Академию проводятся на русском языке. Дистанционное прохождение вступительных испытаний не предусмотрено.</p>
+                                    </blockquote>
+                                    <blockquote class="blockquoteMyOrange">
+                                        <p class="small">Приоритетным вступительным испытанием при ранжировании списков поступающих только по результатам
+                                            общеобразовательных вступительных испытаний в первую очередь является обществознание; во вторую – русский язык;
+                                            в третью – история.</p>
+                                    </blockquote>
+                                </div>
+                                <!--            Документы       -->
+                                <div class="col-md-5">
+                                    <table class="table table-striped table-sm" style=" background-color: #e3f2fd; text-align: center; font-size: .9em">
+                                        <tr>
+                                            <td> <h5>Программы вступительных испытаний</h5></td>
+                                        </tr>
+                                        <tr class="table-info">
+                                            <td><a href="{% static 'docPriem2020/asp/3vstupitAsp.pdf'%}">Перечень вступительных испытаний и минимальное количество баллов</a> </td>
+                                        </tr>
+                                        <tr class="table-info">
+                                            <td><a href="{% static 'docPriem2020/vstupit/asp/120001asp.pdf'%}">Программа для приема по специальности 40.06.01 "Юриспруденция" (Теория и история права и государства, история учений о праве и государстве)</a> </td>
+                                        </tr>
+
+                                    </table>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
                 </div>
-
             </div>
-
         </div>
-        <div class="col-md-1"></div>
-        <!--    Календарь приема        -->
-        <div class="col-md-3">
-            <div class="row">
-                <h3>Календарь приема</h3>
-                <table class="table table-response">
-                    <tr>
-                        <td>1 июня</td>
-                        <td>начало приема</td>
-                    </tr>
-                    <tr>
-                        <td>15 июня</td>
-                        <td>что-то еще</td>
-                    </tr>
-                    <tr>
-                        <td>25 июня</td>
-                        <td>что-то еще</td>
-                    </tr>
-                    <tr>
-                        <td>5 июля</td>
-                        <td>что-то еще</td>
-                    </tr>
-                    <tr>
-                        <td>25 июля</td>
-                        <td>что-то еще</td>
-                    </tr>
-                    <tr>
-                        <td>1 августа</td>
-                        <td>что-то еще</td>
-                    </tr>
-                    <tr>
-                        <td>20 августа</td>
-                        <td>что-то еще</td>
-                    </tr>
-                    <tr>
-                        <td>31 августа</td>
-                        <td>конец приема</td>
-                    </tr>
-                </table>
+        <!--
 
-            </div>
-            <hr style="border-width: 3px;">
-            <!--        Договоры        -->
-            <table class="table table-response" style="text-align : center; font-size: .9em">
-                <tr>
-                    <td><h5>Договор о платных услугах</h5></td>
-                </tr>
-                <tr>
-                    <td><a href="">Документ 1</a><br></td>
-                </tr>
-                <tr>
-                    <td><a href="">Документ 2</a><br></td>
-                </tr>
-            </table>
-        </div>
-    </div>
-    <!--
+                            Заочная форма
 
-                        Заочная форма
+        -->
+        <div class="collapse" id="ZFO" data-parent="#spoiler">
+            <div class="card card-body">
 
-    -->
-    <a id="zfo"></a>
-    <hr style="border-width: 3px;">
-    <div>
-        <h2 align="center"> Заочная форма обучения </h2>
-    </div>
-    <hr style="border-width: 3px;">
-    <!--    Направления подготовки и документы  -->
-
-    <div class="row">
-        <!--    Направления подготовки      -->
-        <div class="col-md-8" >
-            <table class="table table-striped table-sm table-response" style=" background-color: #e3f2fd; text-align: center; font-size: .9em" >
-
-                <h3 style="text-align: center">Направления подготовки</h3>
-
-                <tr>
-                    <td>Название направления</td>
-                    <td>Срок обучения</td>
-                    <td> Направление подготовки</td>
-                </tr>
-                <tr>
-                    <td rowspan="4">Юриспруденция</td>
-                    <td rowspan="4">4 года</td>
-                    <td>Направление 1</td>
-                </tr>
-                <tr>
-                    <td>Направление 2</td>
-                </tr>
-                <tr>
-                    <td>Направление 3</td>
-                </tr>
-                <tr >
-                    <td>Направление 4</td>
-                </tr>
-            </table>
-        </div>
-        <div class="col-md-1"></div>
-        <!--    Необходимые документы    -->
-        <div class="col-md-3" style=" text-align : center ; background-color: #e3f2fd;">
-            <h5> Необходимые документы</h5>
-            <br>
-            <p> <a href="" >Документ 1</a> <br>
-                <a href="" >Документ 2</a> <br>
-                <a href="" >Документ 3</a> <br>
-                <a href="" >Документ 4</a> <br>
-            </p>
-        </div>
-    </div>
-    <hr style="border-width: 3px;">
-    <div class="row">
-        <div class="col-md-8">
-            <!--        План приема         -->
-            <table class="table table-sm table-bordered table-response" style="font-size: .9em; text-align: center; font-size: .9em" >
-                <tbody>
-                <tr>
-                    <td colspan="7"> <h4>План приема</h4> </td>
-                </tr>
-                <tr>
-                    <td>План приема по направлению подготовки для обучения по образовательным программам
-                        аспирантуры на места по договорам об оказании платных услуг</td>
-                    <td>Наименование направления подготовки</td>
-                    <td>Код направления подготовки</td>
-                    <td>Всего</td>
-                    <td>Из них по очной форме обучения</td>
-                    <td>Из них по очно-заочной форме обучения</td>
-                    <td>Из них по заочной форме обучения</td>
-                </tr>
-                <tr>
-                    <td>на места по договорам об оказании платных образовательных услуг</td>
-                    <td>Юриспруденция </td>
-                    <td>40.03.01</td>
-                    <td>495</td>
-                    <td>135</td>
-                    <td>270</td>
-                    <td>90</td>
-                </tr>
-                <tr></tr>
-                <tr>
-                    <td>на места по договорам об оказании платных образовательных услуг для лиц, имеющих
-                        право на прием в пределах квоты, лиц, имеющих особые права</td>
-                    <td>Юриспруденция </td>
-                    <td>40.03.01</td>
-                    <td>55</td>
-                    <td>15</td>
-                    <td>30</td>
-                    <td>10</td>
-                </tr>
-                </tbody>
-            </table>
-            <hr style="border-width: 3px;">
-            <!--   Вступительные испытания     -->
-            <div style="text-align : center;">
-                <h3>Вступительные испытания</h3>
-            </div>
-            <!--   Вступительные испытания таблица    -->
-            <table class="table table-sm table-bordered table-response" style="font-size: .9em">
-                <tr class="table-success">
-                    <td>Уровень образования</td>
-                    <td>Перечень вступительных испытаний</td>
-                    <td>Минимальное количество баллов</td>
-                </tr>
-                <tr>
-                    <td>Среднее общее образование</td>
-                    <td>Результаты ЕГЭ по предметам обществознание, русский язык, история
-                    </td>
-                    <td>
-                        Обществознание - 42 балла <br>
-                        Русский язык - 36 баллов <br>
-                        История - 32 балла <br>
-                    </td>
-                </tr>
-                <tr>
-                    <td>Высшее образования</td>
-                    <td>Необходимо пройти собеседование (тестирование) по общеобразовательным предметам</td>
-                    <td>
-                        Обществознание - 42 балла <br>
-                        Русский язык - 36 баллов <br>
-                        Основы конституционного права - 40 баллов <br>
-                    </td>
-                </tr>
-                <tr>
-                    <td>Среднее профессиональное(юридическое) образование</td>
-                    <td>Необходимо пройти собеседование (тестирование) по общеобразовательным предметам</td>
-                    <td>
-                        Обществознание - 42 балла <br>
-                        Русский язык - 36 баллов <br>
-                        Теория государства и права - 40 баллов <br>
-                    </td>
-                </tr>
-                <tr>
-                    <td>Начальное профессиональное или среднее профессиональное (не профильное)</td>
-                    <td>Необходимо пройти собеседование (тестирование) по общеобразовательным предметам</td>
-                    <td>
-                        Обществознание - 42 балла <br>
-                        Русский язык - 36 баллов <br>
-                        История - 32 балла <br>
-                    </td>
-                </tr>
-            </table>
-            <!--        текст под таблицей      -->
-            <div class="row">
-                <div class="col-md-7">
-                    <blockquote class="blockquoteMyOrange">
-                        <p class="small">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer posuere erat a ante. Lorem
-                            ipsum dolor sit amet, consectetur adipiscing elit. Integer posuere erat a ante.
-                            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer posuere erat a ante.</p>
-                    </blockquote>
+                <div>
+                    <h2 align="center"> Заочная форма обучения </h2>
                 </div>
-                <!--            Документы       -->
-                <div class="col-md-5">
-                    <table class="table table-striped table-sm table-response" style=" background-color: #e3f2fd; text-align: center; font-size: .9em">
-                        <tr>
-                            <td colspan="2"> <h5>Документы</h5></td>
-                        </tr>
-                        <tr>
-                            <td>Название</td>
-                            <td><a href="#">Открыть</a> </td>
-                        </tr>
-                        <tr>
-                            <td>Название</td>
-                            <td><a href="#">Открыть</a> </td>
-                        </tr>
-                    </table>
+                <hr style="border-width: 3px;">
+                <!--    Направления подготовки и документы  -->
+                <div class="row">
+                    <!--    Направления подготовки      -->
+                    <div class="col-md">
+                        <div class="row">
+
+                            <div class="table-responsive">
+                                <table class="table table-striped table-response table-bordered" style=" background-color: #e3f2fd; text-align: center; " >
+                                    <tr>
+                                        <td class="table-info" colspan="3"><h4>Направления подготовки</h4></td>
+                                    </tr>
+                                    <tr>
+                                        <td>Название направления</td>
+                                        <td>Срок обучения</td>
+                                        <td>Профиль подготовки</td>
+                                    </tr>
+                                    <tr>
+                                        <td rowspan="3">Юриспруденция (40.06.01</td>
+                                        <td rowspan="3">4 года</td>
+                                        <td>Теория и история права и государства, история учений о праве и государстве</td>
+                                    </tr>
+                                    <tr>
+                                        <td>Уголовный процесс</td>
+                                    </tr>
+                                    <tr>
+                                        <td>Криминалистика; судебно-экспертная деятельность; оперативно-розыскная деятельность</td>
+
+                                    </tr>
+
+                                    <tr>
+                                        <td>Образование и педагогические науки (44.06.01)</td>
+                                        <td>4 года</td>
+                                        <td>Теория и методика профессионального образования</td>
+                                    </tr>
+                                </table>
+                            </div>
+                        </div>
+                        <hr style="border-width: 3px;">
+                        <div class="row">
+
+
+                            <!--   Вступительные испытания таблица    -->
+                            <div class="table-responsive">
+                                <table class="table table-bordered" style="font-size: .9em">
+                                    <tr class="table-info" style="text-align: center;">
+                                        <td colspan="3"><h4>Вступительные испытания</h4> </td>
+                                    </tr>
+                                    <tr class="table-success">
+                                        <td>Уровень образования</td>
+                                        <td>Перечень вступительных испытаний</td>
+                                        <td>Минимальное количество баллов</td>
+                                    </tr>
+                                    <tr>
+                                        <td>Высшее образование</td>
+                                        <td>Необходимо пройти собеседование (тестирование) по общеобразовательным предметам</td>
+                                        <td>
+                                            Специальная дисциплина - 60 баллов<br>
+                                            Английский язык - 50 баллов<br>
+                                        </td>
+                                    </tr>
+                                </table>
+                                <br><br>
+                            </div>
+                            <!--        текст под таблицей      -->
+                            <div class="row">
+
+                                <div class="col-md-7">
+                                    <blockquote class="blockquoteMyOrange">
+                                        <p class="small">Вступительные испытания в Академию проводятся на русском языке. Дистанционное прохождение вступительных испытаний не предусмотрено.</p>
+                                    </blockquote>
+                                    <blockquote class="blockquoteMyOrange">
+                                        <p class="small">Приоритетным вступительным испытанием при ранжировании списков поступающих только по результатам
+                                            общеобразовательных вступительных испытаний в первую очередь является обществознание; во вторую – русский язык;
+                                            в третью – история.</p>
+                                    </blockquote>
+                                </div>
+                                <!--            Документы       -->
+                                <div class="col-md-5">
+                                    <table class="table table-striped table-sm" style=" background-color: #e3f2fd; text-align: center; font-size: .9em">
+                                        <tr>
+                                            <td> <h5>Программы вступительных испытаний</h5></td>
+                                        </tr>
+                                        <tr class="table-info">
+                                            <td><a href="{% static 'docPriem2020/asp/3vstupitAsp.pdf'%}">Перечень вступительных испытаний и минимальное количество баллов</a> </td>
+                                        </tr>
+                                        <tr class="table-info">
+                                            <td><a href="{% static 'docPriem2020/vstupit/asp/120001asp.pdf'%}">Программа для приема по специальности 40.06.01 "Юриспруденция" (Теория и история права и государства, история учений о праве и государстве)</a> </td>
+                                        </tr>
+                                    </table>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
                 </div>
-
             </div>
-
-        </div>
-        <div class="col-md-1"></div>
-        <!--    Календарь приема        -->
-        <div class="col-md-3">
-            <div class="row">
-                <h3>Календарь приема</h3>
-                <table class="table table-response">
-                    <tr>
-                        <td>1 июня</td>
-                        <td>начало приема</td>
-                    </tr>
-                    <tr>
-                        <td>15 июня</td>
-                        <td>что-то еще</td>
-                    </tr>
-                    <tr>
-                        <td>25 июня</td>
-                        <td>что-то еще</td>
-                    </tr>
-                    <tr>
-                        <td>5 июля</td>
-                        <td>что-то еще</td>
-                    </tr>
-                    <tr>
-                        <td>25 июля</td>
-                        <td>что-то еще</td>
-                    </tr>
-                    <tr>
-                        <td>1 августа</td>
-                        <td>что-то еще</td>
-                    </tr>
-                    <tr>
-                        <td>20 августа</td>
-                        <td>что-то еще</td>
-                    </tr>
-                    <tr>
-                        <td>31 августа</td>
-                        <td>конец приема</td>
-                    </tr>
-                </table>
-
-            </div>
-            <hr style="border-width: 3px;">
-            <!--        Договоры        -->
-            <table class="table table-response" style="text-align : center; font-size: .9em">
-                <tr>
-                    <td><h5>Договор о платных услугах</h5></td>
-                </tr>
-                <tr>
-                    <td><a href="">Документ 1</a><br></td>
-                </tr>
-                <tr>
-                    <td><a href="">Документ 2</a><br></td>
-                </tr>
-            </table>
         </div>
     </div>
 </div>

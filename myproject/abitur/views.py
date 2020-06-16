@@ -30,8 +30,16 @@ def bakPage(request):
     return render(request, 'abitur/bak.html')
 
 
+def bak_calendar(request):
+    return render(request, 'abitur/bak/calendar_bak.html')
+
+
 def mag_page(request):
     return render(request, 'abitur/mag.html')
+
+
+def infoOVZ_page(request):
+    return render(request, 'abitur/infoOVZ.html')
 
 
 def asp_page(request):
@@ -51,13 +59,18 @@ def spec_bak_1(request):
 
 
 def news_list(request):
-    news = News.objects.all()
+    news = News.objects.all().order_by('-id')
     return render(request, 'abitur/all_news.html', context={'news': news})
 
 
 def order_bak(request):
     educational_form = EducationalForm.objects.all()
     return render(request, 'abitur/bak/order_bak.html', context={'educational_form': educational_form})
+
+
+def result_bak(request):
+    educational_form = EducationalForm.objects.all()
+    return render(request, 'abitur/bak/result_bak.html', context={'educational_form': educational_form})
 
 
 def rec_list_bak(request):
@@ -75,6 +88,11 @@ def order_mag(request):
     return render(request, 'abitur/mag/order_mag.html', context={'educational_form': educational_form})
 
 
+def result_mag(request):
+    educational_form = EducationalFormMag.objects.all()
+    return render(request, 'abitur/mag/result_mag.html', context={'educational_form': educational_form})
+
+
 def rec_list_mag(request):
     educational_form = EducationalFormMag.objects.all()
     return render(request, 'abitur/mag/rec_list_mag.html', context={'educational_form': educational_form})
@@ -88,6 +106,11 @@ def submit_doc_mag(request):
 def order_asp(request):
     educational_form = EducationalFormAsp.objects.all()
     return render(request, 'abitur/asp/order_asp.html', context={'educational_form': educational_form})
+
+
+def result_asp(request):
+    educational_form = EducationalFormAsp.objects.all()
+    return render(request, 'abitur/asp/result_asp.html', context={'educational_form': educational_form})
 
 
 def rec_list_asp(request):

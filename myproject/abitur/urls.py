@@ -3,7 +3,7 @@ from django.urls import path
 from .views import *
 
 urlpatterns = [
-    path('', abiturPage),
+    path('', abiturPage, name='main_abitur_url'),
     path('news/<str:slug>/', NewsDetail.as_view(), name='news_detail_url'),
     path('bak/', bakPage, name='bakPage_url'),
     path('inter/', interPage, name='interPage_url'),
@@ -21,5 +21,10 @@ urlpatterns = [
     path('asp/rec_list_asp/', rec_list_asp, name='rec_list_asp_url'),
     path('asp/submit_doc_asp/', submit_doc_asp, name='submit_doc_asp_url'),
     path('mag/', mag_page, name='mag_page_url'),
-    path('asp/', asp_page, name='asp_page_url')
+    path('asp/', asp_page, name='asp_page_url'),
+    path('infoOVZ/', infoOVZ_page, name='infoOVZ_page_url'),
+    path('bak/calendar/', bak_calendar, name='bak_calendar_url'),
+    path('bak/result_bak/', result_bak, name='result_bak_url'),
+    path('mag/result_mag/', result_mag, name='result_mag_url'),
+    path('asp/result_asp/', result_asp, name='result_asp_url')
 ]

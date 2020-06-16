@@ -1,0 +1,301 @@
+{% extends 'base_regabitur.html' %}
+{% block title %}
+Личный кабинет  - {{request.user }}
+{% endblock %}
+{% load static %}
+
+{% block content %}
+
+
+<style>
+input + a.btn {
+  display: none;
+}
+input:checked + a {
+  display: inline;
+}
+</style>
+
+<h1 class="mt-3">Личный кабинет пользователя - <u>{{request.user }}</u></h1>
+<hr >
+<div class="row">
+    <div class="col-md-6">
+        <h4>Статус вашей заявки:</h4>
+        {% if error %}
+        <div class="alert alert-danger" role="alert">
+            <h4> {{status}} </h4>
+        </div>
+        {% else %}
+        {% if success %}
+        <div class="alert alert-success" role="alert">
+            <h4> {{status}} </h4>
+        </div>
+        {% else %}
+        <div class="alert alert-warning" role="alert">
+            <h4> {{status}} </h4>
+        </div>
+        {% endif %}
+        {% endif %}
+    </div>
+    <div class="col-md-3">
+        <!--         что-то можно добавить  -->
+    </div>
+
+</div>
+<!--
+-
+-    если документы поданы
+-
+ -->
+{% if is_complete %}
+<div class="row">
+    <div class="col-md-7">
+        <h3> Вы успешно подали документы! </h3>
+        <hr>
+        <blockquote class="blockquoteMyBlue">
+            <table class="table">
+                <tr>
+                    <td><img src="{% static 'icons/arrow-right-circle-fill.svg'%}" alt="" width="32" height="32"></td>
+                    <td>  <p> Обработка документов сотрудниками приемной комиссии занимает от 3 до 5 дней. Вы можете следить за статусом
+                        своей заявки в личном кабинете абитуриента. Напоминаем, что <b><u>сотрудники приемной комисси СПБЮА в любом
+                            случае свяжутся с вами по телефону или электронной почте, указанной при регистрации.</u></b><br></p></td>
+                </tr>
+                <tr>
+                    <td> <img src="{% static 'icons/arrow-right-circle-fill.svg'%}" alt="" width="32" height="32"></td>
+                    <td><u>Не нужно звонить в приемную комиссию сразу после подачи документов, это только замедлит процесс обработки документов.</u>
+                </tr>
+            </table>
+            <h4><span class="badge badge-danger">Следите за статусом заявки в личном кабинете!</span> </h4>
+            <br>
+        </blockquote>
+
+    </div>
+
+    <div class="col-md-5 mt-3">
+        <!--        Основные данные     -->
+        <h4>Ваши данные: </h4>
+        <div class="card border-primary">
+
+            <table class="table table-sm">
+                <thead>
+                <tr>
+                    <td colspan="2" class="text-center table-info"> <h5> Данные пользователя </h5></td>
+                </tr>
+                </thead>
+                <tbody>
+                <tr>
+                    <td>Индивидуальный номер:</td>
+                    <td>{{request.user.id}}</td>
+                </tr>
+                <tr>
+                    <td>Логин для входа:</td>
+                    <td>{{request.user}}</td>
+                </tr>
+                <tr>
+                    <td>Имя/Фамилия</td>
+                    <td>{{request.user.get_full_name}}</td>
+                </tr>
+                <tr>
+                    <td>Почта </td>
+                    <td>{{request.user.email}}</td>
+                </tr>
+                </tbody>
+            </table>
+        </div>
+        <br>
+
+        <div class="card border-info mt-3 mb-3">
+            <!--            Доподнительные данные   -->
+            <table class="table table-sm">
+                <thead>
+                <tr>
+                    <td colspan="2" class="text-center table-info"> <h5> Дополнительные данные </h5></td>
+                </tr>
+                </thead>
+                <tbody>
+                {% for i in dop_info  %}
+                {% if request.user == i.user %}
+                <tr>
+                    <td> Отчество: </td>
+                    <td>{{i.patronymic}}</td>
+                </tr>
+                <tr>
+                    <td> Дата рождения: </td>
+                    <td>{{i.date_of_birth}}</td>
+                </tr>
+                <tr>
+                    <td> Номер телефона: </td>
+                    <td>{{i.phone_number}}</td>
+                </tr>
+                {%endif%}
+                {% endfor %}
+                </tbody>
+            </table>
+        </div>
+
+    </div>
+</div>
+
+<!--
+-
+-    если документы еще не поданы
+-
+-->
+{% else %}
+<hr>
+<div class="row">
+    <div class="col-md-7">
+        <div class="table-responsive">
+            <table class="table">
+                <tr>
+                    <td><img src="{% static 'icons/arrow-right-circle-fill.svg'%}" alt="" width="32" height="32"></td>
+                    <td><p>Вы успешно зарегистрировались в системе и теперь можете перейти ко второму шагу: <br>
+                        <b><u> Загрузка дополнительной информации </u></b></p></td>
+                </tr>
+                <tr>
+                    <td> <img src="{% static 'icons/arrow-right-circle-fill.svg'%}" alt="" width="32" height="32"></td>
+                    <td><p>Как только вы добавите свое отчество, дату рождения и номер телефона, вы можете приступать к скачиванию
+                        и заполнению необходимых документов.</p></td>
+                </tr>
+                <tr>
+                    <td><img src="{% static 'icons/arrow-right-circle-fill.svg'%}" alt="" width="32" height="32"></td>
+                    <td>
+                        <div class="alert alert-danger" role="alert">
+                            Обязательно скачать и заполнить документы. Загрузить заполненные документы вы сможете на <b><u>3-м шаге:</u></b><br><br>
+                            <ul>
+                                <li><a href="{% static 'docPriem2020/blank/z_bak.pdf'%}" target="_blank" >Заявление для поступления на <b>БАКАЛАВРИАТ</b></a></li>
+                                <li><a href="{% static 'docPriem2020/blank/z_mag.pdf'%}" target="_blank" >Заявление для поступления на <b>МАГИСТРАТУРУ</b></a></li>
+                                <li><a href="{% static 'docPriem2020/blank/z_asp.pdf'%}" target="_blank" >Заявление для поступления на <b>АСПИРАНТУРУ</b></a></li>
+                                <li><a href="{% static 'docPriem2020/blank/z_uk.pdf'%}" target="_blank" >Учетная карточка студента</a></li>
+                                <li><a href="{% static 'docPriem2020/blank/z_pd.pdf'%}" target="_blank" >Согласие на обработку персональных данных</a></li>
+                                <li><a href="{% static 'docPriem2020/blank/z_sogl.pdf'%}" target="_blank" >Согласие на зачисление</a></li>
+                            </ul>
+
+                            <button class="btn btn-warning" type="button" data-toggle="collapse" data-target="#collapseExample" aria-expanded="false" aria-controls="collapseExample">
+                                Посмотреть примеры заполненных документов <img src="{% static 'icons/box-arrow-down.svg'%}" alt="" width="32" height="32">
+                            </button>
+                            <div class="collapse" id="collapseExample">
+                                <div class="card card-body">
+                                    <ul>
+                                        <li><a href="{% static 'docPriem2020/blank/example/z_bak_ex.pdf'%}" target="_blank" >Пример: Заявление для поступления на <b>БАКАЛАВРИАТ</b></a></li>
+                                        <li><a href="{% static 'docPriem2020/blank/example/z_mag_ex.pdf'%}" target="_blank" >Пример: Заявление для поступления на <b>МАГИСТРАТУРУ</b></a></li>
+                                        <li><a href="{% static 'docPriem2020/blank/example/z_asp_ex.pdf'%}" target="_blank" >Пример: Заявление для поступления на <b>АСПИРАНТУРУ</b></a></li>
+                                        <li><a href="{% static 'docPriem2020/blank/example/z_uk_ex.pdf'%}" target="_blank" >Пример: Учетная карточка студента</a></li>
+                                        <li><a href="{% static 'docPriem2020/blank/example/z_pd_ex.pdf'%}" target="_blank" >Пример: Согласие на обработку персональных данных</a></li>
+                                        <li><a href="{% static 'docPriem2020/blank/example/z_sogl_ex.pdf'%}" target="_blank" >Пример: Согласие на зачисление</a></li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </td>
+                </tr>
+                <tr>
+                    <td><img src="{% static 'icons/arrow-right-circle-fill.svg'%}" alt="" width="32" height="32"></td>
+                    <td><p>После того, как вы скачали и заполнили необходимые для поступления документы - можно
+                        переходить к <b> 3 шагу - загрузке документов</B>, предварительно приняв соглашение.</p></td>
+                </tr>
+            </table>
+        </div>
+
+    </div>
+
+    <div class="col-md-5 ">
+        <h4>Ваши данные: </h4>
+        <div class="card border-primary">
+
+            <table class="table table-sm">
+                <thead>
+                <tr>
+                    <td colspan="2" class="text-center table-info"> <h5> Данные пользователя </h5></td>
+                </tr>
+                </thead>
+                <tbody>
+                <tr>
+                    <td>Индивидуальный номер:</td>
+                    <td>{{request.user.id}}</td>
+                </tr>
+                <tr>
+                    <td>Логин для входа:</td>
+                    <td>{{request.user}}</td>
+                </tr>
+                <tr>
+                    <td>Имя/Фамилия</td>
+                    <td>{{request.user.get_full_name}}</td>
+                </tr>
+                <tr>
+                    <td>Почта </td>
+                    <td>{{request.user.email}}</td>
+                </tr>
+                </tbody>
+            </table>
+        </div>
+        <br>
+        <!--
+                Если дополнительные данные существуют
+        -->
+        {% if is_exist %}
+
+        <div class="card border-info">
+            <table class="table table-sm">
+                <thead>
+                <tr>
+                    <td colspan="2" class="text-center table-info"> <h5> Дополнительные данные </h5></td>
+                </tr>
+                </thead>
+                <tbody>
+                {% for i in dop_info  %}
+                {% if request.user == i.user %}
+                <tr>
+                    <td> Отчество: </td>
+                    <td>{{i.patronymic}}</td>
+                </tr>
+                <tr>
+                    <td> Дата рождения: </td>
+                    <td>{{i.date_of_birth}}</td>
+                </tr>
+                <tr>
+                    <td> Номер телефона: </td>
+                    <td>{{i.phone_number}}</td>
+                </tr>
+
+                <tr>
+                    <td colspan="2">
+                        <a class="btn btn-block btn-primary mb-1 mt-3" href="{% url 'update_info_url' i.id %}">Обновить данные </a>
+                    </td>
+                </tr>
+
+                {%endif%}
+                {% endfor %}
+                </tbody>
+            </table>
+        </div>
+        <br>
+        <div class="alert alert-success" role="alert"> <h4><span class="badge badge-danger">Отлично!</span> </h4>
+            Вы добавили дополнительные данные и теперь можете перейти к следующему, завершающему шагу - <b><u>к
+                загрузке необходимых для поступления документов</u></b>  <br>
+            <hr>
+            <!--
+                            Если соглашение о персональных данных принято
+            -->
+            {% if agreement %}
+
+            <a href="{% url 'add_doc_url'%}" class="btn btn-block btn-primary">Загрузить документы (шаг 3)</a>
+
+            {% else %}
+
+            <p>Прежде чем перейти к заключительному шагу, пожалуйста, <a href="#"> ознакомьтесь с соглашением о персональных данных и нажмите кнопку:</a> </p>
+            <a href="{%url 'agreement_flag_url' request.user.id %}" class="btn btn-block btn-primary">Принимаю</a>
+            {% endif %}
+        </div>
+
+        <!--
+            если доп данные еще не загружены
+        -->
+        {% else %}
+        <a class="btn btn-block btn-primary mb-4 mt-2" href="{% url 'add_info_url' %}">Добавить данные (шаг 2) </a>
+        {% endif%}
+    </div>
+</div>
+{% endif %}
+
+{% endblock %}

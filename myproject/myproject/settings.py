@@ -27,17 +27,22 @@ DEBUG = True
 
 ALLOWED_HOSTS = []
 
-
+SITE_ID = 1
 # Application definition
 
 INSTALLED_APPS = [
+    'grappelli',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'abitur'
+    'django.contrib.sites',
+    'django.contrib.sitemaps',
+    'transliterate',
+    'abitur',
+    'regabitur'
 ]
 
 MIDDLEWARE = [
@@ -56,7 +61,8 @@ TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
         'DIRS': [
-            os.path.join(BASE_DIR, 'templates')
+            os.path.join(BASE_DIR, 'templates'),
+            os.path.join(BASE_DIR, 'regabitur/templates')
         ],
         'APP_DIRS': True,
         'OPTIONS': {
@@ -65,6 +71,7 @@ TEMPLATES = [
                 'django.template.context_processors.request',
                 'django.contrib.auth.context_processors.auth',
                 'django.contrib.messages.context_processors.messages',
+                'django.template.context_processors.request',
             ],
         },
     },
@@ -107,6 +114,16 @@ AUTH_PASSWORD_VALIDATORS = [
     },
 ]
 
+DEFAULT_FROM_EMAIL = 'host@jurac.ru'
+
+EMAIL_HOST = 'smtp.yandex.ru'
+EMAIL_HOST_USER = 'host@jurac.ru'
+EMAIL_HOST_PASSWORD = 'p0post000'
+# если используется защищенное соединение
+EMAIL_PORT = 587
+EMAIL_USE_TLS = True
+
+
 
 # Internationalization
 # https://docs.djangoproject.com/en/3.0/topics/i18n/
@@ -126,7 +143,7 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/3.0/howto/static-files/
 
 STATIC_URL = '/static/'
-
+STATIC_ROOT = os.path.join(BASE_DIR, 'static_all')
 
 MEDIA_URL = '/media/'
 MEDIA_ROOT = 'media'
