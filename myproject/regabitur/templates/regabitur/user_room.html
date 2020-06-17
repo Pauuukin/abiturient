@@ -56,14 +56,11 @@ input:checked + a {
             <table class="table">
                 <tr>
                     <td><img src="{% static 'icons/arrow-right-circle-fill.svg'%}" alt="" width="32" height="32"></td>
-                    <td>  <p> Обработка документов сотрудниками приемной комиссии занимает от 3 до 5 дней. Вы можете следить за статусом
+                    <td>  <p> Обработка документов сотрудниками приемной комиссии занимает не более 3 рабочих дней. Вы можете следить за статусом
                         своей заявки в личном кабинете абитуриента. Напоминаем, что <b><u>сотрудники приемной комисси СПБЮА в любом
                             случае свяжутся с вами по телефону или электронной почте, указанной при регистрации.</u></b><br></p></td>
                 </tr>
-                <tr>
-                    <td> <img src="{% static 'icons/arrow-right-circle-fill.svg'%}" alt="" width="32" height="32"></td>
-                    <td><u>Не нужно звонить в приемную комиссию сразу после подачи документов, это только замедлит процесс обработки документов.</u>
-                </tr>
+
             </table>
             <h4><span class="badge badge-danger">Следите за статусом заявки в личном кабинете!</span> </h4>
             <br>
@@ -146,7 +143,7 @@ input:checked + a {
                 <tr>
                     <td><img src="{% static 'icons/arrow-right-circle-fill.svg'%}" alt="" width="32" height="32"></td>
                     <td><p>Вы успешно зарегистрировались в системе и теперь можете перейти ко второму шагу: <br>
-                        <b><u> Загрузка дополнительной информации </u></b></p></td>
+                        <b><u> <a href="{% url 'add_info_url' %}">Добавление данных</a> </u></b></p></td>
                 </tr>
                 <tr>
                     <td> <img src="{% static 'icons/arrow-right-circle-fill.svg'%}" alt="" width="32" height="32"></td>
@@ -196,6 +193,7 @@ input:checked + a {
     </div>
 
     <div class="col-md-5 ">
+        <a href="{% static 'docPriem2020/instruct.pdf'%}" target="_blank">Инструкция по пользованию системой подачи документов для Абитуриентов</a>
         <h4>Ваши данные: </h4>
         <div class="card border-primary">
 

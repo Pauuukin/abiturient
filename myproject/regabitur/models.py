@@ -1,5 +1,7 @@
 from django.db import models
 from django.contrib.auth.models import User
+from django.urls import reverse
+from django.http import HttpResponse
 
 
 def user_directory_path(instance, filename):
@@ -76,3 +78,4 @@ class DocumentUser(models.Model):
         super(DocumentUser, self).delete(*args, **kwargs)
         # Потом удаляем сам файл
         storage.delete(path)
+
