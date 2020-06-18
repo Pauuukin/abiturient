@@ -16,7 +16,7 @@ class CustomUser(models.Model):
     """Расширение для базового класса User"""
     user = models.OneToOneField(User, on_delete=models.CASCADE, default='', verbose_name='Абитуриент', related_name='custom')
     date_of_birth = models.DateField(verbose_name="Дата рождения")
-    patronymic = models.CharField(verbose_name="Отчество", max_length=80, default='')
+    patronymic = models.CharField(verbose_name="Отчество (при наличии)", max_length=80, default='', blank=True)
     phone_number = models.CharField(verbose_name="Номер телефона", max_length=15, default='')
     status_list = (
         ('error', 'Вероятно, вы указали неверные данные электронной почты или номер телефона. '
