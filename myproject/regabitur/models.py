@@ -33,6 +33,8 @@ class CustomUser(models.Model):
     complete_flag = models.BooleanField(default=False, verbose_name="Документы отправлены?:")
     # статус принятия соглашения о персональных данных
     agreement_flag = models.BooleanField(default=False, verbose_name="Соглашение:")
+    work_flag = models.BooleanField(default=False, verbose_name="Взят в работу:")
+    success_flag = models.BooleanField(default=False, verbose_name="Отработан:")
 
     class Meta:
         """перевод для админпанели"""

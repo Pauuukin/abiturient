@@ -10,6 +10,7 @@ from django.utils.safestring import mark_safe
 class UserInline(admin.TabularInline):
     model = CustomUser
     can_delete = False
+   # list_display = ( 'phone_number','work_flag',' agreement_flag', 'complete_flag', 'sending_status', 'date_of_birth', 'patronymic')
     verbose_name_plural = 'Доп. информация'
     readonly_fields = ['date_of_birth', 'patronymic', 'phone_number']
 
@@ -29,8 +30,9 @@ class UserInlineDoc(admin.TabularInline):
 
 
 class UserAdmin(UserAdmin):
+    model = User
     inlines = (UserInline, UserInlineDoc)
-    list_display = ('username', 'first_name', 'last_name', 'date_joined', 'email')
+    list_display = ('username', 'first_name', 'last_name', 'date_joined', 'email', 'status_doc')
     ordering = ('-date_joined',)
     readonly_fields = [
         'date_joined',
@@ -44,6 +46,28 @@ class UserAdmin(UserAdmin):
         'is_staff',
         'username',
     ]
+
+    def status_doc(self, obj):
+        status = obj.custom.complete_flag
+        work = obj.custom.work_flag
+        success = obj.custom.success_flag
+        result = None
+        if status:
+            result = "Документы поданы"
+        elif status != 'True':
+            result = " Не поданы "
+        if success:
+            return mark_safe(
+                '<div style="width:100%%; height:100%%; background-color:green;">{0}</div>'.format(result))
+        if work:
+            return mark_safe('<div style="width:100%%; height:100%%; background-color:orange;">{0}</div>'.format(result))
+
+        return mark_safe(result)
+    # для сортировки:
+    # status_doc.admin_order_field = 'custom__complete_flag'
+
+
+
 
 
 # class DocUserInline(admin.StackedInline):
