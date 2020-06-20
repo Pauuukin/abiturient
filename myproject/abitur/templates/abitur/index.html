@@ -40,11 +40,10 @@
 </div>
 
 <br>
-
 <div class = "row" >
-  <div class="col-lg-3" ></div>
+  <div class="col-md-2" ></div>
 
-  <div class="col-lg-2 dropright">
+  <div class="col-md-2 dropright">
     <a href="#" class="btn btn-lg btn-outline-dark bl" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Нормативные <br>документы</a>
     <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
       <a class="dropdown-item" target="_blank" href="{% static 'docPriem2020/osob20_21.pdf' %}"><p class="small text-danger">
@@ -78,28 +77,34 @@
         ПРИКАЗ ОБ УТВЕРЖДЕНИИ СТОИМОСТИ ОБРАЗОВАТЕЛЬНЫХ УСЛУГ – <br>ПРОГРАММАМ БАКАЛАВРИАТА (ЗФО) </p><hr></a>
       <a class="dropdown-item" target="_blank" href="{% static 'docPriem2020/price/price_mag.pdf' %}"><p class="small">
         ПРИКАЗ ОБ УТВЕРЖДЕНИИ СТОИМОСТИ ОБРАЗОВАТЕЛЬНЫХ УСЛУГ – <br>ПРОГРАММАМ МАГИСТРАТУРЫ </p><hr></a>
+
+
+
+
     </div>
   </div>
-  <div class="col-lg-2" ></div>
+  <div class="col-md-1" ></div>
   <div class="col-lg-2">
+    <a href="{% url 'reg_info_url' %}" class="btn btn-lg btn-outline-dark bl">Подать документы</a>
+  </div>
+  <div class="col-md-1"></div>
+
+  <div class="col-md-2">
     <a href="{% url 'infoPage_url' %}" class="btn btn-lg btn-outline-dark bl">Информация поступающим</a>
   </div>
-  <div class="col-lg-3"></div>
-
-  <div class="col-2-lg"></div>
+  <div class="col-md-2"></div>
   <hr style="border-width: 3px;">
-</div>
 </div>
 <br><br>
 <div class="container">
-<!--  для важных объявлений -->
+  <!--  для важных объявлений -->
   <blockquote class="blockquoteMyDanger">
-  <p>
-    В СВЯЗИ С РАСПРОСТРАНЕНИЕМ НОВОЙ КОРОНАВИРУСНОЙ ИНФЕКЦИИ (COVID-19)» С 03 АПРЕЛЯ 2020 ГОДА ДО ОСОБОГО РАСПОРЯЖЕНИЯ:
-    – <b>КОНСУЛЬТИРОВАНИЕ ПО ВОПРОСАМ ПОСТУПЛЕНИЯ И ПОДАЧИ ДОКУМЕНТОВ ОСУЩЕСТВЛЯЕТСЯ ЧЕРЕЗ ЭЛЕКТРОННУЮ ПОЧТУ : <u>JURAC.SPB@MAIL.RU</u>
-    ИЛИ ЧЕРЕЗ КОНТАКТНЫЙ ТЕЛЕФОН (ПРИЕМНАЯ КОМИССИЯ) : <u>+7 (921) 951-34-33</u></b>
-  </p>
-</blockquote>
+    <p>
+      В СВЯЗИ С РАСПРОСТРАНЕНИЕМ НОВОЙ КОРОНАВИРУСНОЙ ИНФЕКЦИИ (COVID-19)» С 03 АПРЕЛЯ 2020 ГОДА ДО ОСОБОГО РАСПОРЯЖЕНИЯ:
+      – <b>КОНСУЛЬТИРОВАНИЕ ПО ВОПРОСАМ ПОСТУПЛЕНИЯ И ПОДАЧИ ДОКУМЕНТОВ ОСУЩЕСТВЛЯЕТСЯ ЧЕРЕЗ ЭЛЕКТРОННУЮ ПОЧТУ : <u>JURAC.SPB@MAIL.RU</u>
+      ИЛИ ЧЕРЕЗ КОНТАКТНЫЙ ТЕЛЕФОН (ПРИЕМНАЯ КОМИССИЯ) : <u>+7 (921) 951-34-33</u></b>
+    </p>
+  </blockquote>
 </div>
 
 <!-- Новости  -->
