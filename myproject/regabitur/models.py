@@ -26,6 +26,7 @@ class CustomUser(models.Model):
          'Документы отправлены и ждут обработки сотрудниками приемной комисси'),
         ('working', 'Документы находятся в обработке'),
         ('success', 'Документы обработаны и приняты'),
+        ('back', 'Документы отозваны')
     )
     # статус заявки
     sending_status = models.CharField(max_length=256, verbose_name="Статус заявки", choices=status_list, default='no')

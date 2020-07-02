@@ -52,6 +52,9 @@ class UserAdmin(UserAdmin):
         work = obj.custom.work_flag
         success = obj.custom.success_flag
         result = None
+        if obj.custom.sending_status == 'back':
+            return ('Заявка отозвана')
+
         if status:
             result = "Документы поданы"
         elif status != 'True':
