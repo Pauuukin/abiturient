@@ -99,7 +99,11 @@ class DocumentsAddView(LoginRequiredMixin, CustomSuccessMessageMixin, CreateView
     def get_context_data(self, **kwargs):
         """Переопределяем базовый метод, чтобы передать свой контекст"""
         kwargs['documents'] = DocumentUser.objects.all()
-        return super().get_context_data(**kwargs)
+        context = super().get_context_data(**kwargs)
+        user = CustomUser.objects.get(user=self.request.user)
+        user_doc_done = user.complete_flag
+        context['user_doc_done'] = user_doc_done
+        return context
 
     def form_valid(self, form):
         """Метод сохранения записи за конкретным пользователем"""
