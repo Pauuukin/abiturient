@@ -50,24 +50,41 @@
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
         </button>
-        <div class="collapse navbar-collapse" id="navbarNav">
-            <ul class="navbar-nav">
-                {% if request.user.is_authenticated %}
-                <li class="nav-item ml-2">
-                    <a class="nav-link btn btn-outline-dark" href="{% url 'user_room_url' %}">Личный кабинет</a>
-                </li>
-                <li class="nav-item ml-2">
-                    <a class="nav-link btn btn-warning" href="{% url 'logout_abitur_url' %}">Выйти</a>
-                </li>
-                {% else %}
-                <li class="nav-item ml-2">
-                    <a class="nav-link btn btn-outline-dark" href="{% url 'login_abitur_url' %}">Вход</a>
-                </li>
-                <li class="nav-item ml-2">
-                    <a class="nav-link btn btn-outline-dark" href="{% url 'register_abitur_url' %}">Регистрация</a>
-                </li>
-                {% endif %}
-            </ul>
+        <div class=" row collapse navbar-collapse" id="navbarNav">
+
+                <div class="col-md-5">
+                    <ul class="navbar-nav align-items-start">
+                        {% if request.user.is_authenticated %}
+                        <li class="nav-item ml-2 ">
+                            <a class="nav-link btn btn-outline-dark" href="{% url 'user_room_url' %}">Личный кабинет</a>
+                        </li>
+                        <li class="nav-item ml-2">
+                            <a class="nav-link btn btn-warning" href="{% url 'logout_abitur_url' %}">Выйти</a>
+                        </li>
+                        {% else %}
+                        <li class="nav-item ml-2">
+                            <a class="nav-link btn btn-outline-dark" href="{% url 'login_abitur_url' %}">Вход</a>
+                        </li>
+                        <li class="nav-item ml-2">
+                            <a class="nav-link btn btn-outline-dark" href="{% url 'register_abitur_url' %}">Регистрация</a>
+                        </li>
+                        {% endif %}
+                    </ul>
+                </div>
+                <div class="col-md-3"></div>
+                <div class="col-md-4">
+                    <ul class="navbar-nav align-items-end">
+                        <li class="nav-item ml-2 ">
+                            <a href="https://abiturient.jurac.ru/abitur/" class="nav-link btn btn-outline-dark">Приемная комиссия</a>
+                        </li>
+                        <li class="nav-item ml-2">
+                            <a href="{% static 'docPriem2020/instruct.pdf'%}" class="nav-link btn btn-outline-dark">Инструкция</a>
+                        </li>
+                    </ul>
+
+                </div>
+
+
         </div>
     </div>
 </nav>
