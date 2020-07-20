@@ -20,6 +20,7 @@ class UserInlineDoc(admin.TabularInline):
     can_delete = False
     verbose_name_plural = 'Документы'
     readonly_fields = ['name_doc', 'doc', 'date_pub', 'doc_url', ]
+    ordering = ('-date_pub', )
 
     def doc_url(self, obj):
         """для релизной версии путь"""
