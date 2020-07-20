@@ -82,6 +82,11 @@ class Orders(models.Model):
         """переопределяем метод String"""
         return self.name_order
 
+    def get_url_file(self):
+        s = '/static/media'
+        url_img = s + self.file.url
+        return url_img
+
     class Meta:
         """перевод для админпанели"""
         verbose_name = 'Приказ о зачислении(бакалавриат)'
@@ -101,6 +106,11 @@ class Result(models.Model):
         """переопределяем метод String"""
         return self.name_result
 
+    def get_url_file(self):
+        s = '/static/media'
+        url_img = s + self.file.url
+        return url_img
+
     class Meta:
         """перевод для админпанели"""
         verbose_name = 'Результаты вступительных испытаний (бакалавриат)'
@@ -119,6 +129,11 @@ class RecommendedList(models.Model):
         """переопределяем метод String"""
         return self.name_rec_list
 
+    def get_url_file(self):
+        s = '/static/media'
+        url_img = s + self.file.url
+        return url_img
+
     class Meta:
         """перевод для админпанели"""
         verbose_name = 'Списки рекомендованных к зачислению(бакалавриат)'
@@ -136,6 +151,11 @@ class SubmitDoc(models.Model):
     def __str__(self):
         """переопределяем метод String"""
         return self.name_submit_doc
+
+    def get_url_file(self):
+        s = '/static/media'
+        url_img = s + self.file.url
+        return url_img
 
     class Meta:
         """перевод для админпанели"""
@@ -169,6 +189,11 @@ class OrdersMag(models.Model):
         """переопределяем метод String"""
         return self.name_order
 
+    def get_url_file(self):
+        s = '/static/media'
+        url_img = s + self.file.url
+        return url_img
+
     class Meta:
         """перевод для админпанели"""
         verbose_name = 'Приказ о зачислении(магистратура)'
@@ -187,6 +212,11 @@ class ResultMag(models.Model):
     def __str__(self):
         """переопределяем метод String"""
         return self.name_result
+
+    def get_url_file(self):
+        s = '/static/media'
+        url_img = s + self.file.url
+        return url_img
 
     class Meta:
         """перевод для админпанели"""
@@ -207,6 +237,11 @@ class RecommendedListMag(models.Model):
         """переопределяем метод String"""
         return self.name_rec_list
 
+    def get_url_file(self):
+        s = '/static/media'
+        url_img = s + self.file.url
+        return url_img
+
     class Meta:
         """перевод для админпанели"""
         verbose_name = 'Списки рекомендованных к зачислению(магистратура)'
@@ -225,6 +260,11 @@ class SubmitDocMag(models.Model):
     def __str__(self):
         """переопределяем метод String"""
         return self.name_submit_doc
+
+    def get_url_file(self):
+        s = '/static/media'
+        url_img = s + self.file.url
+        return url_img
 
     class Meta:
         """перевод для админпанели"""
@@ -257,6 +297,11 @@ class OrdersAsp(models.Model):
         """переопределяем метод String"""
         return self.name_order
 
+    def get_url_file(self):
+        s = '/static/media'
+        url_img = s + self.file.url
+        return url_img
+
     class Meta:
         """перевод для админпанели"""
         verbose_name = 'Приказ о зачислении(аспирантура)'
@@ -276,6 +321,11 @@ class ResultAsp(models.Model):
         """переопределяем метод String"""
         return self.name_result
 
+    def get_url_file(self):
+        s = '/static/media'
+        url_img = s + self.file.url
+        return url_img
+
     class Meta:
         """перевод для админпанели"""
         verbose_name = 'Результаты вступительных испытаний (Аспирантура)'
@@ -293,6 +343,11 @@ class RecommendedListAsp(models.Model):
     def __str__(self):
         """переопределяем метод String"""
         return self.name_rec_list
+
+    def get_url_file(self):
+        s = '/static/media'
+        url_img = s + self.file.url
+        return url_img
 
     class Meta:
         """перевод для админпанели"""
