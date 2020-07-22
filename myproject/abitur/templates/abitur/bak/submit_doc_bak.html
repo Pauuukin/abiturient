@@ -16,7 +16,7 @@
             <tr>
                 <th>Название</th>
                 <th>Форма обучения</th>
-                <th>Дата приказа</th>
+
                 <th>Документ</th>
             </tr>
             </thead>
@@ -25,7 +25,7 @@
             <tr>
                 <td>{{ submit.name_submit_doc }}</td>
                 <td>{{ submit.educational_form }}</td>
-                <td>{{ submit.date_order }}</td>
+
                 <td><a href=" {{submit.file.url}} " rel="noopener" target="_blank">Открыть</a></td>
             </tr>
             {% endfor %}
