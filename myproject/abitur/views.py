@@ -30,6 +30,10 @@ def bakPage(request):
     return render(request, 'abitur/bak.html')
 
 
+def vstupit_calendar_page(request):
+    return render(request, 'abitur/bak/vstupit.html')
+
+
 def bak_calendar(request):
     return render(request, 'abitur/bak/calendar_bak.html')
 
