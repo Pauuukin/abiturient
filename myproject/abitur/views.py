@@ -33,12 +33,17 @@ def bakPage(request):
 def vstupit_calendar_page(request):
     return render(request, 'abitur/bak/vstupit.html')
 
+
 def vstupit_calendar_page_mag(request):
     return render(request, 'abitur/mag/vstupit_mag.html')
 
 
 def bak_calendar(request):
     return render(request, 'abitur/bak/calendar_bak.html')
+
+
+def mag_calendar(request):
+    return render(request, 'abitur/mag/calendar_mag.html')
 
 
 def mag_page(request):
