@@ -1,5 +1,5 @@
 {% extends 'abitur/base_abitur.html' %}
-
+{% load static %}
 {% block title %}
 Бакалавриат - Списки рекомендованных к зачислению
 {% endblock %}
@@ -10,6 +10,15 @@
     <h1 align="center">Список рекомендованных к зачислению (бакалавриат)</h1>
     <hr style="border-width: 3px;">
     <br>
+    <div class="container text-center">
+        <h3 class="text-danger"><u><b>Уважаемые абитуриенты!</b></u></h3><br>
+        <p><span class="text-danger">
+            Рекомендованные к зачислению и желающие быть зачисленными </span>на первом и
+втором этапах зачисления в Санкт-Петербургскую юридическую академию и не подавшие
+согласи на зачисление, могут скачать <a href="{% static 'docPriem2020/blank/z_sogl.pdf'%}" target="_blank"><b><u>ЗДЕСЬ</u></b></a> бланк согласия на зачисление и подать его
+через электронную почту jurac.spb@mail.ru до 25 августа 2020 года (до 17 часов по мск)<br><br>
+        </p>
+    </div>
     <div class="table-response">
         <table class="table table-border table-hover table-striped">
             <thead class="thead-dark">
