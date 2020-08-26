@@ -76,7 +76,7 @@ def news_list(request):
 
 
 def order_bak(request):
-    educational_form = EducationalForm.objects.all()
+    educational_form = Orders.objects.all().order_by('date_pub')
     return render(request, 'abitur/bak/order_bak.html', context={'educational_form': educational_form})
 
 
