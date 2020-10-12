@@ -29,15 +29,13 @@
                 <th>Документ</th>
             </tr>
             </thead>
-            {%for educational_form in educational_form %}
-            {%for list in educational_form.linked_rec_list.all %}
+            {%for list in educational_form %}
             <tr>
                 <td>{{ list.name_rec_list }}</td>
                 <td>{{ list.educational_form }}</td>
                 <td>{{ list.date_order }}</td>
                 <td><a href=" {{list.file.url}} " rel="noopener" target="_blank">Открыть</a></td>
             </tr>
-            {% endfor %}
             {% endfor %}
         </table>
     </div>

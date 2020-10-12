@@ -76,22 +76,22 @@ def news_list(request):
 
 
 def order_bak(request):
-    educational_form = Orders.objects.all().order_by('date_pub')
+    educational_form = Orders.objects.all().order_by('date_order')
     return render(request, 'abitur/bak/order_bak.html', context={'educational_form': educational_form})
 
 
 def result_bak(request):
-    educational_form = EducationalForm.objects.all()
+    educational_form = Result.objects.all().order_by('date_result')
     return render(request, 'abitur/bak/result_bak.html', context={'educational_form': educational_form})
 
 
 def rec_list_bak(request):
-    educational_form = EducationalForm.objects.all()
+    educational_form = RecommendedList.objects.all().order_by('date_order')
     return render(request, 'abitur/bak/rec_list_bak.html', context={'educational_form': educational_form})
 
 
 def submit_doc_bak(request):
-    educational_form = EducationalForm.objects.all()
+    educational_form = SubmitDoc.objects.all().order_by('date_order')
     return render(request, 'abitur/bak/submit_doc_bak.html', context={'educational_form': educational_form})
 
 
