@@ -116,22 +116,22 @@ def submit_doc_mag(request):
 
 
 def order_asp(request):
-    educational_form = EducationalFormAsp.objects.all()
+    educational_form = OrdersAsp.objects.all().order_by('date_order')
     return render(request, 'abitur/asp/order_asp.html', context={'educational_form': educational_form})
 
 
 def result_asp(request):
-    educational_form = EducationalFormAsp.objects.all()
+    educational_form = ResultAsp.objects.all().order_by('date_result')
     return render(request, 'abitur/asp/result_asp.html', context={'educational_form': educational_form})
 
 
 def rec_list_asp(request):
-    educational_form = EducationalFormAsp.objects.all()
+    educational_form = RecommendedListAsp.objects.all().order_by('date_order')
     return render(request, 'abitur/asp/rec_list_asp.html', context={'educational_form': educational_form})
 
 
 def submit_doc_asp(request):
-    educational_form = EducationalFormAsp.objects.all()
+    educational_form = SubmitDocAsp.objects.all()
     return render(request, 'abitur/asp/submit_doc_asp.html', context={'educational_form': educational_form})
 
 

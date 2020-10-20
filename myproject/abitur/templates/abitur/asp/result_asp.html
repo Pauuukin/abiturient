@@ -21,8 +21,7 @@
                 <th>Документ</th>
             </tr>
             </thead>
-            {%for educational_form in educational_form %}
-            {%for orders in educational_form.linked_results.all %}
+            {%for orders in educational_form %}
             <tr>
                 <td>{{ orders.name_result }}</td>
                 <td>{{ orders.number_result }}</td>
@@ -30,7 +29,6 @@
                 <td>{{ orders.date_result }}</td>
                 <td><a href=" {{orders.file.url}} " rel="noopener" target="_blank">Открыть</a></td>
             </tr>
-            {% endfor %}
             {% endfor %}
         </table>
     </div>
