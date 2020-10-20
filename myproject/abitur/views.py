@@ -96,22 +96,22 @@ def submit_doc_bak(request):
 
 
 def order_mag(request):
-    educational_form = EducationalFormMag.objects.all()
+    educational_form = OrdersMag.objects.all().order_by('date_order')
     return render(request, 'abitur/mag/order_mag.html', context={'educational_form': educational_form})
 
 
 def result_mag(request):
-    educational_form = EducationalFormMag.objects.all()
+    educational_form = ResultMag.objects.all().order_by('date_result')
     return render(request, 'abitur/mag/result_mag.html', context={'educational_form': educational_form})
 
 
 def rec_list_mag(request):
-    educational_form = EducationalFormMag.objects.all()
+    educational_form = RecommendedListMag.objects.all().order_by('date_order')
     return render(request, 'abitur/mag/rec_list_mag.html', context={'educational_form': educational_form})
 
 
 def submit_doc_mag(request):
-    educational_form = EducationalFormMag.objects.all()
+    educational_form = SubmitDocMag.objects.all()
     return render(request, 'abitur/mag/submit_doc_mag.html', context={'educational_form': educational_form})
 
 

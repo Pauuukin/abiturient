@@ -21,15 +21,13 @@
                 <th>Документ</th>
             </tr>
             </thead>
-            {%for educational_form in educational_form %}
-            {%for submit in educational_form.linked_submit_doc.all %}
+            {%for submit in educational_form %}
             <tr>
                 <td>{{ submit.name_submit_doc }}</td>
                 <td>{{ submit.educational_form }}</td>
 
                 <td><a href=" {{submit.file.url}} " rel="noopener" target="_blank">Открыть</a></td>
             </tr>
-            {% endfor %}
             {% endfor %}
         </table>
     </div>
