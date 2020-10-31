@@ -9,6 +9,7 @@ urlpatterns = [
     path('bak/vstupit_calendar_page/', vstupit_calendar_page, name='vstupit_calendar_page_url'),
     path('mag/vstupit_mag/', vstupit_calendar_page_mag, name='vstupit_calendar_page_mag_url'),
     path('inter/', interPage, name='interPage_url'),
+    path('next_priem/', next_priem, name='next_priem_url'),
     path('info/', infoPage, name='infoPage_url'),
     path('bak/spec_bak_1/', spec_bak_1, name='spec_bak_1_url'),
     path('spec_bak_1/', spec_bak_1, name='spec_bak_1_url'),

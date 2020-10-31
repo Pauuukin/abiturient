@@ -70,6 +70,10 @@ def spec_bak_1(request):
     return render(request, 'abitur/bak/spec_bak_1.html')
 
 
+def next_priem(request):
+    return render(request, 'abitur/next_priem.html')
+
+
 def news_list(request):
     news = News.objects.all().order_by('-id')
     return render(request, 'abitur/all_news.html', context={'news': news})

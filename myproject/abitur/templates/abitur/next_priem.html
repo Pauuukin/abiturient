@@ -1,0 +1,66 @@
+{% extends 'abitur/base_abitur.html' %}
+{% load static %}
+{% block title %}
+Информация
+{% endblock %}
+
+
+{% block content %}
+<div class="container-fluid ">
+<br>
+        <h2 align="center"><u> Информация о приеме на 2021-2022 учебный год </u></h2>
+
+    <div class="row text-center">
+
+        <div class="col align-items-start m-3" style="background-color : #E0F4FF; text-align: center;">
+            <h4>Бакалавриат: </h4>
+            <a href="{% static 'nextPriem/bak/1plan_bak.pdf'%}">План приема</a><hr>
+            <a href="{% static 'nextPriem/bak/2bak_up.pdf'%}">Условия поступления</a><hr>
+            <a href="{% static 'nextPriem/bak/3bak_vi.pdf'%}">Мин.количество баллов, вступительные испытания</a><hr>
+            <a href="{% static 'nextPriem/bak/4bak_sroki.pdf'%}">Сроки подачи документов и заявлений о согласии на зачисление</a><hr>
+            <a href="{% static 'nextPriem/bak/5bak_id.pdf'%}">Порядок начисления баллов за индивидуальные достижения</a><hr>
+            <a href="{% static 'nextPriem/bak/6bak_osob.pdf'%}">Информация об особых правах и преимуществах</a><hr>
+            <a href="{% static 'nextPriem/bak/7bak_ovz.pdf'%}">Информация об особенностях проведения вступительных испытаний для лиц с ОВЗ</a><hr>
+            <a href="{% static 'nextPriem/bak/8bak_cvota.pdf'%}">Извлечение: особая квота</a><hr>
+            <a href="{% static 'nextPriem/bak/9bak_place.pdf'%}">Информация о местах подачи док-в, информация о подачи в эл. форме</a><hr>
+            <a href="{% static 'nextPriem/bak/10bak_ap.pdf'%}">Правила подачи апелляций</a><hr>
+            <a href="{% static 'nextPriem/bak/bak_mag_rules.pdf'%}">Правила приема</a><hr>
+            <a href="{% static 'nextPriem/bak/bak_prikaz_vstupit.pdf'%}">Приказ об утверждении вступит. испытаний</a><hr>
+            <a href="{% static 'nextPriem/bak/bak_prikaz_priem.pdf'%}">Приказ об утверждении правил приема</a><hr>
+        </div>
+        <div class="col align-items-center m-3" style="background-color : #E0F4FF; text-align: center;">
+            <h4>Магистратура: </h4>
+            <a href="{% static 'nextPriem/mag/1plan_mag.pdf'%}">План приема</a><hr>
+            <a href="{% static 'nextPriem/mag/2mag_up.pdf'%}">Условия поступления</a><hr>
+            <a href="{% static 'nextPriem/mag/3mag_vi.pdf'%}">Мин.количество баллов, вступительные испытания</a><hr>
+            <a href="{% static 'nextPriem/mag/4mag_sroki.pdf'%}">Сроки подачи документов и заявлений о согласии на зачисление</a><hr>
+            <a href="{% static 'nextPriem/mag/5mag_id.pdf'%}">Порядок начисления баллов за индивидуальные достижения</a><hr>
+            <a href="{% static 'nextPriem/mag/6mag_osob.pdf'%}">Информация об особых правах и преимуществах</a><hr>
+            <a href="{% static 'nextPriem/mag/7mag_ovz.pdf'%}">Информация об особенностях проведения вступительных испытаний для лиц с ОВЗ</a><hr>
+            <a href="{% static 'nextPriem/mag/8mag_cvota.pdf'%}">Извлечение: особая квота</a><hr>
+            <a href="{% static 'nextPriem/mag/9mag_place.pdf'%}">Информация о местах подачи док-в, информация о подачи в эл. форме</a><hr>
+            <a href="{% static 'nextPriem/mag/10mag_ap.pdf'%}">Правила подачи апелляций</a><hr>
+            <a href="{% static 'nextPriem/bak/bak_mag_rules.pdf'%}">Правила приема</a><hr>
+            <a href="{% static 'nextPriem/mag/mag_prikaz_vstupit.pdf'%}">Приказ об утверждении вступит. испытаний</a><hr>
+            <a href="{% static 'nextPriem/mag/mag_prikaz_priem.pdf'%}">Приказ об утверждении правил приема</a><hr>
+        </div>
+        <div class="col align-items-end m-3" style="background-color : #E0F4FF; text-align: center;">
+            <h4>Аспирантура: </h4>
+            <a href="{% static 'nextPriem/asp/1plan_asp.pdf'%}">План приема</a><hr>
+            <a href="{% static 'nextPriem/asp/2asp_up.pdf'%}">Условия поступления</a><hr>
+            <a href="{% static 'nextPriem/asp/3asp_vi.pdf'%}">Мин.количество баллов, вступительные испытания</a><hr>
+            <a href="{% static 'nextPriem/asp/4asp_sroki.pdf'%}">Сроки подачи документов и заявлений о согласии на зачисление</a><hr>
+            <a href="{% static 'nextPriem/asp/5asp_id.pdf'%}">Порядок начисления баллов за индивидуальные достижения</a><hr>
+            <a href="{% static 'nextPriem/asp/7asp_ovz.pdf'%}">Информация об особенностях проведения вступительных испытаний для лиц с ОВЗ</a><hr>
+            <a href="{% static 'nextPriem/asp/9asp_place.pdf'%}">Информация о местах подачи док-в, информация о подачи в эл. форме</a><hr>
+            <a href="{% static 'nextPriem/asp/10asp_ap.pdf'%}">Правила подачи апелляций</a><hr>
+            <a href="{% static 'nextPriem/asp/asp_rules.pdf'%}">Правила приема</a><hr>
+            <a href="{% static 'nextPriem/asp/asp_prikaz_priem.pdf'%}">Приказ об утверждении правил приема</a><hr>
+
+        </div>
+    </div>
+
+</div>
+
+
+{% endblock %}
