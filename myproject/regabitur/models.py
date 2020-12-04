@@ -1,12 +1,16 @@
+from os import urandom
+
 from django.db import models
 from django.contrib.auth.models import User
 from django.urls import reverse
 from django.http import HttpResponse
 
 
+
 def user_directory_path(instance, filename):
     """функция для записи файлов в папки с ф.и. абитуриента"""
     # file will be uploaded to MEDIA_ROOT/user_<id> + full_name
+    filename = filename + str(urandom(8))
     return '{0}_{1}/{2}'.format(instance.user.pk, instance.user.get_full_name(), filename)
 
 # Create your models here.
