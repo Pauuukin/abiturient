@@ -146,6 +146,25 @@ input:checked + a {
     <div class="col-md-7">
         <div class="table-responsive">
             <table class="table">
+                {% if is_exist %}
+                    <td> <img src="{% static 'icons/arrow-right-circle-fill.svg'%}" alt="" width="32" height="32"></td>
+                    <td><p>Вы успешно добавили дополнительные данные. Теперь скачайте бланки документов, которые
+                        находятся ниже, и внимательно их заполните. Загрузить эти документы вы сможете <b>на третьем шаге</b></p>
+                    </td>
+                </tr>
+                <tr>
+                    <td><img src="{% static 'icons/arrow-right-circle-fill.svg'%}" alt="" width="32" height="32"></td>
+                    <td>
+                         {% include 'regabitur/includes/doc_card_template.html' %}
+                    </td>
+                </tr>
+                <tr>
+                    <td><img src="{% static 'icons/arrow-right-circle-fill.svg'%}" alt="" width="32" height="32"></td>
+                    <td><p>После того, как вы скачали и заполнили необходимые для поступления документы - можно
+                        переходить к <b> 3 шагу - загрузке документов</B>, предварительно приняв соглашение.</p></td>
+                </tr>
+
+                {% else %}
                 <tr>
                     <td><img src="{% static 'icons/arrow-right-circle-fill.svg'%}" alt="" width="32" height="32"></td>
                     <td><p>Вы успешно зарегистрировались в системе и теперь можете перейти ко второму шагу: <br>
@@ -167,13 +186,15 @@ input:checked + a {
                     <td><p>После того, как вы скачали и заполнили необходимые для поступления документы - можно
                         переходить к <b> 3 шагу - загрузке документов</B>, предварительно приняв соглашение.</p></td>
                 </tr>
+                {% endif %}
             </table>
         </div>
 
     </div>
 
     <div class="col-md-5 ">
-        <a href="{% static 'docPriem2020/instruct.pdf'%}" target="_blank">Инструкция по пользованию системой подачи документов для Абитуриентов</a>
+        <a href="{% static 'docPriem2020/instruct.pdf'%}" class="btn btn-block btn-info" target="_blank">Инструкция по пользованию системой подачи документов для Абитуриентов</a>
+        <hr><br>
         <h4>Ваши данные: </h4>
         <div class="card border-primary">
 
