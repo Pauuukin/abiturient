@@ -36,16 +36,13 @@ class UserAdmin(UserAdmin):
     list_display = ('id', 'username', 'first_name', 'last_name', 'date_joined', 'email', 'status_doc')
     ordering = ('-date_joined',)
     readonly_fields = [
-        'date_joined',
         'user_permissions',
         'groups',
-        'date_joined',
         'is_active',
         'password',
         'last_login',
         'is_superuser',
-        'is_staff',
-        'username',
+        'is_staff'
     ]
 
     def status_doc(self, obj):
