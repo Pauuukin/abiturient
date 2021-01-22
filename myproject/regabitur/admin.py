@@ -34,6 +34,7 @@ class UserAdmin(UserAdmin):
     model = User
     inlines = (UserInline, UserInlineDoc)
     list_display = ('id', 'username', 'first_name', 'last_name', 'date_joined', 'email', 'status_doc')
+    list_filter = ('date_joined',)
     ordering = ('-date_joined',)
     readonly_fields = [
         'user_permissions',
