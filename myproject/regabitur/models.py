@@ -46,6 +46,11 @@ class CustomUser(models.Model):
         verbose_name = 'Абитуриент'
         verbose_name_plural = 'Абитуриента'
 
+    def __str__(self):
+        """Переопределяем метод String"""
+        name_field = ("id = " + str(self.user.id) + " / " + self.user.get_full_name())
+        return name_field
+
 
 class DocumentUser(models.Model):
     """модель БД для подачи документов"""
