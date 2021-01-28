@@ -76,8 +76,9 @@ class UserAdmin(UserAdmin):
 
 class DocUser(admin.ModelAdmin):
     list_display = ('user_id', 'user', 'name_doc', 'doc_url', 'doc')
-    list_filter = ('user_id',)
+    list_filter = ('date_pub',)
     readonly_fields = ('user', )
+
 
     def doc_url(self, obj):
         """для релизной версии путь"""
