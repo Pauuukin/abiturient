@@ -3,13 +3,19 @@ from django.shortcuts import reverse
 from django.utils.text import slugify
 from transliterate import translit
 from time import time
+from django.core.files.storage import FileSystemStorage
+from django.conf import settings
+
+
+upload_storage = FileSystemStorage(location=settings.UPLOAD_ROOT, base_url='/uploads')
 
 
 class News (models.Model):
     """ модель для сущности 'новость' """
     title = models.CharField(max_length=200, db_index=True, verbose_name='Заголовок')
     body = models.TextField(verbose_name='Основной текст')
-    img = models.ImageField(upload_to='pictures', verbose_name='Изображение', max_length=255, blank=True, default='pictures/base.jpg')
+    img = models.ImageField(upload_to='image/', verbose_name='Изображение', max_length=255, blank=True,
+                            default='pictures/base.jpg', storage=upload_storage)
     slug = models.SlugField(max_length=150, default="", unique=True, blank=True)
     date_pub = models.DateTimeField(auto_now_add=True, verbose_name='Дата публикации')
     date = models.DateField()
@@ -45,7 +51,7 @@ def gen_slug(s):
 class NewsFile(models.Model):
     """ модель для сущности 'файлы для новости' """
     name_file = models.CharField(max_length=100, verbose_name='Имя файла (по умолчанию="Открыть"', default="Открыть")
-    file = models.FileField(upload_to='files', verbose_name='Прикрепить файл')
+    file = models.FileField(upload_to='files', storage=upload_storage, verbose_name='Прикрепить файл')
     news = models.ForeignKey('News', on_delete=models.CASCADE, related_name='linked_file', verbose_name='Выберите новость, для которой прикрепляется файл')
 
     def __str__(self):

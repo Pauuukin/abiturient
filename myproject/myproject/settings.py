@@ -143,8 +143,11 @@ USE_TZ = True
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/3.0/howto/static-files/
 
+
+UPLOAD_ROOT = os.path.join(BASE_DIR, 'uploads')
+
 STATIC_URL = '/static/'
 STATIC_ROOT = os.path.join(BASE_DIR, 'static_all')
 
-MEDIA_URL = '/media/'
-MEDIA_ROOT = 'media'
+MEDIA_URL = '/media/'   # базовый URL для загруженных файлов
+MEDIA_ROOT = 'media'    # где находятся файлы
