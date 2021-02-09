@@ -98,11 +98,13 @@ class DocumentsAddView(LoginRequiredMixin, CustomSuccessMessageMixin, CreateView
 
     def get_context_data(self, **kwargs):
         """Переопределяем базовый метод, чтобы передать свой контекст"""
-        kwargs['documents'] = DocumentUser.objects.all()
         context = super().get_context_data(**kwargs)
-        user = CustomUser.objects.get(user=self.request.user)
+        id_user = self.request.user
+        user = CustomUser.objects.get(user=id_user)
+        document_user = DocumentUser.objects.filter(user=id_user)
         user_doc_done = user.complete_flag
         context['user_doc_done'] = user_doc_done
+        context['document_user'] = document_user
         return context
 
     def form_valid(self, form):

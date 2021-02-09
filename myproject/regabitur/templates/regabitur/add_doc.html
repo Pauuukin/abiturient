@@ -212,8 +212,7 @@
             </tr>
             </thead>
             <tbody>
-            {% for i in documents  %}
-            {% if request.user == i.user %}
+            {% for i in document_user  %}
             <tr>
 
                 <td>{{ i.name_doc }}</td>
@@ -233,7 +232,6 @@
                      </script>
                 </td>
             </tr>
-            {% endif %}
             {% endfor %}
             </tbody>
         </table>
