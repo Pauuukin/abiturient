@@ -23,15 +23,15 @@ class UserInlineDoc(admin.TabularInline):
     model = DocumentUser
     can_delete = False
     verbose_name_plural = 'Документы'
-    readonly_fields = ['name_doc', 'doc', 'date_pub', 'doc_url', ]
+    readonly_fields = ['name_doc', 'doc', 'date_pub']
     ordering = ('-date_pub', )
 
-    def doc_url(self, obj):
-        """для релизной версии путь"""
-        str1 = 'https://abiturient.jurac.ru/static/media'
-        sum = '{0}{1}'.format(str1, obj.doc.url)
-        result = '<a href="{0}" target="_blank">открыть</a>'.format(sum)
-        return mark_safe(result)
+    # def doc_url(self, obj):
+    #     """для релизной версии путь"""
+    #     str1 = 'https://abiturient.jurac.ru/static/media'
+    #     sum = '{0}{1}'.format(str1, obj.doc.url)
+    #     result = '<a href="{0}" target="_blank">открыть</a>'.format(sum)
+    #     return mark_safe(result)
 
 
 class UserAdmin(UserAdmin):
@@ -75,17 +75,17 @@ class UserAdmin(UserAdmin):
 
 
 class DocUser(admin.ModelAdmin):
-    list_display = ('user_id', 'user', 'name_doc', 'doc_url', 'doc')
+    list_display = ('user_id', 'user', 'name_doc', 'doc')
     list_filter = ('date_pub',)
     readonly_fields = ('user', )
 
 
-    def doc_url(self, obj):
-        """для релизной версии путь"""
-        str1 = 'https://abiturient.jurac.ru/static/media'
-        sum = '{0}{1}'.format(str1, obj.doc.url)
-        result = '<a href="{0}" target="_blank">открыть</a>'.format(sum)
-        return mark_safe(result)
+    # def doc_url(self, obj):
+    #     """для релизной версии путь"""
+    #     str1 = 'https://abiturient.jurac.ru/static/media'
+    #     sum = '{0}{1}'.format(str1, obj.doc.url)
+    #     result = '<a href="{0}" target="_blank">открыть</a>'.format(sum)
+    #     return mark_safe(result)
     # fieldsets = (
     #     (None, {
     #         'fields': ('name_doc', 'doc')
