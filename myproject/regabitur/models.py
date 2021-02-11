@@ -10,6 +10,7 @@ from django.http import HttpResponse
 def user_directory_path(instance, filename):
     """функция для записи файлов в папки с ф.и. абитуриента"""
     # file will be uploaded to MEDIA_ROOT/user_<id> + full_name
+    filename = '{0}: {1}'.format(instance.name_doc, filename)
     return '{0}_{1}/{2}'.format(instance.user.pk, instance.user.get_full_name(), filename)
 
 # Create your models here.
