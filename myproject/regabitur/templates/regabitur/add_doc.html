@@ -215,8 +215,8 @@
             {% for i in document_user  %}
             <tr>
 
-                <td>{{ i.name_doc }}</td>
-                <td>{{ i.doc }}</td>
+                <td>{{ i.name_doc}}</td>
+                <td><p title="{{i.doc}}">{{ i.doc|truncatechars:25 }}</p></td>
                 <td>
                     <form id="delete_form{{i.id}}" action="{% url 'delete_page_url' i.id %}" method="post">
                         {% csrf_token %}
