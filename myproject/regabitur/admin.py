@@ -9,7 +9,8 @@ from import_export import resources
 from import_export.admin import ImportExportModelAdmin
 
 
-class UserInline(admin.TabularInline):
+
+class UserInline(admin.StackedInline):
     """Доп. форма для пользователей с информацией из model.CustomUser"""
     model = CustomUser
     can_delete = False
@@ -79,23 +80,6 @@ class DocUser(admin.ModelAdmin):
     list_filter = ('date_pub',)
     readonly_fields = ('user', )
 
-
-    # def doc_url(self, obj):
-    #     """для релизной версии путь"""
-    #     str1 = 'https://abiturient.jurac.ru/static/media'
-    #     sum = '{0}{1}'.format(str1, obj.doc.url)
-    #     result = '<a href="{0}" target="_blank">открыть</a>'.format(sum)
-    #     return mark_safe(result)
-    # fieldsets = (
-    #     (None, {
-    #         'fields': ('name_doc', 'doc')
-    #     }),
-    #     ('Availability', {
-    #         'fields': ('username', 'first_name')
-    #     }),
-    # )
-
-    # inlines = [DocUserInline, ]
 
 
 
