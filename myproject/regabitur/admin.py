@@ -3,6 +3,8 @@ from django.urls import reverse
 from django.contrib.auth.admin import UserAdmin
 from django.contrib.auth.forms import UserChangeForm
 from django.contrib.auth.models import User
+from transliterate.utils import _
+
 from .models import *
 from django.utils.safestring import mark_safe
 from import_export import resources
@@ -42,6 +44,12 @@ class UserAdmin(UserAdmin):
     list_display = ('id', 'username', 'first_name', 'last_name', 'date_joined', 'email', 'status_doc')
     list_filter = ('date_joined',)
     ordering = ('-date_joined',)
+    fieldsets = (
+        (None, {'fields': ('username', 'password')}),
+        (_('Персональная информация'), {'fields': ('first_name', 'last_name', 'email')}),
+        (_('Важные даты'), {'fields': ('last_login', 'date_joined')}),
+    )
+
     readonly_fields = [
         'user_permissions',
         'groups',
@@ -51,6 +59,8 @@ class UserAdmin(UserAdmin):
         'is_superuser',
         'is_staff'
     ]
+
+
 
     def status_doc(self, obj):
         status = obj.custom.complete_flag
