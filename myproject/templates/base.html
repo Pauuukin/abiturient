@@ -26,23 +26,25 @@
 <!--    header      -->
 
 <!--    Лого, телефоны-->
-<div class="row">
-    <div class="col-md-4">
-        <a class="navbar-brand" href="https://jurac.ru/">
+<div class="container">
+    <div class="row">
+        <div class="col align-self-start">
+            <a class="navbar-brand" href="https://jurac.ru/">
 
-            <img src="{% static 'image/logo.png'%} " class="d-inline-block align-top" alt="">
-        </a>
-    </div>
-    <div class="col-md-4">
-        <br>
-        <h2 class="text-monospace text-center">Приемная комиссия</h2>
-    </div>
-    <div class="col-md-4">
+                <img src="{% static 'image/logo.png'%} " class="d-inline-block align-top" alt="">
+            </a>
+        </div>
+        <div class="col align-self-center">
+            <br>
+            <h2 class="text-monospace text-center">Приемная комиссия</h2>
+        </div>
+        <div class="col align-self-end">
 
-        <h3 class="text-monospace text-center">+7 (812) 677-00-07<br>
-            +7 (921) 951-34-33<br>
-            +7 (921) 564-31-01
-        </h3>
+            <h3 class="text-monospace text-center">+7 (812) 677-00-07<br>
+                +7 (921) 951-34-33<br>
+                +7 (921) 564-31-01
+            </h3>
+        </div>
     </div>
 </div>
 
@@ -170,9 +172,9 @@ there is no any content
                     <li>
                         <a href="{% url 'user_room_url' %}">Личный кабинет</a>
                     </li>
-<!--                    <li>-->
-<!--                        <a href="/admin">Админпанель</a>-->
-<!--                    </li>-->
+                    <!--                    <li>-->
+                    <!--                        <a href="/admin">Админпанель</a>-->
+                    <!--                    </li>-->
                 </ul>
 
             </div>
