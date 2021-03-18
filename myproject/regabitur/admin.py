@@ -28,6 +28,7 @@ class UserInlineDoc(admin.TabularInline):
     verbose_name_plural = 'Документы'
     readonly_fields = ['name_doc', 'doc', 'date_pub']
     ordering = ('-date_pub', )
+    extra = 1
 
     # def doc_url(self, obj):
     #     """для релизной версии путь"""
@@ -42,6 +43,7 @@ class UserAdmin(UserAdmin):
     model = User
     inlines = (UserInline, UserInlineDoc)
     list_display = ('id', 'username', 'first_name', 'last_name', 'date_joined', 'email', 'status_doc')
+    list_display_links = ('id', 'username', )
     list_filter = ('date_joined',)
     ordering = ('-date_joined',)
     fieldsets = (
