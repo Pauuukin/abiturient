@@ -1,10 +1,5 @@
-from os import urandom
-
 from django.db import models
 from django.contrib.auth.models import User
-from django.urls import reverse
-from django.http import HttpResponse
-
 
 
 def user_directory_path(instance, filename):
@@ -13,14 +8,14 @@ def user_directory_path(instance, filename):
     filename = '{0}: {1}'.format(instance.name_doc, filename)
     return '{0}_{1}/{2}'.format(instance.user.pk, instance.user.get_full_name(), filename)
 
-# Create your models here.
-
 
 class CustomUser(models.Model):
     """Расширение для базового класса User"""
-    user = models.OneToOneField(User, on_delete=models.CASCADE, default='', verbose_name='Абитуриент', related_name='custom')
+    user = models.OneToOneField(User, on_delete=models.CASCADE, default='',
+                                verbose_name='Абитуриент', related_name='custom')
     date_of_birth = models.DateField(verbose_name="Дата рождения")
-    patronymic = models.CharField(verbose_name="Отчество (при наличии)", max_length=80, default='', blank=True)
+    patronymic = models.CharField(verbose_name="Отчество (при наличии)", max_length=80,
+                                  default='', blank=True)
     phone_number = models.CharField(verbose_name="Номер телефона", max_length=15, default='')
     status_list = (
         ('error', 'Вероятно, вы указали неверные данные электронной почты или номер телефона. '
@@ -33,13 +28,15 @@ class CustomUser(models.Model):
         ('back', 'Документы отозваны')
     )
     # статус заявки
-    sending_status = models.CharField(max_length=256, verbose_name="Статус заявки", choices=status_list, default='no')
+    sending_status = models.CharField(max_length=256, verbose_name="Статус заявки",
+                                      choices=status_list, default='no')
     # статус отправки документов
     complete_flag = models.BooleanField(default=False, verbose_name="Документы отправлены?:")
     # статус принятия соглашения о персональных данных
     agreement_flag = models.BooleanField(default=False, verbose_name="Соглашение:")
     work_flag = models.BooleanField(default=False, verbose_name="Взят в работу:")
     success_flag = models.BooleanField(default=False, verbose_name="Отработан:")
+    comment_admin = models.TextField(verbose_name="Комментарий для внутренней работы", blank=True)
 
     class Meta:
         """перевод для админпанели"""
@@ -74,7 +71,8 @@ class DocumentUser(models.Model):
         ('Индивидуальные достижения', 'Индивидуальные достижения'),
     )
 
-    name_doc = models.CharField(max_length=256, verbose_name="Название документа", choices=document_list)
+    name_doc = models.CharField(max_length=256, verbose_name="Название документа",
+                                choices=document_list)
     doc = models.FileField(upload_to=user_directory_path, verbose_name="Загрузить документ")
 
     class Meta:
@@ -91,3 +89,20 @@ class DocumentUser(models.Model):
         # Потом удаляем сам файл
         storage.delete(path)
 
+
+class ChoicesProfile(models.Model):
+    """Выбор профиля обучения"""
+    description = models.CharField(max_length=256)
+
+    class Meta:
+        """перевод для админпанели"""
+        verbose_name = 'Профиль обучения'
+        verbose_name_plural = 'Профили обучения'
+
+
+class AdditionalInfo(models.Model):
+    """Класс с дополнительной информацией о пользователе (прием 21/22)"""
+    user = models.ForeignKey(User, on_delete=models.CASCADE, verbose_name="Дополнительно", default='')
+    address = models.CharField(max_length=400, verbose_name="Адрес прописки", default=' ')
+    education_profile = models.ManyToManyField(ChoicesProfile)
+    individual_str = models.CharField(max_length=32, blank=True)
