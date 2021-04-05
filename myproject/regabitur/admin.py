@@ -4,19 +4,18 @@ from django.contrib.auth.admin import UserAdmin
 from django.contrib.auth.forms import UserChangeForm
 from django.contrib.auth.models import User
 from transliterate.utils import _
-
-from .models import *
+from .models import CustomUser, DocumentUser
 from django.utils.safestring import mark_safe
 from import_export import resources
 from import_export.admin import ImportExportModelAdmin
-
 
 
 class UserInline(admin.StackedInline):
     """Доп. форма для пользователей с информацией из model.CustomUser"""
     model = CustomUser
     can_delete = False
-   # list_display = ( 'phone_number','work_flag',' agreement_flag', 'complete_flag', 'sending_status', 'date_of_birth', 'patronymic')
+    # list_display = ( 'phone_number','work_flag',' agreement_flag', 'complete_flag',
+    # 'sending_status', 'date_of_birth', 'patronymic')
     verbose_name_plural = 'Доп. информация'
     readonly_fields = ['date_of_birth', 'patronymic', 'phone_number']
 
@@ -40,9 +39,10 @@ class UserInlineDoc(admin.TabularInline):
 
 class UserAdmin(UserAdmin):
     """Представление модели User"""
-    model = User
+    model = DocumentUser
     inlines = (UserInline, UserInlineDoc)
-    list_display = ('id', 'username', 'first_name', 'last_name', 'date_joined', 'email', 'status_doc')
+    list_display = ('id', 'username', 'first_name', 'last_name', 'date_joined',
+                    'email', 'status_doc')
     list_display_links = ('id', 'username', )
     list_filter = ('date_joined',)
     ordering = ('-date_joined',)
@@ -62,25 +62,24 @@ class UserAdmin(UserAdmin):
         'is_staff'
     ]
 
-
-
     def status_doc(self, obj):
         status = obj.custom.complete_flag
         work = obj.custom.work_flag
         success = obj.custom.success_flag
         result = None
         if obj.custom.sending_status == 'back':
-            return ('Заявка отозвана')
-
+            return('Заявка отозвана')
         if status:
             result = "Документы поданы"
         elif status != 'True':
             result = " Не поданы "
         if success:
             return mark_safe(
-                '<div style="width:100%%; height:100%%; background-color:green;">{0}</div>'.format(result))
+                '<div style="width:100%%; height:100%%; '
+                'background-color:green;">{0}</div>'.format(result))
         if work:
-            return mark_safe('<div style="width:100%%; height:100%%; background-color:orange;">{0}</div>'.format(result))
+            return mark_safe('<div style="width:100%%; height:100%%; '
+                             'background-color:orange;">{0}</div>'.format(result))
 
         return mark_safe(result)
     # для сортировки:
@@ -91,8 +90,6 @@ class DocUser(admin.ModelAdmin):
     list_display = ('user_id', 'user', 'name_doc', 'doc')
     list_filter = ('date_pub',)
     readonly_fields = ('user', )
-
-
 
 
 class CustomUserResource(resources.ModelResource):
@@ -113,7 +110,6 @@ admin.site.register(User, UserAdmin)
 admin.site.register(CustomUser, CustomUserResource)
 
 
-
 # class DocumentUserResource(resources.ModelResource):
 #     """Класс, формирующий dateset из админ-панели"""
 #     class Meta:
@@ -125,7 +121,6 @@ admin.site.register(CustomUser, CustomUserResource)
 #     resource_class = DocumentUserResource
 
 
-
 # class DocUserInline(admin.StackedInline):
 #     model = User
 #     fk_name = 'id'
@@ -134,5 +129,3 @@ admin.site.register(CustomUser, CustomUserResource)
 #     fields = ['first_name', 'last_name', ]
 #
 #     #, 'patronymic', 'date_of_birth', 'sending_status', 'phone_number'
-
-
