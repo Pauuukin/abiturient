@@ -1,17 +1,16 @@
 from django.contrib import admin
-from django.urls import reverse
 from django.contrib.auth.admin import UserAdmin
 from django.contrib.auth.forms import UserChangeForm
 from django.contrib.auth.models import User
 from transliterate.utils import _
-from .models import CustomUser, DocumentUser
+from .models import CustomUser, DocumentUser, AdditionalInfo, ChoicesProfile, PublishTab
 from django.utils.safestring import mark_safe
 from import_export import resources
 from import_export.admin import ImportExportModelAdmin
 
 
 class UserInline(admin.StackedInline):
-    """Доп. форма для пользователей с информацией из model.CustomUser"""
+    """Доп. форма для пользователей с информацией из models.CustomUser"""
     model = CustomUser
     can_delete = False
     # list_display = ( 'phone_number','work_flag',' agreement_flag', 'complete_flag',
@@ -20,8 +19,23 @@ class UserInline(admin.StackedInline):
     readonly_fields = ['date_of_birth', 'patronymic', 'phone_number']
 
 
+class UserInlineInfo(admin.TabularInline):
+    """Доп. форма для пользователей с информацией из models.AdditionalInfo"""
+    model = AdditionalInfo
+    verbose_name_plural = 'Информация о формах'
+    extra = 0
+
+
+class UserInlinePublish(admin.TabularInline):
+    """Доп. форма для пользователей с информацией из models.PublishTab"""
+    model = PublishTab
+    can_delete = False
+    verbose_name_plural = 'Опубликовать в Списки подавших'
+    extra = 0
+
+
 class UserInlineDoc(admin.TabularInline):
-    """Доп. форма для пользователей с информацией из model.DocumentUser"""
+    """Доп. форма для пользователей с информацией из models.DocumentUser"""
     model = DocumentUser
     can_delete = False
     verbose_name_plural = 'Документы'
@@ -29,18 +43,17 @@ class UserInlineDoc(admin.TabularInline):
     ordering = ('-date_pub', )
     extra = 1
 
-    # def doc_url(self, obj):
-    #     """для релизной версии путь"""
-    #     str1 = 'https://abiturient.jurac.ru/static/media'
-    #     sum = '{0}{1}'.format(str1, obj.doc.url)
-    #     result = '<a href="{0}" target="_blank">открыть</a>'.format(sum)
-    #     return mark_safe(result)
+
+@admin.register(ChoicesProfile)
+class ChoicesProfileAdmin(admin.ModelAdmin):
+    extra = 1
+
 
 
 class UserAdmin(UserAdmin):
     """Представление модели User"""
     model = DocumentUser
-    inlines = (UserInline, UserInlineDoc)
+    inlines = (UserInline, UserInlineInfo, UserInlinePublish, UserInlineDoc)
     list_display = ('id', 'username', 'first_name', 'last_name', 'date_joined',
                     'email', 'status_doc')
     list_display_links = ('id', 'username', )

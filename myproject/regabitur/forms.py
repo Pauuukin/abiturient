@@ -1,9 +1,9 @@
 from django import forms
-from django.forms import SelectDateWidget
+from django.forms import SelectDateWidget, CheckboxSelectMultiple
 from django.contrib.auth.forms import AuthenticationForm
 from django.contrib.auth.models import User
 
-from .models import *
+from .models import ChoicesProfile, User, DocumentUser, CustomUser, AdditionalInfo
 
 
 class MyLoginForm(AuthenticationForm, forms.ModelForm):
@@ -62,6 +62,22 @@ class AddDocForm(forms.ModelForm):
         super().__init__(*args, **kwargs)
         for field in self.fields:
             self.fields[field].widget.attrs['class'] = 'form-control mt-2 mb-3'
+
+
+class AdditionalInfoForm(forms.ModelForm):
+    """Форма для отправки профиля обучения"""
+    class Meta:
+        model = AdditionalInfo
+        exclude = ['user']
+        fields = ('education_profile', 'address', )
+        widgets = {
+            'education_profile': CheckboxSelectMultiple
+        }
+
+    def __init__(self, *args, **kwargs):
+        """Переопределяем метод init для формы, чтобы задать нужные классы"""
+        super().__init__(*args, **kwargs)
+        self.fields['address'].widget.attrs['class'] = 'form-control'
 
 
 class AddInfoForm(forms.ModelForm):

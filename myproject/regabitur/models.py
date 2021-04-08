@@ -99,10 +99,46 @@ class ChoicesProfile(models.Model):
         verbose_name = 'Профиль обучения'
         verbose_name_plural = 'Профили обучения'
 
+    def __str__(self):
+        return self.description
+
 
 class AdditionalInfo(models.Model):
     """Класс с дополнительной информацией о пользователе (прием 21/22)"""
-    user = models.ForeignKey(User, on_delete=models.CASCADE, verbose_name="Дополнительно", default='')
+    user = models.ForeignKey(User, on_delete=models.CASCADE, verbose_name="Пользователь", default='')
+    education_profile = models.ManyToManyField(ChoicesProfile, verbose_name="Форма обучения")
     address = models.CharField(max_length=400, verbose_name="Адрес прописки", default=' ')
-    education_profile = models.ManyToManyField(ChoicesProfile)
+
+    class Meta:
+        """перевод для админпанели"""
+        verbose_name = 'Профиль обучения'
+        verbose_name_plural = 'Профили обучения'
+
+
+class PublishTab(models.Model):
+    """Публикация пользователей в списках подавших документы"""
+
+    choice_field = (
+        ('ЕГЭ', 'ЕГЭ'),
+        ('Вступительные испытания', 'Вступительные испытания'),
+    )
+
+    user = models.ForeignKey(User, on_delete=models.CASCADE, verbose_name="Пользователь", default='')
     individual_str = models.CharField(max_length=32, blank=True)
+    test_type = models.CharField(max_length=256, verbose_name="Вступительные испытания",
+                                 choices=choice_field)
+    bac_ofo = models.BooleanField(default=False, verbose_name="Опубликовать в БАК ОФО")
+    bac_zfo = models.BooleanField(default=False, verbose_name="Опубликовать в БАК ЗФО")
+    bac_ozfo = models.BooleanField(default=False, verbose_name="Опубликовать в БАК ОЗФО")
+    mag_ofo = models.BooleanField(default=False, verbose_name="Опубликовать в МАГ ОФО")
+    mag_zfo = models.BooleanField(default=False, verbose_name="Опубликовать в МАГ ЗФО")
+    asp_ofo = models.BooleanField(default=False, verbose_name="Опубликовать в АСП ОФО")
+    asp_zfo = models.BooleanField(default=False, verbose_name="Опубликовать в АСП ЗФО")
+
+    class Meta:
+        """перевод для админпанели"""
+        verbose_name = 'Опубликовать в списки подавших'
+        verbose_name_plural = 'Опубликовать в списки подавших'
+
+    def __str__(self):
+        return self.user.get_full_name()

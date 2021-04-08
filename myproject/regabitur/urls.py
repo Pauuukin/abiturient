@@ -15,6 +15,7 @@ urlpatterns = [
     url(r'^password-reset/complete/$', views.PasswordResetCompleteView.as_view(), name='password_reset_complete'),
     path('add_dok', DocumentsAddView.as_view(), name='add_doc_url'),
     path('add_info', InfoCreateView.as_view(), name='add_info_url'),
+    path('add_addition/', AdditionalInfoView.as_view(), name='add_additional_url'),
     path('user-room/', UserRoom.as_view(), name='user_room_url'),
     path('update_info/<int:pk>', InfoUpdateView.as_view(), name='update_info_url'),
     path('complete_send/<int:pk>', complete_send, name='complete_send_url'),

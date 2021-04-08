@@ -131,6 +131,21 @@ class InfoCreateView(LoginRequiredMixin, CreateView):
         return super().form_valid(form)
 
 
+class AdditionalInfoView(CreateView):
+    """Форма для выбора профиля обучения"""
+    model = AdditionalInfo
+    template_name = 'regabitur/add_profile.html'
+    form_class = AdditionalInfoForm
+    success_url = ('user_room_url')
+
+    def form_valid(self, form):
+        """Метод сохранения записи за конкретным пользователем"""
+        self.object = form.save(commit=False)
+        self.object.user = self.request.user
+        self.object.save()
+        return super().form_valid(form)
+
+
 class InfoUpdateView(LoginRequiredMixin, UpdateView):
     model = CustomUser
     template_name = 'regabitur/add_info.html'
