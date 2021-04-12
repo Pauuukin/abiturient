@@ -1,35 +1,14 @@
-{% load static %}
-<style>
-body {
-  background-image: url('{% static 'image/1261706.jpg'%}');
-  background-size: cover;
-  background-position: center center;
-  background-repeat: no-repeat;
-  height: 100%;
-  opacity: 0.8;
-}
-</style>
-<html>
-<head>
-	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
-</head>
-<body>
+{% extends 'regabitur/base_auth.html'%}
 
-<div class="container-fluid  h-100 ">
+{% block content %}
+<div class="card border-primary">
+	<h3 class="text-center text-muted"> Выберете формы обучения галочками и нажмите кнопку <b>"Отправить"</b></h3>
+<form id="add_addition" method="post"  enctype="multipart/form-data" class="m-4">
 
-	<div class="row h-100 justify-content-center align-items-center">
-		<div class="col-md-8 offset-md-1">
-			<form id="add_addition" method="post"  enctype="multipart/form-data">
+	{% csrf_token%}
+	{{ form }}
 
-				{% csrf_token%}
-				{{ form }}
-
-			</form>
-			<button form="add_addition" type="submit" class="btn btn-primary mt-2 mb-2">Отправить</button>
-		</div>
-	</div>
-
+</form>
+<button form="add_addition" type="submit" class="btn btn-primary m-4">Отправить</button>
 </div>
-
-</body>
-</html>
+{% endblock %}

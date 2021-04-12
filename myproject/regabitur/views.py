@@ -1,3 +1,5 @@
+from os.path import exists
+
 from django.http import HttpResponseRedirect
 from django.shortcuts import render, redirect
 from django.urls import reverse_lazy
@@ -55,6 +57,7 @@ def complete_send(request, pk):
 
 
 class CustomSuccessMessageMixin:
+    """Миксин для вывода сообщений при работе с формами"""
     @property
     def success_msg(self):
         return False
@@ -68,10 +71,15 @@ class CustomSuccessMessageMixin:
         return '%s?id=%s' % (self.success_url, self.object.id)
 
 
+"""
+    Личный кабинет пользователя
+"""
+
+
 class UserRoom(LoginRequiredMixin, ListView):
+    """Личный кабинет пользователя"""
     model = CustomUser
     template_name = 'regabitur/user_room.html'
-
 
     def get_context_data(self, **kwargs):
         """Переопределяем базовый метод, чтобы передать свой контекст"""
@@ -87,6 +95,72 @@ class UserRoom(LoginRequiredMixin, ListView):
             context['is_complete'] = temp.complete_flag == True
         context['is_exist'] = is_exist
         return context
+
+
+"""
+    Добавляем доп. данные  
+"""
+
+
+class InfoCreateView(LoginRequiredMixin, CreateView):
+    """Модель для добавления данных в расширенную модель User"""
+    model = CustomUser
+    template_name = 'regabitur/add_info.html'
+    form_class = AddInfoForm
+    success_url = reverse_lazy('add_additional_url')
+    success_msg = 'Данные успешно добавлены!'
+
+    def form_valid(self, form):
+        """Метод сохранения записи за конкретным пользователем"""
+        self.object = form.save(commit=False)
+        self.object.user = self.request.user
+        self.object.save()
+        return super().form_valid(form)
+
+
+class InfoUpdateView(LoginRequiredMixin, UpdateView):
+    """Класс обновления информации"""
+    model = CustomUser
+    template_name = 'regabitur/add_info.html'
+    form_class = AddInfoForm
+    success_url = reverse_lazy('user_room_url')
+    success_msg = 'Данные успешно обновлены'
+
+    def get_context_data(self, **kwargs):
+        """Переопределяем базовый метод, чтобы передать свой контекст"""
+        kwargs['update'] = True
+        return super().get_context_data(**kwargs)
+
+    def get_form_kwargs(self):
+        kwargs = super().get_form_kwargs()
+        if self.request.user != kwargs['instance'].user:
+            return self.handle_no_permission()
+        return kwargs
+
+
+"""
+    Выбираем формы обучения 
+"""
+
+
+class AdditionalInfoView(CreateView):
+    """Класс для выбора профиля обучения"""
+    model = AdditionalInfo
+    template_name = 'regabitur/add_profile.html'
+    form_class = AdditionalInfoForm
+    success_url = reverse_lazy('user_room_url')
+
+    def form_valid(self, form):
+        """Метод сохранения записи за конкретным пользователем"""
+        self.object = form.save(commit=False)
+        self.object.user = self.request.user
+        self.object.save()
+        return super().form_valid(form)
+
+
+"""
+    CRUD для документов
+"""
 
 
 class DocumentsAddView(LoginRequiredMixin, CustomSuccessMessageMixin, CreateView):
@@ -113,56 +187,6 @@ class DocumentsAddView(LoginRequiredMixin, CustomSuccessMessageMixin, CreateView
         self.object.user = self.request.user
         self.object.save()
         return super().form_valid(form)
-
-
-class InfoCreateView(LoginRequiredMixin, CreateView):
-    """Модель для добавления данных в расширенную модель User"""
-    model = CustomUser
-    template_name = 'regabitur/add_info.html'
-    form_class = AddInfoForm
-    success_url = reverse_lazy('user_room_url')
-    success_msg = 'Данные успешно добавлены!'
-
-    def form_valid(self, form):
-        """Метод сохранения записи за конкретным пользователем"""
-        self.object = form.save(commit=False)
-        self.object.user = self.request.user
-        self.object.save()
-        return super().form_valid(form)
-
-
-class AdditionalInfoView(CreateView):
-    """Форма для выбора профиля обучения"""
-    model = AdditionalInfo
-    template_name = 'regabitur/add_profile.html'
-    form_class = AdditionalInfoForm
-    success_url = ('user_room_url')
-
-    def form_valid(self, form):
-        """Метод сохранения записи за конкретным пользователем"""
-        self.object = form.save(commit=False)
-        self.object.user = self.request.user
-        self.object.save()
-        return super().form_valid(form)
-
-
-class InfoUpdateView(LoginRequiredMixin, UpdateView):
-    model = CustomUser
-    template_name = 'regabitur/add_info.html'
-    form_class = AddInfoForm
-    success_url = reverse_lazy('user_room_url')
-    success_msg = 'Данные успешно обновлены'
-
-    def get_context_data(self, **kwargs):
-        """Переопределяем базовый метод, чтобы передать свой контекст"""
-        kwargs['update'] = True
-        return super().get_context_data(**kwargs)
-
-    def get_form_kwargs(self):
-        kwargs = super().get_form_kwargs()
-        if self.request.user != kwargs['instance'].user:
-            return self.handle_no_permission()
-        return kwargs
 
 
 class DocumentDeleteView(LoginRequiredMixin, DeleteView):
@@ -196,23 +220,35 @@ class DocumentsListView(LoginRequiredMixin, ListView):
     context_object_name = 'documents'
 
 
+"""
+     Классы регистрации и авторизации пользователей
+"""
+
+
 class MyLoginView(LoginView):
     """обработчик авторизации"""
     template_name = 'regabitur/login_abitur.html'
     form_class = MyLoginForm
-    # success_url = reverse_lazy('user_room_url')
     success_url = reverse_lazy('user_room_url')
 
     def get_success_url(self):
+        print(self)
+        user = self.request.user
+        if exists(user.custom):
+            self.success_url = reverse_lazy('add_additional_url')
+        elif user.addition:
+            self.success_url = reverse_lazy('user_room_url')
+        else:
+            self.success_url = reverse_lazy('add_info_url')
         return self.success_url
 
 
 class MyRegisterView(CreateView):
+    """Регистрация пользователя"""
     model = User
     template_name = 'regabitur/register_abitur.html'
     form_class = MyRegisterForm
-    # success_url = reverse_lazy('user_room_url')
-    success_url = reverse_lazy('user_room_url')
+    success_url = reverse_lazy('add_info_url')
 
     def form_valid(self, form):
         """если пользователь зарегистрировался, сразу входим в систему"""
@@ -225,4 +261,5 @@ class MyRegisterView(CreateView):
 
 
 class MyLogoutView(LogoutView):
+    """ВЫход из системы """
     next_page = reverse_lazy('reg_info_url')

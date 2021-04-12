@@ -1,4 +1,4 @@
-{% extends 'base_regabitur.html' %}
+{% extends 'regabitur/base_auth.html' %}
 
 {% block title %}
 Добавить дополнительные данные
@@ -19,14 +19,14 @@
             </div>
         </div>
     </div>
-    <div class="col-md-2"></div>
-    <div class="col-md-4 ">
+
+    <div class="col-md-8">
         <div class="card border-info ml-8">
             <form id="update_form" method="post" class="p-3">
                 {% csrf_token %}
                 {{form }}
             </form>
-            <button form="update_form" type="submit" class="btn btn-primary mt-2 mb-2">Обновить</button>
+            <button form="update_form" type="submit" class="btn btn-primary m-4">Обновить</button>
         </div>
     </div>
 </div>
@@ -45,8 +45,8 @@
             </div>
         </div>
     </div>
-    <div class="col-md-2"></div>
-    <div class="col-md-4">
+
+    <div class="col-md-8">
         <form id="info_add" method="post"  enctype="multipart/form-data">
             {% csrf_token%}
             {{form}}
