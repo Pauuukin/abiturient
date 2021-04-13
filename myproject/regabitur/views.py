@@ -229,15 +229,21 @@ class MyLoginView(LoginView):
     """обработчик авторизации"""
     template_name = 'regabitur/login_abitur.html'
     form_class = MyLoginForm
-    success_url = reverse_lazy('user_room_url')
+    # success_url = reverse_lazy('user_room_url')
 
     def get_success_url(self):
+        """
+        Определяем, есть ли связанные модели для дополнительной информации(CustomUser, AdditionalUser)|
+        Если нет, отправляем на страницу с добавлением недостающей информации
+        """
         print(self)
         user = self.request.user
-        if exists(user.custom):
-            self.success_url = reverse_lazy('add_additional_url')
-        elif user.addition:
+        custom_exist = hasattr(user, 'custom')
+        addition_exist = hasattr(user, 'addition')
+        if custom_exist and addition_exist:
             self.success_url = reverse_lazy('user_room_url')
+        elif custom_exist:
+            self.success_url = reverse_lazy('add_additional_url')
         else:
             self.success_url = reverse_lazy('add_info_url')
         return self.success_url

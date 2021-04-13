@@ -105,14 +105,14 @@ class ChoicesProfile(models.Model):
 
 class AdditionalInfo(models.Model):
     """Класс с дополнительной информацией о пользователе (прием 21/22)"""
-    user = models.ForeignKey(User, on_delete=models.CASCADE, verbose_name="Пользователь", default='', related_name='addition')
+    user = models.OneToOneField(User, on_delete=models.CASCADE, verbose_name="Пользователь", default='', related_name='addition')
     education_profile = models.ManyToManyField(ChoicesProfile, verbose_name="Форма обучения")
     address = models.CharField(max_length=400, verbose_name="Адрес прописки", default=' ')
 
     class Meta:
         """перевод для админпанели"""
-        verbose_name = 'Профиль обучения'
-        verbose_name_plural = 'Профили обучения'
+        verbose_name = 'Выбранные профили обучения'
+        verbose_name_plural = 'Выбранные профили обучения'
 
 
 class PublishTab(models.Model):

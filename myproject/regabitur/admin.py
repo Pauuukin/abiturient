@@ -8,6 +8,10 @@ from django.utils.safestring import mark_safe
 from import_export import resources
 from import_export.admin import ImportExportModelAdmin
 
+"""
+    Модель пользователя и inline 
+"""
+
 
 class UserInline(admin.StackedInline):
     """Доп. форма для пользователей с информацией из models.CustomUser"""
@@ -42,12 +46,6 @@ class UserInlineDoc(admin.TabularInline):
     readonly_fields = ['name_doc', 'doc', 'date_pub']
     ordering = ('-date_pub', )
     extra = 1
-
-
-@admin.register(ChoicesProfile)
-class ChoicesProfileAdmin(admin.ModelAdmin):
-    extra = 1
-
 
 
 class UserAdmin(UserAdmin):
@@ -95,11 +93,27 @@ class UserAdmin(UserAdmin):
                              'background-color:orange;">{0}</div>'.format(result))
 
         return mark_safe(result)
-    # для сортировки:
-    # status_doc.admin_order_field = 'custom__complete_flag'
+
+
+"""
+    Регистрация остальных моделей 
+"""
+
+
+@admin.register(ChoicesProfile)
+class ChoicesProfileAdmin(admin.ModelAdmin):
+    """Модель профилей обучения"""
+    extra = 1
+
+
+@admin.register(AdditionalInfo)
+class AdditionalInfoAdmin(admin.ModelAdmin):
+    """Модель с выбранными пользователем профилями"""
+    extra = 0
 
 
 class DocUser(admin.ModelAdmin):
+    """Модель Документов пользователей"""
     list_display = ('user_id', 'user', 'name_doc', 'doc')
     list_filter = ('date_pub',)
     readonly_fields = ('user', )
