@@ -123,7 +123,7 @@ class PublishTab(models.Model):
         ('Вступительные испытания', 'Вступительные испытания'),
     )
 
-    user = models.ForeignKey(User, on_delete=models.CASCADE, verbose_name="Пользователь", default='')
+    user = models.OneToOneField(User, on_delete=models.CASCADE, verbose_name="Пользователь", default='')
     individual_str = models.CharField(max_length=32, blank=True)
     test_type = models.CharField(max_length=256, verbose_name="Вступительные испытания",
                                  choices=choice_field)

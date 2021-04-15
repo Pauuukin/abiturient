@@ -4,6 +4,7 @@ from django.urls import path
 from .views import *
 
 urlpatterns = [
+
     path('', reg_info, name='reg_info_url'),
     path('accounts/login/', MyLoginView.as_view(), name='login_abitur_url'),
     path('login/', MyLoginView.as_view(), name='login_abitur_url'),
@@ -21,4 +22,5 @@ urlpatterns = [
     path('complete_send/<int:pk>', complete_send, name='complete_send_url'),
     path('agreement_flag/<int:pk>', agreement_flag, name='agreement_flag_url'),
     path('delete-page/<int:pk>', DocumentDeleteView.as_view(), name='delete_page_url'),
+    path('bak/submit_bak/', SubmitList.as_view(), name='submit_list_bak_url'),
 ]

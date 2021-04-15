@@ -4,7 +4,7 @@ from django.http import HttpResponseRedirect
 from django.shortcuts import render, redirect
 from django.urls import reverse_lazy
 from django.views.generic import CreateView
-
+from django.views.generic import View
 from django.contrib.auth.views import LoginView
 from django.contrib.auth.views import LogoutView
 from django.contrib.auth import authenticate, login
@@ -16,6 +16,7 @@ from .forms import *
 
 
 # Create your views here.
+from .models import PublishTab
 
 
 def reg_info(request):
@@ -143,7 +144,7 @@ class InfoUpdateView(LoginRequiredMixin, UpdateView):
 """
 
 
-class AdditionalInfoView(CreateView):
+class AdditionalInfoView(LoginRequiredMixin, CreateView):
     """Класс для выбора профиля обучения"""
     model = AdditionalInfo
     template_name = 'regabitur/add_profile.html'
@@ -269,3 +270,17 @@ class MyRegisterView(CreateView):
 class MyLogoutView(LogoutView):
     """ВЫход из системы """
     next_page = reverse_lazy('reg_info_url')
+
+
+class SubmitList(ListView):
+    """Отображение студентов, подавших документы"""
+    model = PublishTab
+    template_name = 'regabitur/bak/submit_bak.html'
+
+    def get_context_data(self, **kwargs):
+        """Передаем записи с БАК ОФО true """
+        context = super().get_context_data(**kwargs)
+        all_publish = PublishTab.objects.all()
+        context["bak_ofo"] = all_publish.filter(bac_ofo=True)
+        return context
+

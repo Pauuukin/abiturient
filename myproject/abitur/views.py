@@ -1,10 +1,9 @@
 from django.shortcuts import render
 from django.views.generic import View
 from django.shortcuts import get_object_or_404
+from django.db.models import Q
 
 from .models import *
-
-
 
 
 def abiturPage(request):
@@ -21,7 +20,7 @@ def abiturPage(request):
 class NewsDetail(View):
     """теперь view обрабатывается классом"""
     def get(self, request, slug):
-         # news = News.objects.get(slug__iexact=slug)
+        # news = News.objects.get(slug__iexact=slug)
         news = get_object_or_404(News, slug__iexact=slug)
         return render(request, 'abitur/news_detail.html', context={'news': news})
 
