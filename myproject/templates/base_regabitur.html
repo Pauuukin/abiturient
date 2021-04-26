@@ -62,8 +62,19 @@
 
                     {% if request.user.is_authenticated %}
 
+
+
                     <li class="nav-item ml-2 ">
+                        {% if custom_exist and addition_exist %}
+                        {{ custom_exist }}
+                        {{ addition_exist }}
+
                         <a class="nav-link btn btn-outline-dark" href="{% url 'user_room_url' %}">Личный кабинет</a>
+                        {% elif custom_exist %}
+                        <a class="nav-link btn btn-outline-dark" href="{% url 'add_additional_url' %}"> Продолжить регистрацию </a>
+                        {% else %}
+                        <a class="nav-link btn btn-outline-dark" href="{% url 'add_info_url' %}"> Продолжить регистрацию </a>
+                        {% endif %}
                     </li>
                     <li class="nav-item ml-2">
                         <a class="nav-link btn btn-warning" href="{% url 'logout_abitur_url' %}">Выйти</a>
@@ -177,9 +188,19 @@
                     <li>
                         <a href="{% url 'login_abitur_url' %}">Авторизация </a>
                     </li>
-                    <li>
-                        <a href="{% url 'user_room_url' %}">Личный кабинет</a>
+                    {% if request.user.is_authenticated %}
+                    {% if custom_exist and addition_exist %}
+                        <a  href="{% url 'user_room_url' %}">Личный кабинет</a>
+                        {% elif custom_exist %}
+                        <a  href="{% url 'add_additional_url' %}"> Продолжить регистрацию </a>
+                        {% else %}
+                        <a href="{% url 'add_info_url' %}"> Продолжить регистрацию </a>
+                    {% endif %}
+                    {% else %}
+                    <li class="nav-item ml-2">
+                        <a href="{% url 'login_abitur_url' %}">Вход</a>
                     </li>
+                    {% endif %}
                     <!--                    <li>-->
                     <!--                        <a href="/admin">Админпанель</a>-->
                     <!--                    </li>-->

@@ -4,7 +4,7 @@ from django.http import HttpResponseRedirect
 from django.shortcuts import render, redirect
 from django.urls import reverse_lazy
 from django.views.generic import CreateView
-from django.views.generic import View
+from django.views.generic import View, TemplateView
 from django.contrib.auth.views import LoginView
 from django.contrib.auth.views import LogoutView
 from django.contrib.auth import authenticate, login
@@ -14,19 +14,45 @@ from django.views.generic import CreateView, UpdateView, ListView, DeleteView
 
 from .forms import *
 
-
 # Create your views here.
 from .models import PublishTab
 
 
-def reg_info(request):
-    """отображает главную страницу приложения regabitur"""
-    return render(request, 'regabitur/reg_info.html')
+class MainPageView(TemplateView):
+    template_name = 'regabitur/reg_info.html'
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        user = self.request.user
+        context['custom_exist'] = hasattr(user, 'custom')
+        context['addition_exist'] = hasattr(user, 'addition')
+        return context
+
+    # def get_success_url(self):
+    #     """
+    #         Определяем, заполнил ли пользователь нужные данные, если нет, то не пускаем в личный кабинет,
+    #         кидаем на страницы добавления данных
+    #     """
+    #     user = self.request.user
+    #     custom_exist = hasattr(user, 'custom')
+    #     addition_exist = hasattr(user, 'addition')
+    #     if custom_exist and addition_exist:
+    #         self.success_url = reverse_lazy('user_room_url')
+    #     elif custom_exist:
+    #         self.success_url = reverse_lazy('add_additional_url')
+    #     else:
+    #         self.success_url = reverse_lazy('add_info_url')
+    #     return self.success_url
+
+
+# def reg_info(request):
+#     """отображает главную страницу приложения regabitur"""
+#     return render(request, 'regabitur/reg_info.html')
 
 
 def agreement_flag(request, pk):
     """обработчик соглашения о персональных данных"""
-    if (request.user.is_authenticated and request.user.pk==pk):
+    if request.user.is_authenticated and request.user.pk == pk:
         if request.method == 'GET':
             abitur = CustomUser.objects.get(user_id=pk)
             abitur.agreement_flag = True
@@ -42,7 +68,7 @@ def agreement_flag(request, pk):
 
 def complete_send(request, pk):
     """Обработчик завершения подачи документов"""
-    if (request.user.is_authenticated and request.user.pk==pk):
+    if (request.user.is_authenticated and request.user.pk == pk):
         if request.method == 'GET':
             abitur = CustomUser.objects.get(user_id=pk)
             abitur.sending_status = 'send'
@@ -59,6 +85,7 @@ def complete_send(request, pk):
 
 class CustomSuccessMessageMixin:
     """Миксин для вывода сообщений при работе с формами"""
+
     @property
     def success_msg(self):
         return False
@@ -86,7 +113,8 @@ class UserRoom(LoginRequiredMixin, ListView):
         """Переопределяем базовый метод, чтобы передать свой контекст"""
         kwargs['dop_info'] = CustomUser.objects.all()
         context = super().get_context_data(**kwargs)
-        is_exist = CustomUser.objects.filter(user=self.request.user).exists()
+        user = self.request.user
+        is_exist = hasattr(user, 'custom')
         if is_exist:
             temp = CustomUser.objects.get(user=self.request.user)
             context['status'] = temp.get_sending_status_display()
@@ -94,6 +122,8 @@ class UserRoom(LoginRequiredMixin, ListView):
             context['error'] = temp.sending_status == 'error'
             context['agreement'] = temp.agreement_flag == True
             context['is_complete'] = temp.complete_flag == True
+            context['custom_exist'] = hasattr(user, 'custom')
+            context['addition_exist'] = hasattr(user, 'addition')
         context['is_exist'] = is_exist
         return context
 
@@ -180,6 +210,8 @@ class DocumentsAddView(LoginRequiredMixin, CustomSuccessMessageMixin, CreateView
         user_doc_done = user.complete_flag
         context['user_doc_done'] = user_doc_done
         context['document_user'] = document_user
+        context['custom_exist'] = hasattr(id_user, 'custom')
+        context['addition_exist'] = hasattr(id_user, 'addition')
         return context
 
     def form_valid(self, form):
@@ -230,6 +262,7 @@ class MyLoginView(LoginView):
     """обработчик авторизации"""
     template_name = 'regabitur/login_abitur.html'
     form_class = MyLoginForm
+
     # success_url = reverse_lazy('user_room_url')
 
     def get_success_url(self):
@@ -237,7 +270,6 @@ class MyLoginView(LoginView):
         Определяем, есть ли связанные модели для дополнительной информации(CustomUser, AdditionalUser)|
         Если нет, отправляем на страницу с добавлением недостающей информации
         """
-        print(self)
         user = self.request.user
         custom_exist = hasattr(user, 'custom')
         addition_exist = hasattr(user, 'addition')
@@ -283,4 +315,3 @@ class SubmitList(ListView):
         all_publish = PublishTab.objects.all()
         context["bak_ofo"] = all_publish.filter(bac_ofo=True)
         return context
-
