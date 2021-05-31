@@ -77,6 +77,10 @@ def spec_page(request):
     return render(request, 'abitur/spec.html')
 
 
+def norm_doc(request):
+    return render(request, 'abitur/normative_doc.html')
+
+
 def news_list(request):
     news = News.objects.all().order_by('-id')
     return render(request, 'abitur/all_news.html', context={'news': news})

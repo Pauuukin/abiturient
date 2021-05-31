@@ -26,6 +26,7 @@ urlpatterns = [
     path('mag/', mag_page, name='mag_page_url'),
     path('asp/', asp_page, name='asp_page_url'),
     path('spec/', spec_page, name='spec_page_url'),
+    path('normative-doc/', norm_doc, name='norm_doc_page_url'),
     path('infoOVZ/', infoOVZ_page, name='infoOVZ_page_url'),
     path('bak/calendar/', bak_calendar, name='bak_calendar_url'),
     path('mag/calendar/', mag_calendar, name='mag_calendar_url'),
