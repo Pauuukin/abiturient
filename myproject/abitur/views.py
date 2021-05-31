@@ -73,6 +73,10 @@ def next_priem(request):
     return render(request, 'abitur/next_priem.html')
 
 
+def spec_page(request):
+    return render(request, 'abitur/spec.html')
+
+
 def news_list(request):
     news = News.objects.all().order_by('-id')
     return render(request, 'abitur/all_news.html', context={'news': news})

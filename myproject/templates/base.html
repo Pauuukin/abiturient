@@ -70,16 +70,19 @@
                 <a  href="/abitur/">  <h4 class="text-body">Главная</h4></a>
             </div>
 
-            <div class="col-md-3">
+            <div class="col-md-2">
                 <a href="{% url 'bakPage_url' %}">  <h4 class=" text-body">Бакалавриат</h4></a>
             </div>
 
-            <div class="col-md-3">
+            <div class="col-md-2">
                 <a  href="{% url 'mag_page_url' %}">  <h4 class="text-body">Магистратура</h4></a>
             </div>
 
-            <div class="col-md-3">
+            <div class="col-md-2">
                 <a  href="{% url 'asp_page_url' %}">  <h4 class="text-body">Аспирантура</h4></a>
+            </div>
+            <div class="col-md-2">
+                <a  href="{% url 'spec_page_url' %}">  <h4 class="text-body">Специалитет</h4></a>
             </div>
         </div>
 
@@ -144,6 +147,9 @@ there is no any content
                     </li>
                     <li>
                         <a href="{% url 'asp_page_url' %}">Аспирантура</a>
+                    </li>
+                    <li>
+                        <a href="{% url 'spec_page_url' %}">Специалитет</a>
                     </li>
                     <li>
                         <a href="{% url 'infoPage_url' %}">Информация поступающим</a>
