@@ -49,8 +49,8 @@ def mag_page(request):
     return render(request, 'abitur/mag.html')
 
 
-def infoOVZ_page(request):
-    return render(request, 'abitur/infoOVZ.html')
+# def infoOVZ_page(request):
+#     return render(request, 'abitur/infoOVZ.html')
 
 
 def asp_page(request):
