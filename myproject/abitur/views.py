@@ -41,6 +41,10 @@ def bak_calendar(request):
     return render(request, 'abitur/bak/calendar_bak.html')
 
 
+def spec_calendar(request):
+    return render(request, 'abitur/spec/calendar_spec.html')
+
+
 def mag_calendar(request):
     return render(request, 'abitur/mag/calendar_mag.html')
 

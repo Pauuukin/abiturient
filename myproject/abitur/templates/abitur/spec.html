@@ -42,7 +42,8 @@
                     </div>
                     <a href="{% static 'docPriem2021/spec/2usloviyaSpec.pdf' %}" class="btn btn-primary btn-block">Условия поступления</a>
                     <a href="{% static 'docPriem2021/5bakIndivDos.pdf' %}" class="btn btn-primary btn-block">Порядок учета индивидуальных достижений</a>
-                    <a href="{% static 'docPriem2021/spec/4srokiSpec.pdf' %}" class="btn btn-primary btn-block">Календарь приема</a>
+
+                    <a href="{% url 'spec_calendar_url' %}" class="btn btn-primary btn-block">Календарь приема</a>
                 </div>
                 <div class="col-md-6">
                     <a href="#" class="btn btn-primary btn-block">Списки подавших документы</a>
