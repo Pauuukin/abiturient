@@ -22,5 +22,5 @@ urlpatterns = [
     path('complete_send/<int:pk>', complete_send, name='complete_send_url'),
     path('agreement_flag/<int:pk>', agreement_flag, name='agreement_flag_url'),
     path('delete-page/<int:pk>', DocumentDeleteView.as_view(), name='delete_page_url'),
-    path('bak/submit_bak/', SubmitList.as_view(), name='submit_list_bak_url'),
+    path('bak/submit_bak/', BakGPSL.as_view(), name='submit_list_bak_url'),
 ]

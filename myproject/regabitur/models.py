@@ -127,9 +127,9 @@ class PublishTab(models.Model):
     individual_str = models.CharField(max_length=32, blank=True)
     test_type = models.CharField(max_length=256, verbose_name="Вступительные испытания",
                                  choices=choice_field)
-    bac_ofo = models.BooleanField(default=False, verbose_name="Опубликовать в БАК ОФО")
-    bac_zfo = models.BooleanField(default=False, verbose_name="Опубликовать в БАК ЗФО")
-    bac_ozfo = models.BooleanField(default=False, verbose_name="Опубликовать в БАК ОЗФО")
+    bak_ofo_gp = models.BooleanField(default=False, verbose_name="Опубликовать в БАК ОФО")
+    bak_zfo_up = models.BooleanField(default=False, verbose_name="Опубликовать в БАК ЗФО")
+    bak_ozfo_sd = models.BooleanField(default=False, verbose_name="Опубликовать в БАК ОЗФО")
     mag_ofo = models.BooleanField(default=False, verbose_name="Опубликовать в МАГ ОФО")
     mag_zfo = models.BooleanField(default=False, verbose_name="Опубликовать в МАГ ЗФО")
     asp_ofo = models.BooleanField(default=False, verbose_name="Опубликовать в АСП ОФО")

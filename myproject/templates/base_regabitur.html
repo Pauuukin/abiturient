@@ -59,16 +59,9 @@
             </div>
             <div class="col-md-5">
                 <ul class="navbar-nav align-items-start">
-
                     {% if request.user.is_authenticated %}
-
-
-
                     <li class="nav-item ml-2 ">
                         {% if custom_exist and addition_exist %}
-                        {{ custom_exist }}
-                        {{ addition_exist }}
-
                         <a class="nav-link btn btn-outline-dark" href="{% url 'user_room_url' %}">Личный кабинет</a>
                         {% elif custom_exist %}
                         <a class="nav-link btn btn-outline-dark" href="{% url 'add_additional_url' %}"> Продолжить регистрацию </a>

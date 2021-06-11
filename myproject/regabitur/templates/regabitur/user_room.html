@@ -6,7 +6,6 @@
 
 {% block content %}
 
-
 <style>
 input + a.btn {
   display: none;
@@ -25,8 +24,7 @@ input:checked + a {
         <div class="alert alert-danger" role="alert">
             <h4> {{status}} </h4>
         </div>
-        {% else %}
-        {% if success %}
+        {% elif success%}
         <div class="alert alert-success" role="alert">
             <h4> {{status}} </h4>
         </div>
@@ -35,13 +33,27 @@ input:checked + a {
             <h4> {{status}} </h4>
         </div>
         {% endif %}
-        {% endif %}
     </div>
     <div class="col-md-3">
         <!--         что-то можно добавить  -->
     </div>
-
 </div>
+<hr>
+<div class="row mt-3">
+    <div class="col-md-5">
+        <h4 class="text-center">Ваш уникальный номер в системе:</h4>
+    </div>
+    <div class="col-md-1">
+        <div class="alert alert-info">
+            <h4> {{ request.user.id }}</h4>
+        </div>
+    </div>
+    <div class="col-md-6">
+        <p class="text-center">Данный номер присвается каждому абитуриенту, прошедшему регистрацию и поможет вам найти себя в списках подавших
+            документы </p>
+    </div>
+</div>
+
 <!--
 -
 -    если документы поданы
@@ -112,22 +124,42 @@ input:checked + a {
                 </tr>
                 </thead>
                 <tbody>
-                {% for i in dop_info  %}
-                {% if request.user == i.user %}
                 <tr>
                     <td> Отчество: </td>
-                    <td>{{i.patronymic}}</td>
+                    <td>{{user.patronymic}}</td>
                 </tr>
                 <tr>
                     <td> Дата рождения: </td>
-                    <td>{{i.date_of_birth}}</td>
+                    <td>{{user.date_of_birth}}</td>
                 </tr>
                 <tr>
                     <td> Номер телефона: </td>
-                    <td>{{i.phone_number}}</td>
+                    <td>{{user.phone_number}}</td>
                 </tr>
-                {%endif%}
-                {% endfor %}
+
+                </tbody>
+            </table>
+        </div>
+        <div class="card border-info mt-3 mb-3">
+            <table class="table table-sm">
+                <thead>
+                <tr>
+                    <td colspan="2" class="text-center table-info"> <h5> Выбранные профили </h5></td>
+                </tr>
+                </thead>
+                <tbody>
+                <tr>
+                    <td> Отчество: </td>
+                    <td>{{user.patronymic}}</td>
+                </tr>
+                <tr>
+                    <td> Дата рождения: </td>
+                    <td>{{user.date_of_birth}}</td>
+                </tr>
+                <tr>
+                    <td> Номер телефона: </td>
+                    <td>{{user.phone_number}}</td>
+                </tr>
                 </tbody>
             </table>
         </div>
@@ -146,16 +178,15 @@ input:checked + a {
     <div class="col-md-7">
         <div class="table-responsive">
             <table class="table">
-                {% if is_exist %}
-                    <td> <img src="{% static 'icons/arrow-right-circle-fill.svg'%}" alt="" width="32" height="32"></td>
-                    <td><p>Вы успешно добавили дополнительные данные. Теперь скачайте бланки документов, которые
-                        находятся ниже, и внимательно их заполните. Загрузить эти документы вы сможете <b>на странице загрузки документов </b></p>
-                    </td>
+                <td> <img src="{% static 'icons/arrow-right-circle-fill.svg'%}" alt="" width="32" height="32"></td>
+                <td><p>Вы успешно прошли регистрацию. Теперь скачайте бланки документов, которые
+                    находятся ниже, и внимательно их заполните. Загрузить эти документы вы сможете <b>на странице загрузки документов </b></p>
+                </td>
                 </tr>
                 <tr>
                     <td><img src="{% static 'icons/arrow-right-circle-fill.svg'%}" alt="" width="32" height="32"></td>
                     <td>
-                         {% include 'regabitur/includes/doc_card_template.html' %}
+                        {% include 'regabitur/includes/doc_card_template.html' %}
                     </td>
                 </tr>
                 <tr>
@@ -164,29 +195,6 @@ input:checked + a {
                         переходить к <b> финальному шагу - загрузке документов</B>, предварительно приняв соглашение.</p></td>
                 </tr>
 
-                {% else %}
-                <tr>
-                    <td><img src="{% static 'icons/arrow-right-circle-fill.svg'%}" alt="" width="32" height="32"></td>
-                    <td><p>Вы успешно зарегистрировались в системе, но не добавили нужные данные, пожалуйста, перейдите по ссылке: <br>
-                        <b><u> <a href="{% url 'add_info_url' %}">Добавление данных</a> </u></b></p></td>
-                </tr>
-                <tr>
-                    <td> <img src="{% static 'icons/arrow-right-circle-fill.svg'%}" alt="" width="32" height="32"></td>
-                    <td><p>Как только вы добавите дополнительные данные и выберите формы обучения, вы сможете приступить к скачиванию
-                        и заполнению необходимых документов.</p></td>
-                </tr>
-                <tr>
-                    <td><img src="{% static 'icons/arrow-right-circle-fill.svg'%}" alt="" width="32" height="32"></td>
-                    <td>
-                         {% include 'regabitur/includes/doc_card_template.html' %}
-                    </td>
-                </tr>
-                <tr>
-                    <td><img src="{% static 'icons/arrow-right-circle-fill.svg'%}" alt="" width="32" height="32"></td>
-                    <td><p>После того, как вы скачали и заполнили необходимые для поступления документы - можно
-                        переходить к <b> финальному шагу - загрузке документов</B>, предварительно приняв соглашение.</p></td>
-                </tr>
-                {% endif %}
             </table>
         </div>
 
@@ -196,6 +204,7 @@ input:checked + a {
         <a href="{% static 'docPriem2020/instruct.pdf'%}" class="btn btn-block btn-info" target="_blank">Инструкция по пользованию системой подачи документов для Абитуриентов</a>
         <hr><br>
         <h4>Ваши данные: </h4>
+<!--        Пользователь -->
         <div class="card border-primary">
 
             <table class="table table-sm">
@@ -221,11 +230,7 @@ input:checked + a {
             </table>
         </div>
         <br>
-        <!--
-                Если дополнительные данные существуют
-        -->
-        {% if is_exist %}
-
+<!--        Доп. данные -->
         <div class="card border-info">
             <table class="table table-sm">
                 <thead>
@@ -234,29 +239,39 @@ input:checked + a {
                 </tr>
                 </thead>
                 <tbody>
-                {% for i in dop_info  %}
-                {% if request.user == i.user %}
+
                 <tr>
                     <td> Отчество: </td>
-                    <td>{{i.patronymic}}</td>
+                    <td>{{user.patronymic}}</td>
                 </tr>
                 <tr>
                     <td> Дата рождения: </td>
-                    <td>{{i.date_of_birth}}</td>
+                    <td>{{user.date_of_birth}}</td>
                 </tr>
                 <tr>
                     <td> Номер телефона: </td>
-                    <td>{{i.phone_number}}</td>
+                    <td>{{user.phone_number}}</td>
                 </tr>
 
+                </tbody>
+            </table>
+        </div>
+        <br>
+<!--        Профили -->
+                <div class="card border-info">
+            <table class="table table-sm">
+                <thead>
                 <tr>
-                    <td colspan="2">
-                        <a class="btn btn-block btn-primary mb-1 mt-3" href="{% url 'update_info_url' i.id %}">Обновить данные </a>
-                    </td>
+                    <td colspan="2" class="text-center table-info"> <h5> Профили обучения </h5></td>
                 </tr>
-
-                {%endif%}
+                </thead>
+                <tbody>
+                {% for i in profile %}
+                <tr>
+                    <td>{{i}}</td>
+                </tr>
                 {% endfor %}
+
                 </tbody>
             </table>
         </div>
@@ -277,16 +292,9 @@ input:checked + a {
             <p>Прежде чем перейти к заключительному шагу, пожалуйста, <a href="{% static 'files/sogl_site.pdf'%}"> ознакомьтесь с соглашением о персональных данных и нажмите кнопку:</a> </p>
             <a href="{%url 'agreement_flag_url' request.user.id %}" class="btn btn-block btn-primary">Принимаю</a>
             {% endif %}
-        </div>
 
-        <!--
-            если доп данные еще не загружены
-        -->
-        {% else %}
-        <a class="btn btn-block btn-primary mb-4 mt-2" href="{% url 'add_info_url' %}">Добавление данных </a>
-        {% endif%}
+        </div>
     </div>
 </div>
 {% endif %}
-
 {% endblock %}

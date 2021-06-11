@@ -28,23 +28,6 @@ class MainPageView(TemplateView):
         context['addition_exist'] = hasattr(user, 'addition')
         return context
 
-    # def get_success_url(self):
-    #     """
-    #         Определяем, заполнил ли пользователь нужные данные, если нет, то не пускаем в личный кабинет,
-    #         кидаем на страницы добавления данных
-    #     """
-    #     user = self.request.user
-    #     custom_exist = hasattr(user, 'custom')
-    #     addition_exist = hasattr(user, 'addition')
-    #     if custom_exist and addition_exist:
-    #         self.success_url = reverse_lazy('user_room_url')
-    #     elif custom_exist:
-    #         self.success_url = reverse_lazy('add_additional_url')
-    #     else:
-    #         self.success_url = reverse_lazy('add_info_url')
-    #     return self.success_url
-
-
 # def reg_info(request):
 #     """отображает главную страницу приложения regabitur"""
 #     return render(request, 'regabitur/reg_info.html')
@@ -111,21 +94,32 @@ class UserRoom(LoginRequiredMixin, ListView):
 
     def get_context_data(self, **kwargs):
         """Переопределяем базовый метод, чтобы передать свой контекст"""
-        kwargs['dop_info'] = CustomUser.objects.all()
-        context = super().get_context_data(**kwargs)
         user = self.request.user
-        is_exist = hasattr(user, 'custom')
-        if is_exist:
-            temp = CustomUser.objects.get(user=self.request.user)
-            context['status'] = temp.get_sending_status_display()
-            context['success'] = temp.sending_status == 'success'
-            context['error'] = temp.sending_status == 'error'
-            context['agreement'] = temp.agreement_flag == True
-            context['is_complete'] = temp.complete_flag == True
-            context['custom_exist'] = hasattr(user, 'custom')
-            context['addition_exist'] = hasattr(user, 'addition')
-        context['is_exist'] = is_exist
+        custom_user = CustomUser.objects.get(user=user.id)
+        profile = AdditionalInfo.objects.get(user=user.id)
+        context = super().get_context_data(**kwargs)
+        context['user'] = CustomUser.objects.get(user=user.id)
+        context['profile'] = profile.education_profile.all() # выводим информацию из ManyToMany related
+        context['status'] = custom_user.get_sending_status_display()
+        context['success'] = custom_user.sending_status == 'success'
+        context['error'] = custom_user.sending_status == 'error'
+        context['agreement'] = custom_user.agreement_flag
+        context['is_complete'] = custom_user.complete_flag
+        context['custom_exist'] = hasattr(user, 'custom')
+        context['addition_exist'] = hasattr(user, 'addition')
         return context
+
+def get_template_names(self):
+    user = self.request.user
+    custom_exist = hasattr(user, 'custom')
+    addition_exist = hasattr(user, 'addition')
+    if custom_exist and addition_exist:
+        self.template_name = 'regabitur/user_room.html'
+    elif custom_exist:
+        self.template_name = 'regabitur/reg_info.html'
+    else:
+        self.template_name = 'regabitur/reg_info.html'
+    return self.template_name
 
 
 """
@@ -304,7 +298,7 @@ class MyLogoutView(LogoutView):
     next_page = reverse_lazy('reg_info_url')
 
 
-class SubmitList(ListView):
+class BakGPSL(ListView):
     """Отображение студентов, подавших документы"""
     model = PublishTab
     template_name = 'regabitur/bak/submit_bak.html'
@@ -313,5 +307,5 @@ class SubmitList(ListView):
         """Передаем записи с БАК ОФО true """
         context = super().get_context_data(**kwargs)
         all_publish = PublishTab.objects.all()
-        context["bak_ofo"] = all_publish.filter(bac_ofo=True)
+        context["bak_ofo_gp"] = all_publish.filter(bak_ofo_gp=True)
         return context

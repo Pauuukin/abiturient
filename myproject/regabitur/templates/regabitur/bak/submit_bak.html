@@ -21,7 +21,7 @@
             </tr>
             </thead>
 
-            {%for instance in bak_ofo %}
+            {%for instance in bak_ofo_gp %}
             <tr>
                 <td>{{ instance.individual_str }}</td>
                 <td>{{ instance.test_type }}</td>
@@ -30,9 +30,40 @@
             {% endfor %}
         </table>
     </div>
+    <u><p class="m-4" >Последнее плановое обновление списков: <span id="update"></span></p></u>
     <div align="center">
         <button type="button" onclick="history.back();" class="btn btn-lg btn-block btn-outline-primary">Вернуться назад </button>
     </div>
     <br>
 </div>
+
+
+<script>
+    function setDate(){
+        var date = new Date();
+        var option = {
+            year: 'numeric',
+            day: 'numeric',
+            month: 'short'
+
+        }
+        var s_div = document.getElementById('update');
+        strDate = date.toLocaleString('ru-RU', option);
+        if ((date.getHours()%2)!=0) {
+            strHours = date.getHours() - 1;
+            s_div.innerHTML = strDate + " в " + strHours + ":00"
+        } else {
+            strHours = date.getHours();
+            s_div.innerHTML = strDate + " в " + strHours + ":00"
+        }
+    }
+    setDate()
+  //  setInterval(
+  //     "setDate()", 7200000
+  //  );
+
+
+
+
+</script>
 {% endblock %}
