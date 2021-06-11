@@ -115,6 +115,9 @@ AUTH_PASSWORD_VALIDATORS = [
     },
 ]
 
+# для django 3.2
+DEFAULT_AUTO_FIELD = 'django.db.models.AutoField'
+
 DEFAULT_FROM_EMAIL = 'host@jurac.ru'
 
 EMAIL_HOST = 'smtp.yandex.ru'
