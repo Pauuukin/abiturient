@@ -54,7 +54,7 @@ class AddDocForm(forms.ModelForm):
         model = DocumentUser
         fields = ('name_doc', 'doc')
         labels = {
-            'name_doc': ('Тип документа'),
+            'name_doc': ('Тип документа', ),
         }
 
     def __init__(self, *args, **kwargs):
@@ -69,22 +69,17 @@ class AdditionalInfoForm(forms.ModelForm):
     class Meta:
         model = AdditionalInfo
         exclude = ['user']
-        fields = ('education_profile', 'address', )
+        fields = ('education_profile', )
         widgets = {
             'education_profile': CheckboxSelectMultiple
         }
-
-    def __init__(self, *args, **kwargs):
-        """Переопределяем метод init для формы, чтобы задать нужные классы"""
-        super().__init__(*args, **kwargs)
-        self.fields['address'].widget.attrs['class'] = 'form-control'
 
 
 class AddInfoForm(forms.ModelForm):
     """форма для добавления и обнавления информации"""
     class Meta:
         model = CustomUser
-        fields = ('date_of_birth', 'patronymic', 'phone_number')
+        fields = ('date_of_birth', 'patronymic', 'phone_number', 'passport', 'address',  'snils')
 
     def __init__(self, *args, **kwargs):
         """Переопределяем метод init для формы, чтобы задать нужные классы"""
@@ -95,4 +90,5 @@ class AddInfoForm(forms.ModelForm):
                 empty_label=("Выберите год", "Выберите месяц", "Выберите день"),
                 years=range(1950, 2010))
             self.fields['date_of_birth'].widget.attrs['class'] = 'form-control mt-1'
+            self.fields['address'].widget.attrs['class'] = 'form-control'
 

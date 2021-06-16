@@ -53,7 +53,7 @@ class UserAdmin(UserAdmin):
     model = DocumentUser
     inlines = (UserInline, UserInlineInfo, UserInlinePublish, UserInlineDoc)
     list_display = ('id', 'username', 'first_name', 'last_name', 'date_joined',
-                    'email', 'status_doc')
+                    'email', 'status_doc', 'comment')
     list_display_links = ('id', 'username', )
     list_filter = ('date_joined',)
     ordering = ('-date_joined',)
@@ -72,6 +72,11 @@ class UserAdmin(UserAdmin):
         'is_superuser',
         'is_staff'
     ]
+
+    def comment(self, obj):
+        """Выводим в list_display комментарий"""
+        comment = obj.custom.comment_admin
+        return comment
 
     def status_doc(self, obj):
         status = obj.custom.complete_flag
@@ -104,6 +109,7 @@ class UserAdmin(UserAdmin):
 class ChoicesProfileAdmin(admin.ModelAdmin):
     """Модель профилей обучения"""
     extra = 1
+    list_display = ('id', 'description')
 
 
 @admin.register(AdditionalInfo)

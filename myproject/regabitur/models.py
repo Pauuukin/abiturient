@@ -37,6 +37,9 @@ class CustomUser(models.Model):
     work_flag = models.BooleanField(default=False, verbose_name="Взят в работу:")
     success_flag = models.BooleanField(default=False, verbose_name="Отработан:")
     comment_admin = models.TextField(verbose_name="Комментарий для внутренней работы", blank=True)
+    address = models.CharField(max_length=400, verbose_name="Адрес прописки (по паспорту)", blank=True, default=' ')
+    passport = models.CharField(max_length=20, verbose_name="Паспортные данные(серия-номер)", blank=True, default=' ')
+    snils = models.CharField(max_length=32, verbose_name="Номер снилса", blank=True, default=' ')
 
     class Meta:
         """перевод для админпанели"""
@@ -74,9 +77,6 @@ class DocumentUser(models.Model):
     name_doc = models.CharField(max_length=256, verbose_name="Название документа",
                                 choices=document_list)
     doc = models.FileField(upload_to=user_directory_path, verbose_name="Загрузить документ")
-    address = models.CharField(max_length=400, verbose_name="Адрес прописки", blank=True, default=' ')
-    passport = models.CharField(max_length=20, verbose_name="Паспортные данные(серия-номер)", blank=True, default=' ')
-    snils = models.CharField(max_length=32, verbose_name="Номер снился", blank=True, default=' ')
 
     class Meta:
         """перевод для админпанели"""
@@ -110,7 +110,6 @@ class AdditionalInfo(models.Model):
     """Класс с дополнительной информацией о пользователе (прием 21/22)"""
     user = models.OneToOneField(User, on_delete=models.CASCADE, verbose_name="Пользователь", default='', related_name='addition')
     education_profile = models.ManyToManyField(ChoicesProfile, verbose_name="Форма обучения")
-
 
     class Meta:
         """перевод для админпанели"""
