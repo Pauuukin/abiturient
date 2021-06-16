@@ -11,7 +11,7 @@
 <div class="row">
     <div class="col-md-4">
         <div class="card border-info ml-8">
-            <div class="card-header text-center">Шаг 2 - добавление данных</div>
+            <div class="card-header text-center">Добавление данных</div>
             <div class="card-body text-info">
                 <h4 class="card-title"><span class="badge badge-danger">Важно!</span> <br><br> Вводите достоверные
                     данные в поля формы!<br></h4><h5> Это поможет сотрудникам приемной
@@ -20,7 +20,7 @@
         </div>
     </div>
 
-    <div class="col-md-8">
+    <div class="col-md-8 border-info">
         <div class="card border-info ml-8">
             <form id="update_form" method="post" class="p-3">
                 {% csrf_token %}
@@ -32,9 +32,9 @@
 </div>
     {% else %}
 <div class="row">
-    <h1 class="mt-4">Добавить данные для пользователя - {{request.user}}</h1>
+    <h1 class="mt-4 text-center"><u>Добавить данные для пользователя - {{request.user}}</u></h1>
 
-    <div class="col-md-4">
+    <div class="col-md-4 ">
         <div class="card border-info ml-8">
             <div class="card-header text-center">Шаг 2 - добавление данных</div>
             <div class="card-body text-info">
@@ -46,7 +46,7 @@
         </div>
     </div>
 
-    <div class="col-md-8">
+    <div class="col-md-8 card border-info">
         <form id="info_add" method="post"  enctype="multipart/form-data">
             {% csrf_token%}
             {{form}}

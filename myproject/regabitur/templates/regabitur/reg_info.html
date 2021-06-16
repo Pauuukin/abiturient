@@ -24,6 +24,7 @@
                     <li><a href="{% url 'bakPage_url' %}" target="_blank">Бакалавриат</a></li>
                     <li><a href="{% url 'mag_page_url' %}" target="_blank">Магистратура</a></li>
                     <li><a href="{% url 'asp_page_url' %}" target="_blank">Аспирантура</a></li>
+                    <li><a href="{% url 'spec_page_url' %}" target="_blank">Специалитет</a></li>
                 </ul>
             </div>
             <div class="col-md-6">
@@ -40,10 +41,11 @@
         <div class="card border-info mb-3">
             <div class="card-header bg-primary"><h3>Хотите подать документы?</h3></div>
             <div class="card-body">
-                <h5 class="card-title">Шаг 1 - Регистрация в системе</h5>
+
                 <ul class="list-group list-group-flush">
                     <li class="list-group-item mt-2"><a href="#">Инструкция по пользованию системой подачи документов для Абитуриентов</a></li>
-                    <li class="list-group-item mt-2"><a href="{% url 'login_abitur_url'%}">Уже зарегистрированы? Войти  </a></li></li>
+                    <li class="list-group-item mt-2"><a href="{% url 'login_abitur_url'%}">Уже зарегистрированы?
+                        <span class="badge  badge-primary"><u><h6>Войти</h6></u></span> </a></li></li>
                 </ul>
                 <br>
                 <a href="{% url 'register_abitur_url' %}" class="btn btn-primary btn-block mt-3"> Зарегистрироваться </a>
@@ -54,7 +56,7 @@
     <div class="col-md-7 mb-5">
         <div class="card">
             <div class="card-header">
-                <h3>Шаг 1</h3>
+                <h3>Регистрация \ вход в систему</h3>
             </div>
             <div class="card-body">
                 <h5 class="card-title">Регистрация/авторизация в системе электронной подачи документов</h5>
@@ -62,6 +64,7 @@
                     документов, ознакомиться с инструкциями работы с ситсемой, понять, как будет проходить работа приемной
                     комисси и подать документы в электронной форме. </p>
                 <a href="{% url 'register_abitur_url' %}" class="btn btn-primary"> Зарегистрироваться </a>
+                <a href="{% url 'login_abitur_url' %}" class="btn btn-primary"> Войти в систему</a>
             </div>
         </div>
          <div class=" text-center m-2">
@@ -69,12 +72,14 @@
         </div>
         <div class="card text-right">
             <div class="card-header">
-                <h3>Шаг 2</h3>
+                <h3>Заполнение необходимых документов</h3>
             </div>
             <div class="card-body">
-                <h5 class="card-title">Отправка дополнительной информации в личном кабинете</h5>
-                <p class="card-text">Это позволит сотрудникам приемной комиссии лучше идентифицировать вас.</p>
-                <span class="badge badge-pill badge-warning">Важно для приемной комисси</span>
+                <p class="card-title">После успешного прохождения этапов регистрации, вы можете приступить к скачиванию
+                и заполнению необходимых для поступления документов.<b> Эти докумнты доступны в личном кабинете
+                        абитуриента после регистрации.</b></p>
+
+                <span class="badge badge-pill badge-warning">Важно для успешной подачи документов</span>
             </div>
         </div>
         <div class=" text-center m-2">
@@ -82,7 +87,7 @@
         </div>
         <div class="card">
             <div class="card-header">
-                <h3>Шаг 3</h3>
+                <h3>Загрузка документов</h3>
             </div>
             <div class="card-body">
                 <h5 class="card-title">Подача документов в электронной форме</h5>

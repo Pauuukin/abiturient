@@ -3,6 +3,7 @@
 {% block content %}
 <div class="card border-primary">
 	<h3 class="text-center text-muted"> Выберете формы обучения галочками и нажмите кнопку <b>"Отправить"</b></h3>
+	<span class="badge bg-danger"><h4>Важно! Выберайте <b>не более 3 профилей!</b></h4></span>
 <form id="add_addition" method="post"  enctype="multipart/form-data" class="m-4">
 
 	{% csrf_token%}
