@@ -65,32 +65,86 @@
   </div>
 
   <br><br>
-  <div class="container">
-    <!--  для важных объявлений -->
-    <blockquote class="blockquoteMyDanger">
-      <h3 class="text-center"><u><b>Уважаемые абитуриенты!</b></u></h3><br>
-      <h5 class="text-center">
-        С 20 июня 2021 года открыт прием документов для поступления на все формы обучения. <br><br>
-      </h5>
-      <a href="">
-        <h5 class="text-center"> <u>Подача документов для поступления в Академию осуществляется через
-          <b>электронную систему подачи документов</b></u></h5>
-      </a>
-    </blockquote>
-    <blockquote class="blockquoteMyOrange" style="text-align: center;">
-      <p class="text-center text-info">
-        Консультирование и запись на личный прием по вопросам поступления и подачи документов осуществляется через контактные телефоны (Приемная комиссия):<br>
-        +7 (921) 951-34-33<br>
-        +7 (812) 677-00-07<br>
-        +7 (921) 564-31-01<br>
-        и/или через электронную почту: jurac.spb@mail.ru
-      </p>
-    </blockquote>
-    <blockquote class="blockquoteMyDanger">
-      Посещение академии по вопросам поступления и подачи документов осуществляется строго по предварительной записи.
-    </blockquote>
-  </div>
+  <div>
+    <div class="container">
+      <!--  для важных объявлений -->
+      <blockquote class="blockquoteMyDanger">
+        <h3 class="text-center"><u><b>Уважаемые абитуриенты!</b></u></h3><br>
+        <h5 class="text-center">
+          С 20 июня 2021 года открыт прием документов для поступления на все формы обучения. <br><br>
+        </h5>
+        <a href="">
+          <h5 class="text-center"> <u>Подача документов для поступления в Академию осуществляется через
+            <b>электронную систему подачи документов</b></u></h5>
+        </a>
+      </blockquote>
+      <blockquote class="blockquoteMyDanger">
+        <h4 class="text-center">Объявлен конкурсный отбор абитуриентов для обучения на места, финансируемые
+          за счет средств Академии</h4>
+      </blockquote>
+      <blockquote class="blockquoteMyOrange" style="text-align: center;">
+        <p class="text-center text-info">
+          Консультирование и запись на личный прием по вопросам поступления и подачи документов осуществляется
+          через контактные телефоны (Приемная комиссия):<br>
+          +7 (921) 951-34-33<br>
+          +7 (812) 677-00-07<br>
+          +7 (921) 564-31-01<br>
+          и/или через электронную почту: jurac.spb@mail.ru
+        </p>
+      </blockquote>
+      <blockquote class="blockquoteMyDanger">
+        Посещение академии по вопросам поступления и подачи документов осуществляется строго по предварительной записи.
+      </blockquote>
+    </div>
+    <!--  Блоки дерьма  -->
+    <div class="row text-center">
+      <div class="card border-danger">
+        <div class="card-body">
+          <h5 class="text-danger">По окончании Санкт-Петербургской юридической академии выпускникам выдаётся
+            диплом государственного образца о высшем образовании.</h5>
+          <br>
+        </div>
+      </div>
+    </div>
+    <hr>
+    <div class="row text-center">
+      <div class="card-group">
 
+        <div class="card border-info">
+          <div class="card-body">
+            <p class="card-text text-info">Иногородние студенты зачисленные на очную форму обучения в полном объеме
+              набора обеспечиваются местами в общежитии</p>
+          </div>
+          <div class="card-footer">
+            <small class="text-muted"><a href="{% url 'infoPage_url' %}" class="btn btn-primary">Информация поступающим</a></small>
+          </div>
+
+        </div>
+
+        <div class="card border-info" style="max-height: 100%;">
+          <div class="card-body">
+            <p class="card-text text-info"><b>Отсрочка от призыва на военную службу</b></p>
+          </div>
+          <div class="card-footer">
+            <small class="text-muted"><a href="{% url 'infoPage_url' %}" class="btn btn-primary">Информация поступающим</a></small>
+          </div>
+        </div>
+
+
+        <div class="card border-info" style="max-height: 100%">
+          <div class="card-body">
+            <p class="card-text text-info">Сотрудникам органов внутренних дел и иных государственных структур
+              предоставляется скидка на оплату обучения</p>
+          </div>
+          <div class="card-footer">
+            <small class="text-muted"><a href="{% url 'infoPage_url' %}" class="btn btn-primary">Информация поступающим</a></small>
+          </div>
+
+        </div>
+      </div>
+      <br><br>
+    </div>
+  </div>
 
   <!-- Новости  -->
   <div class="row" >
@@ -145,7 +199,7 @@
     <hr style="border-width: 3px;">
     <div class="row">
       <div class="col-md-7">
-        <a href="{% static 'docPriem2020/9mestoAndEmail.pdf' %}" target="_blank"><h5 class="text-center">Информация о
+        <a href="{% static 'docPriem2021/9mestoAndEmail.pdf' %}" target="_blank"><h5 class="text-center">Информация о
           местах приема документов, о почтовых и электронных адресах для
           направления документов, необходимых для поступления</h5></a>
         <!--      вторая строка   -->

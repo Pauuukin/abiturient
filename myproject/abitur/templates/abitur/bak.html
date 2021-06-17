@@ -63,7 +63,7 @@
     <!--    Блок Общая информация -->
     <h3 align="center"> Общая информация </h3><br>
     <div class="row">
-        <div class="col-md-9">
+        <div class="col-md-8">
             <div class="table-responsive">
                 <!--        План приема         -->
                 <table class="table table-bordered" style="font-size: .9em; text-align: center;" >
@@ -109,15 +109,8 @@
             </div>
         </div>
         <!--    Необходимые документы    -->
-        <div class="col-md-3" style=" background-color: #e3f2fd;">
-            <h5> <u>Необходимые документы</u></h5>
-            <br>
-            <ul>
-                <li>Документ, удостоверяющий личность заявителя и его гражданство (паспорт);</li>
-                <li>Документ государственного образца об образовании с приложением;</li>
-                <li>2 фотографии 3*4;</li>
-                <li>Медицинская справка по форме 086-У, для поступающих на очную и очно-заочную формы обучения.</li>
-            </ul>
+        <div class="col-md-4" style=" background-color: #e3f2fd;">
+            {% include 'abitur/includes/documents.html' %}
             <a target="_blank" href="{% static 'docPriem2021/dogovorBM.pdf' %}" class="btn btn-primary "><p class="small">
                 Типовой договор об образовании на обучение по образовательным программам высшего образования</p></a>
             <a target="_blank" href="{% static 'docPriem2021/PRdogovorBM.pdf' %}" class="btn btn-primary btn-block mt-1 "><p class="small">
