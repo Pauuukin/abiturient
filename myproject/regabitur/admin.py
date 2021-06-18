@@ -20,7 +20,6 @@ class UserInline(admin.StackedInline):
     # list_display = ( 'phone_number','work_flag',' agreement_flag', 'complete_flag',
     # 'sending_status', 'date_of_birth', 'patronymic')
     verbose_name_plural = 'Доп. информация'
-    readonly_fields = ['date_of_birth', 'patronymic', 'phone_number']
 
 
 class UserInlineInfo(admin.TabularInline):

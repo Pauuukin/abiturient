@@ -298,14 +298,245 @@ class MyLogoutView(LogoutView):
     next_page = reverse_lazy('reg_info_url')
 
 
-class BakGPSL(ListView):
-    """Отображение студентов, подавших документы"""
+"""
+    Списки подавших документы
+"""
+
+"""
+    Бакалавриат
+"""
+
+class BacOfoGp(ListView):
+    """БАК ОФО ГП"""
     model = PublishTab
-    template_name = 'regabitur/bak/submit_bak.html'
+    template_name = 'regabitur/submit/bak_ofo_gp.html'
 
     def get_context_data(self, **kwargs):
         """Передаем записи с БАК ОФО true """
         context = super().get_context_data(**kwargs)
-        all_publish = PublishTab.objects.all()
-        context["bak_ofo_gp"] = all_publish.filter(bak_ofo_gp=True)
+        all_publish = PublishTab.objects.filter(bak_ofo_gp=True)
+        context["list"] = all_publish
+        return context
+
+
+class BacOfoUp(ListView):
+    """БАК ОФО УП"""
+    model = PublishTab
+    template_name = 'regabitur/submit/bak_ofo_up.html'
+
+    def get_context_data(self, **kwargs):
+        """Передаем записи с БАК ОФО true """
+        context = super().get_context_data(**kwargs)
+        all_publish = PublishTab.objects.filter(bak_ofo_up=True)
+        context["list"] = all_publish
+        return context
+
+
+class BacZfoGp(ListView):
+    """БАК ЗФО ГП"""
+    model = PublishTab
+    template_name = 'regabitur/submit/bak_zfo_gp.html'
+
+    def get_context_data(self, **kwargs):
+        """Передаем записи с БАК ОФО true """
+        context = super().get_context_data(**kwargs)
+        all_publish = PublishTab.objects.filter(bak_zfo_gp=True)
+        context["list"] = all_publish
+        return context
+
+
+class BacZfoUp(ListView):
+    """БАК ЗФО УП"""
+    model = PublishTab
+    template_name = 'regabitur/submit/bak_zfo_up.html'
+
+    def get_context_data(self, **kwargs):
+        """Передаем записи с БАК ОФО true """
+        context = super().get_context_data(**kwargs)
+        all_publish = PublishTab.objects.filter(bak_zfo_up=True)
+        context["list"] = all_publish
+        return context
+
+
+class BacOzfoGp(ListView):
+    """БАК ОЗФО ГП"""
+    model = PublishTab
+    template_name = 'regabitur/submit/bak_ozfo_gp.html'
+
+    def get_context_data(self, **kwargs):
+        """Передаем записи с БАК ОФО true """
+        context = super().get_context_data(**kwargs)
+        all_publish = PublishTab.objects.filter(bak_ozfo_gp=True)
+        context["list"] = all_publish
+        return context
+
+
+class BacOzfoUp(ListView):
+    """БАК ОЗФО УП"""
+    model = PublishTab
+    template_name = 'regabitur/submit/bak_ozfo_up.html'
+
+    def get_context_data(self, **kwargs):
+        """Передаем записи с БАК ОФО true """
+        context = super().get_context_data(**kwargs)
+        all_publish = PublishTab.objects.filter(bak_ozfo_up=True)
+        context["list"] = all_publish
+        return context
+
+
+"""
+    Специалитет
+"""
+
+
+class SpecOfoSd(ListView):
+    """СПЕЦ ОФО СД"""
+    model = PublishTab
+    template_name = 'regabitur/submit/spec_ofo_sd.html'
+
+    def get_context_data(self, **kwargs):
+        """Передаем записи с БАК ОФО true """
+        context = super().get_context_data(**kwargs)
+        all_publish = PublishTab.objects.filter(spec_ofo_sd=True)
+        context["list"] = all_publish
+        return context
+
+
+"""
+    Магистратура
+"""
+
+
+class MagOfoPo(ListView):
+    """Маг ОФО По"""
+    model = PublishTab
+    template_name = 'regabitur/submit/mag_ofo_po.html'
+
+    def get_context_data(self, **kwargs):
+        """Передаем записи с БАК ОФО true """
+        context = super().get_context_data(**kwargs)
+        all_publish = PublishTab.objects.filter(mag_ofo_po=True)
+        context["list"] = all_publish
+        return context
+
+
+class MagZfoPo(ListView):
+    """Маг ZФО По"""
+    model = PublishTab
+    template_name = 'regabitur/submit/mag_zfo_po.html'
+
+    def get_context_data(self, **kwargs):
+        """Передаем записи с БАК ОФО true """
+        context = super().get_context_data(**kwargs)
+        all_publish = PublishTab.objects.filter(mag_zfo_po=True)
+        context["list"] = all_publish
+        return context
+
+
+class MagOfoTp(ListView):
+    """Маг OФО TП"""
+    model = PublishTab
+    template_name = 'regabitur/submit/mag_ofo_tp.html'
+
+    def get_context_data(self, **kwargs):
+        """Передаем записи с БАК ОФО true """
+        context = super().get_context_data(**kwargs)
+        all_publish = PublishTab.objects.filter(mag_ofo_tp=True)
+        context["list"] = all_publish
+        return context
+
+
+class MagZfoTp(ListView):
+    """Маг ZФО TП"""
+    model = PublishTab
+    template_name = 'regabitur/submit/mag_zfo_tp.html'
+
+    def get_context_data(self, **kwargs):
+        """Передаем записи с БАК ОФО true """
+        context = super().get_context_data(**kwargs)
+        all_publish = PublishTab.objects.filter(mag_zfo_tp=True)
+        context["list"] = all_publish
+        return context
+
+
+"""
+    Аспирантура
+"""
+
+
+class AspOfoTip(ListView):
+    """Асп ОФО Тип"""
+    model = PublishTab
+    template_name = 'regabitur/submit/asp_ofo_tip.html'
+
+    def get_context_data(self, **kwargs):
+        """Передаем записи с БАК ОФО true """
+        context = super().get_context_data(**kwargs)
+        all_publish = PublishTab.objects.filter(asp_ofo_tip=True)
+        context["list"] = all_publish
+        return context
+
+
+class AspZfoTip(ListView):
+    """Асп ЗФО Тип"""
+    model = PublishTab
+    template_name = 'regabitur/submit/asp_zfo_tip.html'
+
+    def get_context_data(self, **kwargs):
+        """Передаем записи с БАК ОФО true """
+        context = super().get_context_data(**kwargs)
+        all_publish = PublishTab.objects.filter(asp_zfo_tip=True)
+        context["list"] = all_publish
+        return context
+
+
+class AspOfoUp(ListView):
+    """Асп ОФО УП"""
+    model = PublishTab
+    template_name = 'regabitur/submit/asp_ofo_up.html'
+
+    def get_context_data(self, **kwargs):
+        """Передаем записи с БАК ОФО true """
+        context = super().get_context_data(**kwargs)
+        all_publish = PublishTab.objects.filter(asp_ofo_up=True)
+        context["list"] = all_publish
+        return context
+
+
+class AspZfoUp(ListView):
+    """Асп ЗФО УП"""
+    model = PublishTab
+    template_name = 'regabitur/submit/asp_zfo_up.html'
+
+    def get_context_data(self, **kwargs):
+        """Передаем записи с БАК ОФО true """
+        context = super().get_context_data(**kwargs)
+        all_publish = PublishTab.objects.filter(asp_zfo_up=True)
+        context["list"] = all_publish
+        return context
+
+
+class AspOfoKs(ListView):
+    """Асп ОФО КС"""
+    model = PublishTab
+    template_name = 'regabitur/submit/asp_ofo_ks.html'
+
+    def get_context_data(self, **kwargs):
+        """Передаем записи с БАК ОФО true """
+        context = super().get_context_data(**kwargs)
+        all_publish = PublishTab.objects.filter(asp_ofo_ks=True)
+        context["list"] = all_publish
+        return context
+
+
+class AspZfoKs(ListView):
+    """Асп ЗФО КС"""
+    model = PublishTab
+    template_name = 'regabitur/submit/asp_zfo_ks.html'
+
+    def get_context_data(self, **kwargs):
+        """Передаем записи с БАК ОФО true """
+        context = super().get_context_data(**kwargs)
+        all_publish = PublishTab.objects.filter(asp_zfo_ks=True)
+        context["list"] = all_publish
         return context
