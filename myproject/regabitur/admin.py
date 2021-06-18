@@ -29,7 +29,7 @@ class UserInlineInfo(admin.TabularInline):
     extra = 0
 
 
-class UserInlinePublish(admin.TabularInline):
+class UserInlinePublish(admin.StackedInline):
     """Доп. форма для пользователей с информацией из models.PublishTab"""
     model = PublishTab
     can_delete = False

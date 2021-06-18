@@ -3,7 +3,7 @@
 {% block content %}
 <div class="card border-primary mt-2 mb-2">
 	<h3 class="text-center text-muted"> Выберете формы обучения галочками и нажмите кнопку <b>"Отправить"</b></h3>
-	<span class="badge bg-danger"><h4>Важно! Выберайте <b>не более 3 профилей!</b></h4></span>
+	<span class="badge bg-danger"><h4>Важно! Выбирайте <b>не более 3 направлений (профилей)!</b></h4></span>
 	<form id="add_addition" method="post"  enctype="multipart/form-data" class="m-4">
 		{% csrf_token%}
 		<div class="fieldWrapper">
@@ -14,7 +14,7 @@
 					Бакалавриат ОФО Уголовно-правовой профиль
 					</label></li>
 				<li><label for="{{ form.add_addition.id_education_profile_1 }}"><input type="checkbox" name="education_profile" value="3" id="id_education_profile_1">
-					Бакалавриат ОФО Гражданско-правовой профил
+					Бакалавриат ОФО Гражданско-правовой профиль
 					</label></li>
 				<li><label for="{{ form.add_addition.id_education_profile_2 }}"><input type="checkbox" name="education_profile" value="6" id="id_education_profile_2">
 					Бакалавриат ЗФО Уголовно-правовой профиль

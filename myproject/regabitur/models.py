@@ -40,7 +40,7 @@ class CustomUser(models.Model):
     comment_admin = models.TextField(verbose_name="Комментарий для внутренней работы", blank=True)
     address = models.CharField(max_length=400, verbose_name="Адрес регистрации (по паспорту)", blank=True, default=' ')
     passport = models.CharField(max_length=20, verbose_name="Паспортные данные(серия-номер)", blank=True, default=' ')
-    snils = models.CharField(max_length=32, verbose_name="Номер снилса", blank=True, default=' ')
+    snils = models.CharField(max_length=32, verbose_name="Номер снилса", default=' ')
     name_uz = models.CharField(max_length=256, verbose_name="Наименование учебного заведения, которое окончил(а)",
                                blank=True, default=' ')
     date_of_doc = models.CharField(max_length=32, verbose_name="Дата выдачи документа об образовании в формате ДД.ММ.ГГГГ",
