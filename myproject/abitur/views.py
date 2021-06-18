@@ -17,6 +17,11 @@ def abiturPage(request):
 #      return render(request, 'abitur/news_detail.html', context={'news' : news})
 
 
+def submitPage(request):
+    """Страница с роутингом для списков подавших документы"""
+    return render(request, 'abitur/submit.html')
+
+
 class NewsDetail(View):
     """теперь view обрабатывается классом"""
     def get(self, request, slug):

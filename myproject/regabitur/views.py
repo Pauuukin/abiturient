@@ -90,7 +90,7 @@ class CustomSuccessMessageMixin:
 class UserRoom(LoginRequiredMixin, ListView):
     """Личный кабинет пользователя"""
     model = CustomUser
-    template_name = 'regabitur/user_room.html'
+    # template_name = 'regabitur/user_room.html'
 
     def get_context_data(self, **kwargs):
         """Переопределяем базовый метод, чтобы передать свой контекст"""
@@ -109,17 +109,18 @@ class UserRoom(LoginRequiredMixin, ListView):
         context['addition_exist'] = hasattr(user, 'addition')
         return context
 
-def get_template_names(self):
-    user = self.request.user
-    custom_exist = hasattr(user, 'custom')
-    addition_exist = hasattr(user, 'addition')
-    if custom_exist and addition_exist:
-        self.template_name = 'regabitur/user_room.html'
-    elif custom_exist:
-        self.template_name = 'regabitur/reg_info.html'
-    else:
-        self.template_name = 'regabitur/reg_info.html'
-    return self.template_name
+
+# def get_template_names(self):
+#     user = self.request.user
+#     custom_exist = hasattr(user, 'custom')
+#     addition_exist = hasattr(user, 'addition')
+#     if custom_exist and addition_exist:
+#         self.template_name = 'regabitur/user_room.html'
+#     elif custom_exist:
+#         self.template_name = 'regabitur/reg_info.html'
+#     else:
+#         self.template_name = 'regabitur/reg_info.html'
+#     return self.template_name
 
 
 """
