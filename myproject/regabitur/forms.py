@@ -79,7 +79,8 @@ class AddInfoForm(forms.ModelForm):
     """форма для добавления и обнавления информации"""
     class Meta:
         model = CustomUser
-        fields = ('date_of_birth', 'patronymic', 'phone_number', 'passport', 'address',  'snils')
+        fields = ('date_of_birth', 'patronymic', 'phone_number', 'passport', 'address',  'snils',
+                  'name_uz', 'date_of_doc')
 
     def __init__(self, *args, **kwargs):
         """Переопределяем метод init для формы, чтобы задать нужные классы"""
@@ -90,5 +91,8 @@ class AddInfoForm(forms.ModelForm):
                 empty_label=("Выберите год", "Выберите месяц", "Выберите день"),
                 years=range(1950, 2010))
             self.fields['date_of_birth'].widget.attrs['class'] = 'form-control mt-1'
-            self.fields['address'].widget.attrs['class'] = 'form-control'
-
+            # self.fields['address'].widget.attrs['class'] = 'form-control'
+            # self.fields['date_of_doc'].widget = SelectDateWidget(
+            #     empty_label=("Выберите год", "Выберите месяц", "Выберите день"),
+            #     years=range(1950, 2021))
+            # self.fields['date_of_doc'].widget.attrs['class'] = 'form-control mt-1'

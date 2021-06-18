@@ -1,5 +1,6 @@
 from django.db import models
 from django.contrib.auth.models import User
+from django.utils.timezone import now
 
 
 def user_directory_path(instance, filename):
@@ -37,9 +38,13 @@ class CustomUser(models.Model):
     work_flag = models.BooleanField(default=False, verbose_name="Взят в работу:")
     success_flag = models.BooleanField(default=False, verbose_name="Отработан:")
     comment_admin = models.TextField(verbose_name="Комментарий для внутренней работы", blank=True)
-    address = models.CharField(max_length=400, verbose_name="Адрес прописки (по паспорту)", blank=True, default=' ')
+    address = models.CharField(max_length=400, verbose_name="Адрес регистрации (по паспорту)", blank=True, default=' ')
     passport = models.CharField(max_length=20, verbose_name="Паспортные данные(серия-номер)", blank=True, default=' ')
     snils = models.CharField(max_length=32, verbose_name="Номер снилса", blank=True, default=' ')
+    name_uz = models.CharField(max_length=256, verbose_name="Наименование учебного заведения, которое окончил(а)",
+                               blank=True, default=' ')
+    date_of_doc = models.CharField(max_length=32, verbose_name="Дата выдачи документа об образовании в формате ДД.ММ.ГГГГ",
+                                   default=" ")
 
     class Meta:
         """перевод для админпанели"""
@@ -129,13 +134,24 @@ class PublishTab(models.Model):
     individual_str = models.CharField(max_length=32, blank=True)
     test_type = models.CharField(max_length=256, verbose_name="Вступительные испытания",
                                  choices=choice_field)
-    bak_ofo_gp = models.BooleanField(default=False, verbose_name="Опубликовать в БАК ОФО")
-    bak_zfo_up = models.BooleanField(default=False, verbose_name="Опубликовать в БАК ЗФО")
-    bak_ozfo_sd = models.BooleanField(default=False, verbose_name="Опубликовать в БАК ОЗФО")
-    mag_ofo = models.BooleanField(default=False, verbose_name="Опубликовать в МАГ ОФО")
-    mag_zfo = models.BooleanField(default=False, verbose_name="Опубликовать в МАГ ЗФО")
-    asp_ofo = models.BooleanField(default=False, verbose_name="Опубликовать в АСП ОФО")
-    asp_zfo = models.BooleanField(default=False, verbose_name="Опубликовать в АСП ЗФО")
+    date_pub = models.DateTimeField(auto_now=True, blank=True, null=True)
+    bak_ofo_up = models.BooleanField(default=False, verbose_name="Опубликовать в БАК ОФО УП")
+    bak_ofo_gp = models.BooleanField(default=False, verbose_name="Опубликовать в БАК ОФО ГП")
+    bak_zfo_up = models.BooleanField(default=False, verbose_name="Опубликовать в БАК ЗФО УП")
+    bak_zfo_gp = models.BooleanField(default=False, verbose_name="Опубликовать в БАК ЗФО ГП")
+    bak_ozfo_up = models.BooleanField(default=False, verbose_name="Опубликовать в БАК ОЗФО УП")
+    bak_ozfo_gp = models.BooleanField(default=False, verbose_name="Опубликовать в БАК ОЗФО ГП")
+    spec_ofo_sd = models.BooleanField(default=False, verbose_name="Опубликовать в СПЕЦ ОФО Судеб. деят.")
+    mag_ofo_po = models.BooleanField(default=False, verbose_name="Опубликовать в МАГ ОФО Прав. обеспеч.")
+    mag_zfo_po = models.BooleanField(default=False, verbose_name="Опубликовать в МАГ ЗФО Прав. обеспеч.")
+    mag_ofo_tp = models.BooleanField(default=False, verbose_name="Опубликовать в МАГ ОФО Теор. и практ.")
+    mag_zfo_tp = models.BooleanField(default=False, verbose_name="Опубликовать в МАГ ЗФО Теор. и практ.")
+    asp_ofo_tip = models.BooleanField(default=False, verbose_name="Опубликовать в АСП ОФО Теор. и истор.")
+    asp_zfo_tip = models.BooleanField(default=False, verbose_name="Опубликовать в АСП ЗФО Теор. и истор.")
+    asp_ofo_up = models.BooleanField(default=False, verbose_name="Опубликовать в АСП ОФО Уголовный проц.")
+    asp_zfo_up = models.BooleanField(default=False, verbose_name="Опубликовать в АСП ЗФО Уголовный проц")
+    asp_ofo_ks = models.BooleanField(default=False, verbose_name="Опубликовать в АСП ОФО Криминалистика")
+    asp_zfo_ks = models.BooleanField(default=False, verbose_name="Опубликовать в АСП ЗФО Криминалистика")
 
     class Meta:
         """перевод для админпанели"""
