@@ -35,7 +35,7 @@
                     <div class="dropdown mb-2">
                         <a class="btn btn-primary btn-block dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Правила приема</a>
                         <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-                            <a class="dropdown-item" href="{% static 'docPriem2021/11pravilaBM.pdf' %}">Правила приема</a>
+                            <a class="dropdown-item" href="#">Правила приема</a>
 <!--                            <a class="dropdown-item text-danger" href="{% static 'docPriem2020/osob20_21.pdf' %}">Особенности приема на 2020 год</a>-->
                         </div>
                     </div>
@@ -44,7 +44,7 @@
                     <a href="{% url 'bak_calendar_url' %}" class="btn btn-primary btn-block">Календарь приема</a>
                 </div>
                 <div class="col-md-6">
-                    <a href="{% url 'submit_list_bak_url' %}" class="btn btn-primary btn-block">Списки подавших документы</a>
+                    <a href="{% url 'submit_url' %}" class="btn btn-primary btn-block">Списки подавших документы</a>
                     <a href="{% url 'vstupit_calendar_page_url' %}" class="btn btn-primary btn-block">Расписание вступительных испытаний </a>
                     <a href="{% url 'rec_list_bak_url' %}" class="btn btn-primary btn-block">Списки рекомендованных к зачислению</a>
                     <a href="{% url 'order_bak_url' %}" class="btn btn-primary btn-block">Приказы о зачислении</a>
@@ -256,9 +256,10 @@
                                         <p class="small">Вступительные испытания в Академии проводятся на русском языке очно и/или с применением дистанционных технологий.</p>
                                     </blockquote>
                                     <blockquote class="blockquoteMyOrange">
-                                        <p class="small">Приоритетным вступительным испытанием при ранжировании списков поступающих только по результатам
-                                            общеобразовательных вступительных испытаний в первую очередь является обществознание; во вторую – русский язык;
-                                            в третью – история.</p>
+                                        <p class="small">Приоритетным вступительным испытанием при ранжировании списков
+                                            поступающих только по результатам общеобразовательных вступительных
+                                            испытаний является обществознание; обязательным вступительным испытанием
+                                            является русский язык.</p>
                                     </blockquote>
                                     <blockquote class="blockquoteMyRed">
                                         <p><a href="http://www.ege.edu.ru/ru/main/schedule/" target="_blank">
@@ -371,6 +372,7 @@
                                             Русский язык - 40 баллов <br>
                                             Обществознание - 45 баллов <br>
                                             История - 35 баллов <br>
+                                            Иностранный язык - 30 баллов
                                         </td>
                                     </tr>
                                     <tr>
@@ -409,9 +411,12 @@
                                         <p class="small">Вступительные испытания в Академии проводятся на русском языке очно и/или с применением дистанционных технологий.</p>
                                     </blockquote>
                                     <blockquote class="blockquoteMyOrange">
-                                        <p class="small">Приоритетным вступительным испытанием при ранжировании списков поступающих только по результатам
-                                            общеобразовательных вступительных испытаний в первую очередь является обществознание; во вторую – русский язык;
-                                            в третью – история.</p>
+                                        <p class="small">
+                                            Приоритетным вступительным испытанием при ранжировании списков поступающих
+                                            только по результатам общеобразовательных вступительных испытаний является
+                                            обществознание; обязательным вступительным испытанием является русский язык.
+
+                                        </p>
                                     </blockquote>
                                     <blockquote class="blockquoteMyRed">
                                         <p><a href="http://www.ege.edu.ru/ru/main/schedule/" target="_blank">
@@ -516,6 +521,15 @@
                                         <td>Минимальное количество баллов</td>
                                     </tr>
                                     <tr>
+                                        <td>Среднее профессиональное (юридическое) образование</td>
+                                        <td>Необходимо пройти собеседование (тестирование) по общеобразовательным предметам</td>
+                                        <td>
+                                            Русский язык - 40 баллов <br>
+                                            Обществознание - 45 баллов <br>
+                                            Теория государства и права - 40 баллов <br>
+                                        </td>
+                                    </tr>
+                                    <tr>
                                         <td>Высшее образование</td>
                                         <td>Необходимо пройти собеседование (тестирование) по общеобразовательным предметам</td>
                                         <td>
@@ -534,9 +548,11 @@
                                         <p class="small">Вступительные испытания в Академии проводятся на русском языке очно и/или с применением дистанционных технологий.</p>
                                     </blockquote>
                                     <blockquote class="blockquoteMyOrange">
-                                        <p class="small">Приоритетным вступительным испытанием при ранжировании списков поступающих только по результатам
-                                            общеобразовательных вступительных испытаний в первую очередь является обществознание; во вторую – русский язык;
-                                            в третью – история.</p>
+                                        <p class="small">
+                                            Приоритетным вступительным испытанием при ранжировании списков поступающих
+                                            только по результатам общеобразовательных вступительных испытаний является
+                                            обществознание; обязательным вступительным испытанием является русский язык.
+                                        </p>
                                     </blockquote>
                                 </div>
                                 <!--            Документы       -->
@@ -553,6 +569,9 @@
                                         </tr>
                                         <tr>
                                             <td><a href="{% static 'docPriem2021/vstupit/osnovy-konstitucionnogo-prava.pdf'%}">Программа "Основы конституционного права РФ"</a> </td>
+                                        </tr>
+                                        <tr>
+                                            <td><a href="{% static 'docPriem2021/vstupit/teorija-gosudarstva-i-prava_compressed.pdf'%}">Программа "Теория государства и права"</a> </td>
                                         </tr>
                                         <tr>
                                             <td><a href="{% static 'docPriem2021/vstupit/russkij-jazyk_compressed.pdf'%}">Программа "Русский язык"</a> </td>

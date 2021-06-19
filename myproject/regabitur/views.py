@@ -90,7 +90,7 @@ class CustomSuccessMessageMixin:
 class UserRoom(LoginRequiredMixin, ListView):
     """Личный кабинет пользователя"""
     model = CustomUser
-    # template_name = 'regabitur/user_room.html'
+    template_name = 'regabitur/user_room.html'
 
     def get_context_data(self, **kwargs):
         """Переопределяем базовый метод, чтобы передать свой контекст"""

@@ -38,6 +38,10 @@ def vstupit_calendar_page(request):
     return render(request, 'abitur/bak/vstupit.html')
 
 
+def vstupit_calendar_page_spec(request):
+    return render(request, 'abitur/spec/vstupit.html')
+
+
 def vstupit_calendar_page_mag(request):
     return render(request, 'abitur/mag/vstupit_mag.html')
 
@@ -110,10 +114,6 @@ def rec_list_bak(request):
     return render(request, 'abitur/bak/rec_list_bak.html', context={'educational_form': educational_form})
 
 
-def submit_doc_bak(request):
-    educational_form = SubmitDoc.objects.all().order_by('date_order')
-    return render(request, 'abitur/bak/submit_doc_bak.html', context={'educational_form': educational_form})
-
 
 def order_mag(request):
     educational_form = OrdersMag.objects.all().order_by('date_order')
@@ -128,11 +128,6 @@ def result_mag(request):
 def rec_list_mag(request):
     educational_form = RecommendedListMag.objects.all().order_by('date_order')
     return render(request, 'abitur/mag/rec_list_mag.html', context={'educational_form': educational_form})
-
-
-def submit_doc_mag(request):
-    educational_form = SubmitDocMag.objects.all()
-    return render(request, 'abitur/mag/submit_doc_mag.html', context={'educational_form': educational_form})
 
 
 def order_asp(request):
@@ -150,9 +145,6 @@ def rec_list_asp(request):
     return render(request, 'abitur/asp/rec_list_asp.html', context={'educational_form': educational_form})
 
 
-def submit_doc_asp(request):
-    educational_form = SubmitDocAsp.objects.all()
-    return render(request, 'abitur/asp/submit_doc_asp.html', context={'educational_form': educational_form})
 
 
 

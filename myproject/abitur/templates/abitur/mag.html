@@ -36,7 +36,7 @@
                      <div class="dropdown mb-2">
                         <a class="btn btn-primary btn-block dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Правила приема</a>
                         <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-                            <a class="dropdown-item" href="{% static 'docPriem2021/11pravilaBM.pdf' %}">Правила приема</a>
+                            <a class="dropdown-item" href="#">Правила приема</a>
 <!--                            <a class="dropdown-item text-danger" href="{% static 'docPriem2020/osob20_21.pdf' %}">Особенности приема на 2020 год</a>-->
                         </div>
                     </div>
@@ -45,7 +45,7 @@
                     <a href="{% url 'mag_calendar_url'%}" class="btn btn-primary btn-block">Календарь приема</a>
                 </div>
                 <div class="col-md-6">
-                    <a href="{% url 'submit_doc_mag_url' %}" class="btn btn-primary btn-block">Списки подавших документы</a>
+                    <a href="{% url 'submit_url' %}" class="btn btn-primary btn-block">Списки подавших документы</a>
                     <a href="{% url 'vstupit_calendar_page_mag_url' %}" class="btn btn-primary btn-block">Расписание вступительных испытаний </a>
                     <a href="{% url 'rec_list_mag_url' %}" class="btn btn-primary btn-block">Списки рекомендованных к зачислению</a>
                     <a href="{% url 'order_mag_url' %}" class="btn btn-primary btn-block">Приказы о зачислении</a>

@@ -2,14 +2,17 @@
 <div class="alert alert-danger" role="alert">
     Обязательно скачать и заполнить документы. Загрузить заполненные документы вы сможете на <b><u>3-м шаге:</u></b><br><br>
     <ul>
-        <li><a href="{% static 'docPriem2020/blank/z_bak.pdf'%}" target="_blank" >Заявление для поступления на <b>БАКАЛАВРИАТ</b></a></li>
-        <li><a href="{% static 'docPriem2020/blank/z_mag1.pdf'%}" target="_blank" >Заявление для поступления на <b>МАГИСТРАТУРУ</b></a></li>
+        <li><a href="{% static 'docPriem2021/blank/z_bak.pdf'%}" target="_blank" >Заявление для поступления на <b>БАКАЛАВРИАТ</b></a></li>
+        <li><a href="{% static 'docPriem2021/blank/z_spec.pdf'%}" target="_blank" >Заявление для поступления на <b>СПЕЦИАЛИТЕТ</b></a></li>
+        <li><a href="{% static 'docPriem2021/blank/z_mag1.pdf'%}" target="_blank" >Заявление для поступления на <b>МАГИСТРАТУРУ</b></a></li>
+        {% comment %}
         <li><a href="{% static 'docPriem2020/blank/z_asp.pdf'%}" target="_blank" >Заявление для поступления на <b>АСПИРАНТУРУ</b></a></li>
-        <li><a href="{% static 'docPriem2020/blank/z_uk.pdf'%}" target="_blank" >Учетная карточка студента</a></li>
-        <li><a href="{% static 'docPriem2020/blank/z_pd.pdf'%}" target="_blank" >Согласие на обработку персональных данных</a></li>
-        <li><a href="{% static 'docPriem2020/blank/z_sogl.pdf'%}" target="_blank" >Согласие на зачисление</a></li>
+        {% endcomment %}
+        <li><a href="{% static 'docPriem2021/blank/z_uk.pdf'%}" target="_blank" >Учетная карточка студента</a></li>
+        <li><a href="{% static 'docPriem2021/blank/z_pd.pdf'%}" target="_blank" >Согласие на обработку персональных данных</a></li>
+        <li><a href="{% static 'docPriem2021/blank/z_sogl.pdf'%}" target="_blank" >Согласие на зачисление</a></li>
     </ul>
-
+    {% comment %}
     <button class="btn btn-warning" type="button" data-toggle="collapse" data-target="#collapseExample" aria-expanded="false" aria-controls="collapseExample">
         Посмотреть примеры заполненных документов <img src="{% static 'icons/box-arrow-down.svg'%}" alt="" width="32" height="32">
     </button>
@@ -25,4 +28,5 @@
             </ul>
         </div>
     </div>
+    {% endcomment %}
 </div>

@@ -146,28 +146,6 @@ class RecommendedList(models.Model):
         verbose_name_plural = 'Списки рекомендованных к зачислению - БАКАЛАВРИАТ'
 
 
-class SubmitDoc(models.Model):
-    """ модель для сущности 'Подавшие документы БАКАЛАВРИАТ' """
-    name_submit_doc = models.CharField(max_length=256, verbose_name='Название')
-    educational_form = models.ForeignKey('EducationalForm', on_delete=models.PROTECT, related_name='linked_submit_doc', verbose_name='Форма обучения')
-    date_pub = models.DateTimeField(auto_now_add=True)
-    date_order = models.DateField(verbose_name='Дата создания приказа')
-    file = models.FileField(upload_to='files', verbose_name='Файл')
-
-    def __str__(self):
-        """переопределяем метод String"""
-        return self.name_submit_doc
-
-    def get_url_file(self):
-        s = '/static/media'
-        url_img = s + self.file.url
-        return url_img
-
-    class Meta:
-        """перевод для админпанели"""
-        verbose_name = 'Списки подавших документы(бакалавриат)'
-        verbose_name_plural = 'Списки подавших документы - БАКАЛАВРИАТ'
-
 #<--
 
 #Для Магистратуры -->
@@ -254,28 +232,6 @@ class RecommendedListMag(models.Model):
         verbose_name_plural = 'Списки рекомендованных к зачислению - МАГИСТРАТУРА'
 
 
-class SubmitDocMag(models.Model):
-    """ модель для сущности 'Подавшие документы Магистратура' """
-    name_submit_doc = models.CharField(max_length=256, verbose_name='Название')
-    educational_form = models.ForeignKey('EducationalFormMag', on_delete=models.PROTECT,
-                                         related_name='linked_submit_doc', verbose_name='Форма обучения')
-    date_pub = models.DateTimeField(auto_now_add=True)
-    date_order = models.DateField(verbose_name='Дата создания приказа')
-    file = models.FileField(upload_to='files', verbose_name='Файл')
-
-    def __str__(self):
-        """переопределяем метод String"""
-        return self.name_submit_doc
-
-    def get_url_file(self):
-        s = '/static/media'
-        url_img = s + self.file.url
-        return url_img
-
-    class Meta:
-        """перевод для админпанели"""
-        verbose_name = 'Списки подавших документы(магистратура)'
-        verbose_name_plural = 'Списки подавших документы - МАГИСТРАТУРА'
 
 #<--
 #Для Аспирантуры -->
@@ -359,23 +315,3 @@ class RecommendedListAsp(models.Model):
         """перевод для админпанели"""
         verbose_name = 'Списки рекомендованных к зачислению(аспирантура)'
         verbose_name_plural = 'Списки рекомендованных к зачислению - АСПИРАНТУРА'
-
-
-class SubmitDocAsp(models.Model):
-    """ модель для сущности 'Подавшие документы Аспирантура """
-    name_submit_doc = models.CharField(max_length=256, verbose_name='Название')
-    educational_form = models.ForeignKey('EducationalFormAsp', on_delete=models.PROTECT,
-                                         related_name='linked_submit_doc', verbose_name='Форма обучения')
-    date_pub = models.DateTimeField(auto_now_add=True)
-    date_order = models.DateField(verbose_name='Дата создания приказа')
-    file = models.FileField(upload_to='files', verbose_name='Файл')
-
-    def __str__(self):
-        """переопределяем метод String"""
-        return self.name_submit_doc
-
-    class Meta:
-        """перевод для админпанели"""
-        verbose_name = 'Списки подавших документы(аспирантура)'
-        verbose_name_plural = 'Списки подавших документы - АСПИРАНТУРА'
-#<--

@@ -36,7 +36,7 @@
                     <div class="dropdown mb-2">
                         <a class="btn btn-primary btn-block dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Правила приема</a>
                         <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-                            <a class="dropdown-item" href="{% static 'docPriem2021/11pravilaBM.pdf' %}">Правила приема</a>
+                            <a class="dropdown-item" href="#">Правила приема</a>
                             <!--                            <a class="dropdown-item text-danger" href="{% static 'docPriem2020/osob20_21.pdf' %}">Особенности приема на 2020 год</a>-->
                         </div>
                     </div>
@@ -46,8 +46,8 @@
                     <a href="{% url 'spec_calendar_url' %}" class="btn btn-primary btn-block">Календарь приема</a>
                 </div>
                 <div class="col-md-6">
-                    <a href="#" class="btn btn-primary btn-block">Списки подавших документы</a>
-                    <a href="#" class="btn btn-primary btn-block">Расписание вступительных испытаний </a>
+                    <a href="{% url 'submit_url' %}" class="btn btn-primary btn-block">Списки подавших документы</a>
+                    <a href="{% url 'vstupit_calendar_page_spec_url' %}" class="btn btn-primary btn-block">Расписание вступительных испытаний </a>
                     <a href="#" class="btn btn-primary btn-block">Списки рекомендованных к зачислению</a>
                     <a href="#" class="btn btn-primary btn-block">Приказы о зачислении</a>
                 </div>
@@ -182,7 +182,10 @@
                                 <td>Среднее общее образование</td>
                                 <td>Результаты ЕГЭ по предметам обществознание, русский язык, история / иностранный язык</td>
                                 <td>
-                                    Русский язык - 40 баллов <br> Обществознание - 45 баллов <br> История – 35 баллов
+                                    Русский язык - 40 баллов <br>
+                                    Обществознание - 45 баллов <br>
+                                    История – 35 баллов <br>
+                                    Иностранный язык - 30 баллов
                                 </td>
                             </tr>
                             <tr>
@@ -218,9 +221,11 @@
                                 <p class="small">Вступительные испытания в Академии проводятся на русском языке очно и/или с применением дистанционных технологий.</p>
                             </blockquote>
                             <blockquote class="blockquoteMyOrange">
-                                <p class="small">Приоритетным вступительным испытанием при ранжировании списков поступающих только по результатам
-                                    общеобразовательных вступительных испытаний в первую очередь является обществознание; во вторую – русский язык;
-                                    в третью – история.</p>
+                                <p class="small">
+                                    Приоритетным вступительным испытанием при ранжировании списков
+                                    поступающих только по результатам общеобразовательных вступительных испытаний
+                                    является обществознание; обязательным вступительным испытанием является
+                                    русский язык.</p>
                             </blockquote>
                             <blockquote class="blockquoteMyRed">
                                 <p><a href="http://www.ege.edu.ru/ru/main/schedule/" target="_blank">

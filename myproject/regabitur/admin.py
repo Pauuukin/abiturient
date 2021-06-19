@@ -104,19 +104,6 @@ class UserAdmin(UserAdmin):
 """
 
 
-@admin.register(ChoicesProfile)
-class ChoicesProfileAdmin(admin.ModelAdmin):
-    """Модель профилей обучения"""
-    extra = 1
-    list_display = ('id', 'description')
-
-
-@admin.register(AdditionalInfo)
-class AdditionalInfoAdmin(admin.ModelAdmin):
-    """Модель с выбранными пользователем профилями"""
-    extra = 0
-
-
 class DocUser(admin.ModelAdmin):
     """Модель Документов пользователей"""
     list_display = ('user_id', 'user', 'name_doc', 'doc')
