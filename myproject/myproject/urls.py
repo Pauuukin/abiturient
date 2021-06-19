@@ -35,7 +35,7 @@ urlpatterns = [
     path('grappelli/', include('grappelli.urls')), # grappelli URLS
     path('admin/', admin.site.urls),
     path('abitur/', include('abitur.urls')),
-    # path('accounts/', include('regabitur.urls')),
+    path('accounts/', include('regabitur.urls')),
     url(r'^favicon\.ico$', RedirectView.as_view(url='/static/image/favicon.ico'), name='favicon'),
     path('', mainPage),
     # url(r'^robots.txt', lambda x: HttpResponse("User-Agent: *\nDisallow: /admin/", content_type="text/plain"), name="robots_file"),

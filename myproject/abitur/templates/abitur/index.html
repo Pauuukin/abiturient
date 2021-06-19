@@ -47,16 +47,12 @@
 
     <div class="col-md-2 dropright">
       <a href="{% url 'norm_doc_page_url' %}" class="btn btn-lg btn-outline-dark bl">Нормативные <br>документы</a>
-
     </div>
     <div class="col-md-1" ></div>
-    {% comment %}
     <div class="col-lg-2">
       <a href="{% url 'reg_info_url' %}" class="btn btn-lg btn-outline-dark bl">Подать документы</a>
     </div>
-    {% endcomment %}
     <div class="col-md-1"></div>
-
     <div class="col-md-2">
       <a href="{% url 'infoPage_url' %}" class="btn btn-lg btn-outline-dark bl">Информация поступающим</a>
     </div>
@@ -73,10 +69,13 @@
         <h5 class="text-center">
           С 20 июня 2021 года открыт прием документов для поступления на все формы обучения. <br><br>
         </h5>
-        <a href="">
-          <h5 class="text-center"> <u>Подача документов для поступления в Академию осуществляется через
-            <b>электронную систему подачи документов</b></u></h5>
-        </a>
+
+          <h5 class="text-center"><u>
+            <a href="{% url 'reg_info_url' %}">
+              Подача документов для поступления в Академию осуществляется через
+            <b>электронную систему подачи документов</b>
+            </a>
+          </u></h5>
       </blockquote>
       <blockquote class="blockquoteMyDanger">
         <h4 class="text-center">Объявлен конкурсный отбор абитуриентов для обучения на места, финансируемые
