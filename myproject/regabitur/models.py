@@ -130,8 +130,9 @@ class PublishTab(models.Model):
         ('Вступительные испытания', 'Вступительные испытания'),
     )
 
-    user = models.OneToOneField(User, on_delete=models.CASCADE, verbose_name="Пользователь", default='')
-    individual_str = models.CharField(max_length=32, blank=True)
+    user = models.OneToOneField(User, on_delete=models.CASCADE, verbose_name="Пользователь", default='',
+                                related_name='publish')
+    individual_str = models.CharField(max_length=32, blank=True, verbose_name="Год/поток", default='34/21')
     test_type = models.CharField(max_length=256, verbose_name="Вступительные испытания",
                                  choices=choice_field)
     date_pub = models.DateTimeField(auto_now=True, blank=True, null=True)

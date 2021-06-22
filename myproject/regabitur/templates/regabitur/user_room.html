@@ -43,12 +43,12 @@ input:checked + a {
     <div class="col-md-5">
         <h4 class="text-center">Ваш уникальный номер в системе:</h4>
     </div>
-    <div class="col-md-1">
+    <div class="col-md-2">
         <div class="alert alert-info">
-            <h4> {{ request.user.id }}</h4>
+            <h4> {{ number }} - {{ request.user.id }}</h4>
         </div>
     </div>
-    <div class="col-md-6">
+    <div class="col-md-5">
         <p class="text-center">Данный номер присвается каждому абитуриенту, прошедшему регистрацию и поможет вам найти себя в списках подавших
             документы </p>
     </div>

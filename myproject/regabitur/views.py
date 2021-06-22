@@ -100,6 +100,7 @@ class UserRoom(LoginRequiredMixin, ListView):
         context = super().get_context_data(**kwargs)
         context['user'] = CustomUser.objects.get(user=user.id)
         context['profile'] = profile.education_profile.all() # выводим информацию из ManyToMany related
+        context['number'] = user.publish.individual_str
         context['status'] = custom_user.get_sending_status_display()
         context['success'] = custom_user.sending_status == 'success'
         context['error'] = custom_user.sending_status == 'error'
