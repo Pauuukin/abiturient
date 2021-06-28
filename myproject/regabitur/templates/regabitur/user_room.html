@@ -87,6 +87,11 @@ input:checked + a {
     </div>
 
     <div class="col-md-5 mt-3">
+        <h4>Сообщение от приемной комиссии:</h4>
+        <div class="card border-danger mb-4">
+            <p class="m-2">{{user.message}}</p>
+        </div>
+
         <!--        Основные данные     -->
         <h4>Ваши данные: </h4>
         <div class="card border-primary">
@@ -203,6 +208,10 @@ input:checked + a {
     <div class="col-md-5 ">
         <a href="{% static 'docPriem2020/instruct.pdf'%}" class="btn btn-block btn-info" target="_blank">Инструкция по пользованию системой подачи документов для Абитуриентов</a>
         <hr><br>
+        <h4>Сообщение от приемной комиссии:</h4>
+        <div class="card border-danger mb-4">
+            <p class="m-2">{{user.message}}</p>
+        </div>
         <h4>Ваши данные: </h4>
 <!--        Пользователь -->
         <div class="card border-primary">

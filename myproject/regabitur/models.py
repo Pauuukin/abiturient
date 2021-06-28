@@ -43,8 +43,10 @@ class CustomUser(models.Model):
     snils = models.CharField(max_length=32, verbose_name="Номер снилса", default=' ')
     name_uz = models.CharField(max_length=256, verbose_name="Наименование учебного заведения, которое окончил(а)",
                                blank=True, default=' ')
-    date_of_doc = models.CharField(max_length=32, verbose_name="Дата выдачи документа об образовании в формате ДД.ММ.ГГГГ",
+    date_of_doc = models.CharField(max_length=32,
+                                   verbose_name="Дата выдачи документа об образовании в формате ДД.ММ.ГГГГ",
                                    default=" ")
+    message = models.CharField(max_length=512, verbose_name='Сообщение от приемной комисии', default=' ', blank=True)
 
     class Meta:
         """перевод для админпанели"""
@@ -113,7 +115,8 @@ class ChoicesProfile(models.Model):
 
 class AdditionalInfo(models.Model):
     """Класс с дополнительной информацией о пользователе (прием 21/22)"""
-    user = models.OneToOneField(User, on_delete=models.CASCADE, verbose_name="Пользователь", default='', related_name='addition')
+    user = models.OneToOneField(User, on_delete=models.CASCADE, verbose_name="Пользователь", default='',
+                                related_name='addition')
     education_profile = models.ManyToManyField(ChoicesProfile, verbose_name="Форма обучения")
 
     class Meta:
