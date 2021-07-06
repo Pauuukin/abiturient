@@ -61,6 +61,7 @@ class UserAdmin(UserAdmin):
         (_('Персональная информация'), {'fields': ('first_name', 'last_name', 'email')}),
         (_('Важные даты'), {'fields': ('last_login', 'date_joined')}),
     )
+    # search_fields = ('id', 'username', 'first_name', 'last_name', 'date_joined',)
 
     readonly_fields = [
         'user_permissions',
