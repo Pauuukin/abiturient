@@ -44,4 +44,19 @@ urlpatterns = [
     path('submit/asp_zfo_up', AspZfoUp.as_view(), name='submit_asp_zfo_up'),
     path('submit/asp_ofo_ks', AspOfoKs.as_view(), name='submit_asp_ofo_ks'),
     path('submit/asp_zfo_ks', AspZfoKs.as_view(), name='submit_asp_zfo_ks'),
+    # пути для рекомендованных к зачислению
+    # Бак
+    path('rec/rec_ofo_gp', BakRecOfoGp.as_view(), name='rec_bak_ofo_gp'),
+    path('rec/rec_ofo_gp_vstupit', BakRecOfoGpVstup.as_view(), name='rec_bak_ofo_gp_vstupit'),
+    path('rec/rec_ofo_up', BakRecOfoUp.as_view(), name='rec_bak_ofo_up'),
+    path('rec/rec_ofo_up_vstupit', BakRecOfoUpVstup.as_view(), name='rec_bak_ofo_up_vstupit'),
+    path('rec/rec_zfo_gp', BakRecZfoGp.as_view(), name='rec_bak_zfo_gp'),
+    path('rec/rec_zfo_gp_vstupit', BakRecZfoGpVstup.as_view(), name='rec_bak_zfo_gp_vstupit'),
+    path('rec/rec_zfo_up', BakRecZfoUp.as_view(), name='rec_bak_zfo_up'),
+    path('rec/rec_zfo_up_vstupit', BakRecZfoUpVstup.as_view(), name='rec_bak_zfo_up_vstupit'),
+    path('rec/rec_ozfo_gp', BakRecOzfoGp.as_view(), name='rec_bak_ozfo_gp'),
+    path('rec/rec_ozfo_gp_vstupit', BakRecOzfoGpVstup.as_view(), name='rec_bak_ozfo_gp_vstupit'),
+    path('rec/rec_ozfo_up', BakRecOzfoUp.as_view(), name='rec_bak_ozfo_up'),
+    path('rec/rec_ozfo_up_vstupit', BakRecOzfoUpVstup.as_view(), name='rec_bak_ozfo_up_vstupit'),
+
 ]

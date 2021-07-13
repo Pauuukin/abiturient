@@ -1,5 +1,6 @@
 from os.path import exists
 
+from django.db.models import Q
 from django.http import HttpResponseRedirect
 from django.shortcuts import render, redirect
 from django.urls import reverse_lazy
@@ -15,7 +16,7 @@ from django.views.generic import CreateView, UpdateView, ListView, DeleteView
 from .forms import *
 
 # Create your views here.
-from .models import PublishTab
+from .models import PublishTab, PublishRecTab
 
 
 class MainPageView(TemplateView):
@@ -307,6 +308,7 @@ class MyLogoutView(LogoutView):
     Бакалавриат
 """
 
+
 class BacOfoGp(ListView):
     """БАК ОФО ГП"""
     model = PublishTab
@@ -541,3 +543,174 @@ class AspZfoKs(ListView):
         all_publish = PublishTab.objects.filter(asp_zfo_ks=True)
         context["list"] = all_publish
         return context
+
+
+"""
+    Рекомендованные к зачислению 
+"""
+
+"""
+    Бакалавриат
+"""
+
+
+class BakRecListMixin(ListView):
+    """
+    Миксин для списка рекомендованных к зачислению
+    in:
+    filter_name  - название профиля, по которому фильтруем записи из базы
+    profile_name  -  название профиля для html
+    form_ed  -  название формы обучения для html
+    test_type  -  тип вступительных испытаний для html
+    type_ed  -  бак/маг/асп для html
+    """
+    model = PublishRecTab
+    template_name = 'regabitur/rec/rec_list_bak.html'
+    column_table_name = None
+    filter_name = None
+    profile_name = None
+    form_ed = None
+    test_type = None
+    type_ed = None
+
+    def get_context_data(self, **kwargs):
+        """Передаем записи с БАК ОФО true """
+        context = super().get_context_data(**kwargs)
+        all_publish = PublishRecTab.objects.filter(
+            Q(**{self.filter_name: True}) & Q(test_type=self.test_type)
+        )
+        context["list"] = all_publish
+        context["column_name"] = self.column_table_name
+        context["form_ed"] = self.form_ed
+        context["profile_name"] = self.profile_name
+        context["test_type"] = self.test_type
+        context["type_ed"] = self.type_ed
+        return context
+
+# -- ОФО --
+
+
+class BakRecOfoGp(BakRecListMixin):
+    """БАК ОФО ГП ЕГЭ """
+    column_table_name = "История/Иностранный язык"
+    filter_name = "bak_ofo_gp"
+    profile_name = "Гражданско правовой"
+    form_ed = "Очная"
+    test_type = "ЕГЭ"
+    type_ed = "Бакалавриат"
+
+
+class BakRecOfoGpVstup(BakRecListMixin):
+    """БАК ОФО ГП Вступительные """
+    column_table_name = "История/Иностранный язык"
+    filter_name = "bak_ofo_gp"
+    profile_name = "Гражданско правовой"
+    form_ed = "Очная"
+    test_type = "Вступительные испытания"
+    type_ed = "Бакалавриат"
+
+
+class BakRecOfoUp(BakRecListMixin):
+    """БАК ОФО УП ЕГЭ """
+    column_table_name = "История/Иностранный язык"
+    filter_name = "bak_ofo_up"
+    profile_name = "Уголовно правовой"
+    form_ed = "Очная"
+    test_type = "ЕГЭ"
+    type_ed = "Бакалавриат"
+
+
+class BakRecOfoUpVstup(BakRecListMixin):
+    """БАК ОФО УП Вступительные """
+    column_table_name = "История/Иностранный язык"
+    filter_name = "bak_ofo_up"
+    profile_name = "Уголовно правовой"
+    form_ed = "Очная"
+    test_type = "Вступительные испытания"
+    type_ed = "Бакалавриат"
+
+
+# -- ЗФО --
+
+
+class BakRecZfoGp(BakRecListMixin):
+    """БАК ЗФО ГП ЕГЭ """
+    column_table_name = "История/Иностранный язык"
+    filter_name = "bak_zfo_gp"
+    profile_name = "Гражданско правовой"
+    form_ed = "Заочная"
+    test_type = "ЕГЭ"
+    type_ed = "Бакалавриат"
+
+
+class BakRecZfoGpVstup(BakRecListMixin):
+    """БАК ЗФО ГП Вступительные """
+    column_table_name = "История/Иностранный язык"
+    filter_name = "bak_zfo_gp"
+    profile_name = "Гражданско правовой"
+    form_ed = "Заочная"
+    test_type = "Вступительные испытания"
+    type_ed = "Бакалавриат"
+
+
+class BakRecZfoUp(BakRecListMixin):
+    """БАК ЗФО УП ЕГЭ """
+    column_table_name = "История/Иностранный язык"
+    filter_name = "bak_zfo_up"
+    profile_name = "Уголовно правовой"
+    form_ed = "Заочная"
+    test_type = "ЕГЭ"
+    type_ed = "Бакалавриат"
+
+
+class BakRecZfoUpVstup(BakRecListMixin):
+    """БАК ЗФО УП Вступительные """
+    column_table_name = "История/Иностранный язык"
+    filter_name = "bak_zfo_up"
+    profile_name = "Уголовно правовой"
+    form_ed = "Заочная"
+    test_type = "Вступительные испытания"
+    type_ed = "Бакалавриат"
+
+# -- ОЗФО --
+
+
+class BakRecOzfoGp(BakRecListMixin):
+    """БАК ОЗФО ГП ЕГЭ """
+    column_table_name = "История/Иностранный язык"
+    filter_name = "bak_ozfo_gp"
+    profile_name = "Гражданско правовой"
+    form_ed = "Очно-заочная"
+    test_type = "ЕГЭ"
+    type_ed = "Бакалавриат"
+
+
+class BakRecOzfoGpVstup(BakRecListMixin):
+    """БАК ОЗФО ГП Вступительные """
+    column_table_name = "История/Иностранный язык"
+    filter_name = "bak_ozfo_gp"
+    profile_name = "Гражданско правовой"
+    form_ed = "Очно-заочная"
+    test_type = "Вступительные испытания"
+    type_ed = "Бакалавриат"
+
+
+class BakRecOzfoUp(BakRecListMixin):
+    """БАК ОЗФО УП ЕГЭ """
+    column_table_name = "История/Иностранный язык"
+    filter_name = "bak_ozfo_up"
+    profile_name = "Уголовно правовой"
+    form_ed = "Очно-заочная"
+    test_type = "ЕГЭ"
+    type_ed = "Бакалавриат"
+
+
+class BakRecOzfoUpVstup(BakRecListMixin):
+    """БАК ОЗФО УП Вступительные """
+    column_table_name = "История/Иностранный язык"
+    filter_name = "bak_ozfo_up"
+    profile_name = "Уголовно правовой"
+    form_ed = "Очно-заочная"
+    test_type = "Вступительные испытания"
+    type_ed = "Бакалавриат"
+

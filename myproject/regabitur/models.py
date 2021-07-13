@@ -165,3 +165,55 @@ class PublishTab(models.Model):
 
     def __str__(self):
         return self.user.get_full_name()
+
+
+class PublishRecTab(models.Model):
+    """Класс для публикации абитуриентов в списах Рекомендованных к зачислению"""
+    choice_field = (
+        ('ЕГЭ', 'ЕГЭ'),
+        ('Вступительные испытания', 'Вступительные испытания'),
+    )
+    choice_sost = (
+        ('Рекомендован', 'Рекомендован'),
+        ('Не рекомендован', 'Не рекомендован'),
+    )
+    choice_sogl = (
+        ('Подано', 'Подано'),
+        ('Не подано', 'Не подано'),
+    )
+    choice_advantage = (
+        ('Имеет', 'Имеет'),
+        ('Не имеет', 'Не имеет'),
+    )
+    user = models.OneToOneField(User, on_delete=models.CASCADE, verbose_name="Пользователь", default='',
+                                related_name='publishRec')
+    test_type = models.CharField(max_length=256, verbose_name="Вступительные испытания",
+                                 choices=choice_field)
+    date_pub = models.DateTimeField(auto_now=True, blank=True, null=True)
+    sogl = models.CharField(max_length=256, choices=choice_sogl,
+                            default=choice_sogl[1], verbose_name="Согласие на зачисление")
+    sost_type = models.CharField(max_length=256, verbose_name="Состояние",
+                                 choices=choice_sost, default=choice_sost[0])
+    advantage = models.CharField(max_length=256, blank=True, default=choice_advantage[1],
+                                 choices=choice_advantage, verbose_name='Преимущественное право')
+    individ = models.SmallIntegerField(blank=True, default=0, verbose_name='Индивид. достижения')
+    rus_point = models.SmallIntegerField(blank=True, default=0, verbose_name='Русский язык')
+    obsh_point = models.SmallIntegerField(blank=True, default=0, verbose_name='Обществознание')
+    choice_ege_point = models.SmallIntegerField(blank=True, default=0, verbose_name=' ЕГЭ История / Английский')
+    choice_vstupit_point = models.SmallIntegerField(blank=True, default=0, verbose_name='История/ТГП/ОКП')
+    gpup_point = models.SmallIntegerField(blank=True, default=0, verbose_name='ГП/УП')
+    kp_point = models.SmallIntegerField(blank=True, default=0, verbose_name='Конст. Право РФ')
+    spec_point = models.SmallIntegerField(blank=True, default=0, verbose_name='Спец. дисциплина (Асп)')
+    sum_points = models.SmallIntegerField(blank=True, default=0, verbose_name='Сумма баллов')
+    bak_ofo_up = models.BooleanField(default=False, verbose_name="ЕГЭ в БАК ОФО УП")
+    bak_ofo_gp = models.BooleanField(default=False, verbose_name="ЕГЭ в БАК ОФО ГП")
+    bak_zfo_up = models.BooleanField(default=False, verbose_name="ЕГЭ в БАК ЗФО УП")
+    bak_zfo_gp = models.BooleanField(default=False, verbose_name="ЕГЭ в БАК ЗФО ГП")
+    bak_ozfo_up = models.BooleanField(default=False, verbose_name="ЕГЭ в БАК ОЗФО УП")
+    bak_ozfo_gp = models.BooleanField(default=False, verbose_name="ЕГЭ в БАК ОЗФО ГП")
+
+    class Meta:
+        """перевод для админпанели"""
+        verbose_name = 'Опубликовать в списки ромендованных к зачислению'
+        verbose_name_plural = 'Опубликовать в списки ромендованных к зачислению'
+        ordering = ['-sum_points']

@@ -3,7 +3,7 @@ from django.contrib.auth.admin import UserAdmin
 from django.contrib.auth.forms import UserChangeForm
 from django.contrib.auth.models import User
 from transliterate.utils import _
-from .models import CustomUser, DocumentUser, AdditionalInfo, ChoicesProfile, PublishTab
+from .models import CustomUser, DocumentUser, AdditionalInfo, PublishTab, PublishRecTab
 from django.utils.safestring import mark_safe
 from import_export import resources
 from import_export.admin import ImportExportModelAdmin
@@ -37,6 +37,14 @@ class UserInlinePublish(admin.StackedInline):
     extra = 0
 
 
+class UserInlineRec(admin.StackedInline):
+    """Доп. форма для пользователей с информацией из models.PublishTab"""
+    model = PublishRecTab
+    can_delete = False
+    verbose_name_plural = 'Опубликовать в Списки Рекомендованных к зачислению'
+    extra = 0
+
+
 class UserInlineDoc(admin.TabularInline):
     """Доп. форма для пользователей с информацией из models.DocumentUser"""
     model = DocumentUser
@@ -50,7 +58,7 @@ class UserInlineDoc(admin.TabularInline):
 class UserAdmin(UserAdmin):
     """Представление модели User"""
     model = DocumentUser
-    inlines = (UserInline, UserInlineInfo, UserInlinePublish, UserInlineDoc)
+    inlines = (UserInline, UserInlineInfo, UserInlinePublish, UserInlineRec, UserInlineDoc)
     list_display = ('id', 'username', 'first_name', 'last_name', 'date_joined',
                     'email', 'status_doc', 'comment')
     list_display_links = ('id', 'username', )
