@@ -4,7 +4,6 @@ from django.urls import path
 from .views import *
 
 urlpatterns = [
-
     path('', MainPageView.as_view(), name='reg_info_url'),
     path('accounts/login/', MyLoginView.as_view(), name='login_abitur_url'),
     path('login/', MyLoginView.as_view(), name='login_abitur_url'),
@@ -12,7 +11,8 @@ urlpatterns = [
     path('logout-abitur', MyLogoutView.as_view(), name='logout_abitur_url'),
     url(r'^password-reset/$', views.PasswordResetView.as_view(), name='password_reset'),
     url(r'^password-reset/done/$', views.PasswordResetDoneView.as_view(), name='password_reset_done'),
-    url(r'^password-reset/confirm/(?P<uidb64>[-\w]+)/(?P<token>[-\w]+)/$',  views.PasswordResetConfirmView.as_view(), name='password_reset_confirm'),
+    url(r'^password-reset/confirm/(?P<uidb64>[-\w]+)/(?P<token>[-\w]+)/$',  views.PasswordResetConfirmView.as_view(),
+        name='password_reset_confirm'),
     url(r'^password-reset/complete/$', views.PasswordResetCompleteView.as_view(), name='password_reset_complete'),
     path('add_dok', DocumentsAddView.as_view(), name='add_doc_url'),
     path('add_info', InfoCreateView.as_view(), name='add_info_url'),
@@ -22,7 +22,10 @@ urlpatterns = [
     path('complete_send/<int:pk>', complete_send, name='complete_send_url'),
     path('agreement_flag/<int:pk>', agreement_flag, name='agreement_flag_url'),
     path('delete-page/<int:pk>', DocumentDeleteView.as_view(), name='delete_page_url'),
-    # пути для списков подавших документы
+]
+
+# пути для списков подавших документы
+urlpatterns += [
     # БАК
     path('submit/bak_ofo_gp', BacOfoGp.as_view(), name='submit_bak_ofo_gp'),
     path('submit/bak_ofo_up', BacOfoUp.as_view(), name='submit_bak_ofo_up'),
@@ -44,19 +47,36 @@ urlpatterns = [
     path('submit/asp_zfo_up', AspZfoUp.as_view(), name='submit_asp_zfo_up'),
     path('submit/asp_ofo_ks', AspOfoKs.as_view(), name='submit_asp_ofo_ks'),
     path('submit/asp_zfo_ks', AspZfoKs.as_view(), name='submit_asp_zfo_ks'),
-    # пути для рекомендованных к зачислению
-    # Бак
-    path('rec/rec_ofo_gp', BakRecOfoGp.as_view(), name='rec_bak_ofo_gp'),
-    path('rec/rec_ofo_gp_vstupit', BakRecOfoGpVstup.as_view(), name='rec_bak_ofo_gp_vstupit'),
-    path('rec/rec_ofo_up', BakRecOfoUp.as_view(), name='rec_bak_ofo_up'),
-    path('rec/rec_ofo_up_vstupit', BakRecOfoUpVstup.as_view(), name='rec_bak_ofo_up_vstupit'),
-    path('rec/rec_zfo_gp', BakRecZfoGp.as_view(), name='rec_bak_zfo_gp'),
-    path('rec/rec_zfo_gp_vstupit', BakRecZfoGpVstup.as_view(), name='rec_bak_zfo_gp_vstupit'),
-    path('rec/rec_zfo_up', BakRecZfoUp.as_view(), name='rec_bak_zfo_up'),
-    path('rec/rec_zfo_up_vstupit', BakRecZfoUpVstup.as_view(), name='rec_bak_zfo_up_vstupit'),
-    path('rec/rec_ozfo_gp', BakRecOzfoGp.as_view(), name='rec_bak_ozfo_gp'),
-    path('rec/rec_ozfo_gp_vstupit', BakRecOzfoGpVstup.as_view(), name='rec_bak_ozfo_gp_vstupit'),
-    path('rec/rec_ozfo_up', BakRecOzfoUp.as_view(), name='rec_bak_ozfo_up'),
-    path('rec/rec_ozfo_up_vstupit', BakRecOzfoUpVstup.as_view(), name='rec_bak_ozfo_up_vstupit'),
+]
 
+# пути для рекомендованных к зачислению
+urlpatterns += [
+    # Бак
+    path('rec/rec_bak_ofo_gp', BakRecOfoGp.as_view(), name='rec_bak_ofo_gp'),
+    path('rec/rec_bak_ofo_gp_vstupit', BakRecOfoGpVstup.as_view(), name='rec_bak_ofo_gp_vstupit'),
+    path('rec/rec_bak_ofo_up', BakRecOfoUp.as_view(), name='rec_bak_ofo_up'),
+    path('rec/rec_bak_ofo_up_vstupit', BakRecOfoUpVstup.as_view(), name='rec_bak_ofo_up_vstupit'),
+    # path('rec/rec_bak_zfo_gp', BakRecZfoGp.as_view(), name='rec_bak_zfo_gp'),
+    path('rec/rec_bak_zfo_gp_vstupit', BakRecZfoGpVstup.as_view(), name='rec_bak_zfo_gp_vstupit'),
+    # path('rec/rec_bak_zfo_up', BakRecZfoUp.as_view(), name='rec_bak_zfo_up'),
+    path('rec/rec_bak_zfo_up_vstupit', BakRecZfoUpVstup.as_view(), name='rec_bak_zfo_up_vstupit'),
+    path('rec/rec_bak_ozfo_gp', BakRecOzfoGp.as_view(), name='rec_bak_ozfo_gp'),
+    path('rec/rec_bak_ozfo_gp_vstupit', BakRecOzfoGpVstup.as_view(), name='rec_bak_ozfo_gp_vstupit'),
+    path('rec/rec_bak_ozfo_up', BakRecOzfoUp.as_view(), name='rec_bak_ozfo_up'),
+    path('rec/rec_bak_ozfo_up_vstupit', BakRecOzfoUpVstup.as_view(), name='rec_bak_ozfo_up_vstupit'),
+    # Спец
+    path('rec/rec_spec_ofo_sd', SpecRecOfoSd.as_view(), name='rec_spec_ofo_sd'),
+    path('rec/rec_spec_ofo_sd_vstupit', SpecRecOfoSdVstup.as_view(), name='rec_spec_ofo_sd_vstupit'),
+    # Маг
+    path('rec/rec_mag_ofo_po_vstupit', MagRecOfoPoVstup.as_view(), name='rec_mag_ofo_po_vstupit'),
+    path('rec/rec_mag_ofo_tp_vstupit', MagRecOfoTpVstup.as_view(), name='rec_mag_ofo_tp_vstupit'),
+    path('rec/rec_mag_zfo_po_vstupit', MagRecZfoPoVstup.as_view(), name='rec_mag_zfo_po_vstupit'),
+    path('rec/rec_mag_zfo_tp_vstupit', MagRecZfoTpVstup.as_view(), name='rec_mag_zfo_tp_vstupit'),
+    # Асп
+    path('rec/rec_asp_ofo_tip_vstupit', AspRecOfoTipVstup.as_view(), name='rec_asp_ofo_tip_vstupit'),
+    path('rec/rec_asp_ofo_up_vstupit', AspRecOfoUpVstup.as_view(), name='rec_asp_ofo_up_vstupit'),
+    path('rec/rec_asp_ofo_ks_vstupit', AspRecOfoKsVstup.as_view(), name='rec_asp_ofo_ks_vstupit'),
+    path('rec/rec_asp_zfo_tip_vstupit', AspRecZfoTipVstup.as_view(), name='rec_asp_zfo_tip_vstupit'),
+    path('rec/rec_asp_zfo_up_vstupit', AspRecZfoUpVstup.as_view(), name='rec_asp_zfo_up_vstupit'),
+    path('rec/rec_asp_zfo_ks_vstupit', AspRecZfoKsVstup.as_view(), name='rec_asp_zfo_ks_vstupit'),
 ]

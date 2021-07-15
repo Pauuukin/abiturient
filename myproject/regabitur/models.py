@@ -199,18 +199,33 @@ class PublishRecTab(models.Model):
     individ = models.SmallIntegerField(blank=True, default=0, verbose_name='Индивид. достижения')
     rus_point = models.SmallIntegerField(blank=True, default=0, verbose_name='Русский язык')
     obsh_point = models.SmallIntegerField(blank=True, default=0, verbose_name='Обществознание')
-    choice_ege_point = models.SmallIntegerField(blank=True, default=0, verbose_name=' ЕГЭ История / Английский')
+    choice_ege_point = models.SmallIntegerField(blank=True, default=0, verbose_name='История / Английский '
+                                                                                    '(Асп. англ тоже сюда)')
     choice_vstupit_point = models.SmallIntegerField(blank=True, default=0, verbose_name='История/ТГП/ОКП')
     gpup_point = models.SmallIntegerField(blank=True, default=0, verbose_name='ГП/УП')
     kp_point = models.SmallIntegerField(blank=True, default=0, verbose_name='Конст. Право РФ')
     spec_point = models.SmallIntegerField(blank=True, default=0, verbose_name='Спец. дисциплина (Асп)')
     sum_points = models.SmallIntegerField(blank=True, default=0, verbose_name='Сумма баллов')
-    bak_ofo_up = models.BooleanField(default=False, verbose_name="ЕГЭ в БАК ОФО УП")
-    bak_ofo_gp = models.BooleanField(default=False, verbose_name="ЕГЭ в БАК ОФО ГП")
-    bak_zfo_up = models.BooleanField(default=False, verbose_name="ЕГЭ в БАК ЗФО УП")
-    bak_zfo_gp = models.BooleanField(default=False, verbose_name="ЕГЭ в БАК ЗФО ГП")
-    bak_ozfo_up = models.BooleanField(default=False, verbose_name="ЕГЭ в БАК ОЗФО УП")
-    bak_ozfo_gp = models.BooleanField(default=False, verbose_name="ЕГЭ в БАК ОЗФО ГП")
+    bak_ofo_gp = models.BooleanField(default=False, verbose_name="БАК ОФО ГП")
+    bak_ofo_up = models.BooleanField(default=False, verbose_name="БАК ОФО УП")
+    bak_zfo_gp = models.BooleanField(default=False, verbose_name="БАК ЗФО ГП")
+    bak_zfo_up = models.BooleanField(default=False, verbose_name="БАК ЗФО УП")
+    bak_ozfo_gp = models.BooleanField(default=False, verbose_name="БАК ОЗФО ГП")
+    bak_ozfo_up = models.BooleanField(default=False, verbose_name="БАК ОЗФО УП")
+    # специалитет
+    spec_ofo_sd = models.BooleanField(default=False, verbose_name="СПЕЦ ОФО СПД")
+    # магистратура
+    mag_ofo_po = models.BooleanField(default=False, verbose_name="МАГ ОФО Прав. обеспеч.")
+    mag_zfo_po = models.BooleanField(default=False, verbose_name="МАГ ЗФО Прав. обеспеч.")
+    mag_ofo_tp = models.BooleanField(default=False, verbose_name="МАГ ОФО Теор. и практ.")
+    mag_zfo_tp = models.BooleanField(default=False, verbose_name="МАГ ЗФО Теор. и практ.")
+    # аспирантура
+    asp_ofo_tip = models.BooleanField(default=False, verbose_name="АСП ОФО Теор. и истор.")
+    asp_zfo_tip = models.BooleanField(default=False, verbose_name="АСП ЗФО Теор. и истор.")
+    asp_ofo_up = models.BooleanField(default=False, verbose_name="АСП ОФО Уголовный проц.")
+    asp_zfo_up = models.BooleanField(default=False, verbose_name="АСП ЗФО Уголовный проц")
+    asp_ofo_ks = models.BooleanField(default=False, verbose_name="АСП ОФО Криминалистика")
+    asp_zfo_ks = models.BooleanField(default=False, verbose_name="АСП ЗФО Криминалистика")
 
     class Meta:
         """перевод для админпанели"""

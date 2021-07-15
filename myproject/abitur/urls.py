@@ -5,6 +5,7 @@ from .views import *
 urlpatterns = [
     path('', abiturPage, name='main_abitur_url'),
     path('submit/', submitPage, name='submit_url'),
+    path('rec/', recommended_page, name='recommended_url'),
     path('news/<str:slug>/', NewsDetail.as_view(), name='news_detail_url'),
     path('bak/', bakPage, name='bakPage_url'),
     path('bak/vstupit_calendar_page/', vstupit_calendar_page, name='vstupit_calendar_page_url'),

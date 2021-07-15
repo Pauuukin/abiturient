@@ -550,19 +550,19 @@ class AspZfoKs(ListView):
 """
 
 """
-    Бакалавриат
+    Бакалавриат / Специалитет
 """
 
 
 class BakRecListMixin(ListView):
     """
-    Миксин для списка рекомендованных к зачислению
+    Миксин для списка рекомендованных к зачислению (БАК, СПЕЦ)
     in:
-    filter_name  - название профиля, по которому фильтруем записи из базы
-    profile_name  -  название профиля для html
-    form_ed  -  название формы обучения для html
-    test_type  -  тип вступительных испытаний для html
-    type_ed  -  бак/маг/асп для html
+        filter_name  - название профиля, по которому фильтруем записи из базы
+        profile_name  -  название профиля для html
+        form_ed  -  название формы обучения для html
+        test_type  -  тип вступительных испытаний для html
+        type_ed  -  бак/маг/асп для html
     """
     model = PublishRecTab
     template_name = 'regabitur/rec/rec_list_bak.html'
@@ -574,7 +574,7 @@ class BakRecListMixin(ListView):
     type_ed = None
 
     def get_context_data(self, **kwargs):
-        """Передаем записи с БАК ОФО true """
+        """Передаем записи с фильтром по профилю и вступительным испытаниям """
         context = super().get_context_data(**kwargs)
         all_publish = PublishRecTab.objects.filter(
             Q(**{self.filter_name: True}) & Q(test_type=self.test_type)
@@ -587,7 +587,7 @@ class BakRecListMixin(ListView):
         context["type_ed"] = self.type_ed
         return context
 
-# -- ОФО --
+# -- БАК ОФО --
 
 
 class BakRecOfoGp(BakRecListMixin):
@@ -602,7 +602,7 @@ class BakRecOfoGp(BakRecListMixin):
 
 class BakRecOfoGpVstup(BakRecListMixin):
     """БАК ОФО ГП Вступительные """
-    column_table_name = "История/Иностранный язык"
+    column_table_name = "История/ТГП/ОКП"
     filter_name = "bak_ofo_gp"
     profile_name = "Гражданско правовой"
     form_ed = "Очная"
@@ -622,7 +622,7 @@ class BakRecOfoUp(BakRecListMixin):
 
 class BakRecOfoUpVstup(BakRecListMixin):
     """БАК ОФО УП Вступительные """
-    column_table_name = "История/Иностранный язык"
+    column_table_name = "История/ТГП/ОКП"
     filter_name = "bak_ofo_up"
     profile_name = "Уголовно правовой"
     form_ed = "Очная"
@@ -630,7 +630,7 @@ class BakRecOfoUpVstup(BakRecListMixin):
     type_ed = "Бакалавриат"
 
 
-# -- ЗФО --
+# -- БАК ЗФО --
 
 
 class BakRecZfoGp(BakRecListMixin):
@@ -645,7 +645,7 @@ class BakRecZfoGp(BakRecListMixin):
 
 class BakRecZfoGpVstup(BakRecListMixin):
     """БАК ЗФО ГП Вступительные """
-    column_table_name = "История/Иностранный язык"
+    column_table_name = "История/ТГП/ОКП"
     filter_name = "bak_zfo_gp"
     profile_name = "Гражданско правовой"
     form_ed = "Заочная"
@@ -665,14 +665,14 @@ class BakRecZfoUp(BakRecListMixin):
 
 class BakRecZfoUpVstup(BakRecListMixin):
     """БАК ЗФО УП Вступительные """
-    column_table_name = "История/Иностранный язык"
+    column_table_name = "История/ТГП/ОКП"
     filter_name = "bak_zfo_up"
     profile_name = "Уголовно правовой"
     form_ed = "Заочная"
     test_type = "Вступительные испытания"
     type_ed = "Бакалавриат"
 
-# -- ОЗФО --
+# -- БАК ОЗФО --
 
 
 class BakRecOzfoGp(BakRecListMixin):
@@ -687,7 +687,7 @@ class BakRecOzfoGp(BakRecListMixin):
 
 class BakRecOzfoGpVstup(BakRecListMixin):
     """БАК ОЗФО ГП Вступительные """
-    column_table_name = "История/Иностранный язык"
+    column_table_name = "История/ТГП/ОКП"
     filter_name = "bak_ozfo_gp"
     profile_name = "Гражданско правовой"
     form_ed = "Очно-заочная"
@@ -707,10 +707,196 @@ class BakRecOzfoUp(BakRecListMixin):
 
 class BakRecOzfoUpVstup(BakRecListMixin):
     """БАК ОЗФО УП Вступительные """
-    column_table_name = "История/Иностранный язык"
+    column_table_name = "История/ТГП/ОКП"
     filter_name = "bak_ozfo_up"
     profile_name = "Уголовно правовой"
     form_ed = "Очно-заочная"
     test_type = "Вступительные испытания"
     type_ed = "Бакалавриат"
 
+
+# -- СПЕЦ ОФО --
+
+class SpecRecOfoSd(BakRecListMixin):
+    """ СПЕЦ ОФО СД Вступительные """
+    column_table_name = "История/Иностранный язык"
+    filter_name = "spec_ofo_sd"
+    profile_name = "Судебная и прокурорская деятельность"
+    form_ed = "Очная"
+    test_type = "ЕГЭ"
+    type_ed = "Специалитет"
+
+
+class SpecRecOfoSdVstup(BakRecListMixin):
+    """ СПЕЦ ОФО СД Вступительные """
+    column_table_name = "История/ТГП/ОКП"
+    filter_name = "spec_ofo_sd"
+    profile_name = "Судебная и прокурорская деятельность"
+    form_ed = "Очная"
+    test_type = "Вступительные испытания"
+    type_ed = "Специалитет"
+
+
+"""
+    Рекомендованные к зачислению 
+"""
+
+"""
+    Магистратура / Аспирантура 
+"""
+
+
+class MagRecListMixin(ListView):
+    """
+    Миксин для списка рекомендованных к зачислению (Маг / Асп)
+    in:
+        column_table_name  -  имя столбца в таблице (для разных вступительных)
+        column_table_name_option  -  имя столбца в таблице для предмета по выбору (для разных вступительных)
+        filter_name  - название профиля, по которому фильтруем записи из БД
+        profile_name  -  название профиля для html
+        form_ed  -  название формы обучения для html
+        test_type  -  тип вступительных испытаний для html и для фильтра БД
+        type_ed  -  бак/маг/асп для html
+    """
+    model = PublishRecTab
+    template_name = 'regabitur/rec/rec_list_mag_asp.html'
+    column_table_name = None
+    column_table_name_option = None
+    filter_name = None
+    profile_name = None
+    form_ed = None
+    test_type = None
+    type_ed = None
+
+    def get_context_data(self, **kwargs):
+        """Передаем записи с БАК ОФО true """
+        context = super().get_context_data(**kwargs)
+        all_publish = PublishRecTab.objects.filter(
+            Q(**{self.filter_name: True})
+        )
+        context["list"] = all_publish
+        context["column_name"] = self.column_table_name
+        context["column_name_option"] = self.column_table_name_option
+        context["form_ed"] = self.form_ed
+        context["profile_name"] = self.profile_name
+        context["test_type"] = self.test_type
+        context["type_ed"] = self.type_ed
+        return context
+
+# -- МАГ ОФО --
+
+
+class MagRecOfoPoVstup(MagRecListMixin):
+    """МАГ ОФО ПО Вступительные """
+    column_table_name = "Конституционное право"
+    column_table_name_option = "Гражданское право / Уголовное право"
+    filter_name = "mag_ofo_po"
+    profile_name = "Правовое обеспечение гражданского оборота и предпринимательства"
+    form_ed = "Очная"
+    test_type = "Вступительные испытания"
+    type_ed = "Магистратура"
+
+
+class MagRecOfoTpVstup(MagRecListMixin):
+    """МАГ ОФО ТП Вступительные """
+    column_table_name = "Конституционное право"
+    column_table_name_option = "Гражданское право / Уголовное право"
+    filter_name = "mag_ofo_tp"
+    profile_name = "Теория и практика применения законодательства в уголовно-правовой сфере"
+    form_ed = "Очная"
+    test_type = "Вступительные испытания"
+    type_ed = "Магистратура"
+
+# -- МАГ ЗФО --
+
+
+class MagRecZfoPoVstup(MagRecListMixin):
+    """МАГ ЗФО ПО Вступительные """
+    column_table_name = "Конституционное право"
+    column_table_name_option = "Гражданское право / Уголовное право"
+    filter_name = "mag_zfo_po"
+    profile_name = "Правовое обеспечение гражданского оборота и предпринимательства"
+    form_ed = "Заочная"
+    test_type = "Вступительные испытания"
+    type_ed = "Магистратура"
+
+
+class MagRecZfoTpVstup(MagRecListMixin):
+    """МАГ ЗФО ТП Вступительные """
+    column_table_name = "Конституционное право"
+    column_table_name_option = "Гражданское право / Уголовное право"
+    filter_name = "mag_zfo_tp"
+    profile_name = "Теория и практика применения законодательства в уголовно-правовой сфере"
+    form_ed = "Заочная"
+    test_type = "Вступительные испытания"
+    type_ed = "Магистратура"
+
+# -- АСП ОФО --
+
+
+class AspRecOfoTipVstup(MagRecListMixin):
+    """АСП ОФО ТИП Вступительные """
+    column_table_name = "Иностранный язык"
+    column_table_name_option = "Специальная дисциплина"
+    filter_name = "asp_ofo_tip"
+    profile_name = "Теория и история права и государства, история учений о праве и государстве"
+    form_ed = "Очная"
+    test_type = "Вступительные испытания"
+    type_ed = "Аспирантура"
+
+
+class AspRecOfoUpVstup(MagRecListMixin):
+    """АСП ОФО УП Вступительные """
+    column_table_name = "Иностранный язык"
+    column_table_name_option = "Специальная дисциплина"
+    filter_name = "asp_ofo_up"
+    profile_name = "Уголовный процесс"
+    form_ed = "Очная"
+    test_type = "Вступительные испытания"
+    type_ed = "Аспирантура"
+
+
+class AspRecOfoKsVstup(MagRecListMixin):
+    """АСП ОФО КС Вступительные """
+    column_table_name = "Иностранный язык"
+    column_table_name_option = "Специальная дисциплина"
+    filter_name = "asp_ofo_ks"
+    profile_name = "Криминалистика; судебно-экспертная деятельность; оперативно-розыскная деятельность"
+    form_ed = "Очная"
+    test_type = "Вступительные испытания"
+    type_ed = "Аспирантура"
+
+# -- АСП ЗФО --
+
+
+class AspRecZfoTipVstup(MagRecListMixin):
+    """АСП ЗФО ТИП Вступительные """
+    column_table_name = "Иностранный язык"
+    column_table_name_option = "Специальная дисциплина"
+    filter_name = "asp_zfo_tip"
+    profile_name = "Теория и история права и государства, история учений о праве и государстве"
+    form_ed = "Заочная"
+    test_type = "Вступительные испытания"
+    type_ed = "Аспирантура"
+
+
+class AspRecZfoUpVstup(MagRecListMixin):
+    """АСП ЗФО УП Вступительные """
+    column_table_name = "Иностранный язык"
+    column_table_name_option = "Специальная дисциплина"
+    filter_name = "asp_zfo_up"
+    profile_name = "Уголовный процесс"
+    form_ed = "Заочная"
+    test_type = "Вступительные испытания"
+    type_ed = "Аспирантура"
+
+
+class AspRecZfoKsVstup(MagRecListMixin):
+    """АСП ЗФО КС Вступительные """
+    column_table_name = "Иностранный язык"
+    column_table_name_option = "Специальная дисциплина"
+    filter_name = "asp_zfo_ks"
+    profile_name = "Криминалистика; судебно-экспертная деятельность; оперативно-розыскная деятельность"
+    form_ed = "Заочная"
+    test_type = "Вступительные испытания"
+    type_ed = "Аспирантура"

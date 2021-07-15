@@ -22,6 +22,11 @@ def submitPage(request):
     return render(request, 'abitur/submit.html')
 
 
+def recommended_page(request):
+    """Страница с роутингом для списков рекомендованных к зачислению"""
+    return render(request, 'abitur/recommended.html')
+
+
 class NewsDetail(View):
     """теперь view обрабатывается классом"""
     def get(self, request, slug):

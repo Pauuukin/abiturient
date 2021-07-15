@@ -23,34 +23,29 @@
                 <th>Согласие на зачисление</th>
                 <th>Преимущественное право</th>
                 <th>Сумма баллов</th>
-                <th>Обществознание</th>
-                <th>Русский язык</th>
                 <th>{{ column_name }}</th>
+                <th>{{ column_name_option }}</th>
                 <th>Индивидуальные достижения</th>
                 <th>Состояние</th>
             </tr>
             </thead>
-
             {%for instance in list %}
-
             <tr class="text-center">
                 <td>{{instance.user.publish.individual_str}}{{instance.user.id}}</td>
                 <td>{{instance.user.custom.snils}}</td>
                 <td>{{instance.sogl}}</td>
                 <td>{{instance.advantage}}</td>
                 <td>{{instance.sum_points}}</td>
-                <td>{{instance.obsh_point}}</td>
-                <td>{{instance.rus_point}}</td>
-                {% if instance.test_type == "ЕГЭ" %}
-                <td>{{instance.choice_ege_point}}</td>
+                {% if type_ed == "Магистратура" %}
+                <td>{{instance.kp_point}}</td>
+                <td>{{instance.gpup_point}}</td>
                 {% else %}
-                <td>{{instance.choice_vstupit_point}}</td>
+                <td>{{instance.choice_ege_point}}</td>
+                <td>{{instance.spec_point}}</td>
                 {% endif %}
                 <td>{{instance.individ}}</td>
                 <td>{{instance.sost_type}}</td>
-
             </tr>
-
             {% endfor %}
         </table>
     </div>
